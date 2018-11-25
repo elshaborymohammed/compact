@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation app.appCompat
+    implementation app.supportV4
+    implementation app.design
+    implementation app.cardView
+    implementation app.constraintLayout
+    implementation app.animatedVector
+    implementation app.mediaCompat
+
+    implementation di.dagger
+    implementation di.androidSupport
+    implementation di.android
+    annotationProcessor di.compiler
+    annotationProcessor di.processor
+
+    implementation reactive.rxJava
+    implementation reactive.rxAndroid
+
+    implementation restful.retrofit
+    implementation restful.converter
+    implementation restful.adapter
+    implementation restful.gson
+
+    implementation http.okhttp
+    implementation http.logging
+
+    implementation butterknife.butterknife
+    annotationProcessor butterknife.compiler
+}
