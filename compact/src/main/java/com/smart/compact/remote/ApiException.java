@@ -7,12 +7,12 @@ import com.google.gson.Gson;
 public class ApiException extends Exception {
     private final int code;
     @Nullable
-    private final String errorMessage;
+    private final String error;
 
-    public ApiException(int code, @Nullable String errorMessage) {
+    public ApiException(int code, @Nullable String error) {
         super();
         this.code = code;
-        this.errorMessage = errorMessage;
+        this.error = error;
     }
 
     public ApiException(ApiResponse response) {
@@ -25,6 +25,6 @@ public class ApiException extends Exception {
 
     @Nullable
     public <T> T error(Class<T> classOfT) {
-        return new Gson().fromJson(errorMessage, classOfT);
+        return new Gson().fromJson(error, classOfT);
     }
 }

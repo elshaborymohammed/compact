@@ -51,4 +51,6 @@ dependencies {
 
     implementation butterknife.butterknife
     annotationProcessor butterknife.compiler
+
+    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
 }

@@ -93,7 +93,7 @@ public class ApiResponse<T> {
     }
 
     @Nullable
-    public <ERROR> ERROR errorBody(Class<ERROR> classOfT) {
+    public <ERROR> ERROR error(Class<ERROR> classOfT) {
         return new Gson().fromJson(errorMessage, classOfT);
     }
 
