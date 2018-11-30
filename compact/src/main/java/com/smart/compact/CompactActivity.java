@@ -41,10 +41,10 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
         onCreate();
     }
 
-    protected abstract void onCreate();
-
     @LayoutRes
     protected abstract int layoutRes();
+
+    protected abstract void onCreate();
 
     @Override
     protected void onDestroy() {

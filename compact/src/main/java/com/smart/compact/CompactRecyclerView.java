@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -16,7 +17,7 @@ import butterknife.ButterKnife;
 public class CompactRecyclerView {
 
     public static abstract class Adapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
-        private List<T> data;
+        private List<T> data = new ArrayList<>();
         private Context context;
 
         public Adapter() {
@@ -35,7 +36,7 @@ public class CompactRecyclerView {
             this.context = recyclerView.getContext();
             recyclerView.setLayoutManager(getLayoutManager());
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), getDividerItemDecorationOrientation()));
+//            recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), getDividerItemDecorationOrientation()));
             recyclerView.addItemDecoration(new SpacesItemDecoration(8));
             super.onAttachedToRecyclerView(recyclerView);
         }

@@ -1,8 +1,9 @@
 package com.smart.compact.di.module;
 
 import com.smart.compact.executor.MainThread;
-import com.smart.compact.executor.WorkerExecutor;
 import com.smart.compact.executor.WorkerThread;
+
+import java.util.concurrent.Executors;
 
 import javax.inject.Singleton;
 
@@ -25,7 +26,7 @@ public class SchedulerModule {
 
     @Provides
     @Singleton
-    WorkerThread providesNetworkScheduler(WorkerExecutor executor) {
-        return () -> Schedulers.from(executor);
+    WorkerThread providesNetworkScheduler() {
+        return () -> Schedulers.from(Executors.newFixedThreadPool(1));
     }
 }
