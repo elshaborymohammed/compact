@@ -1,5 +1,6 @@
 package com.smart.compact;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -32,11 +33,13 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
     private Unbinder unbinder;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(layoutRes());
+        if (layoutRes() > -1)
+            setContentView(layoutRes());
         unbinder = ButterKnife.bind(this);
         onCreate();
     }

@@ -1,15 +1,16 @@
 package com.smart.compact.di.module;
 
+import com.smart.compact.executor.AppExecutors;
 import com.smart.compact.executor.MainThread;
 import com.smart.compact.executor.WorkerThread;
 
+import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -20,13 +21,19 @@ import io.reactivex.schedulers.Schedulers;
 public class SchedulerModule {
     @Provides
     @Singleton
-    MainThread providesMainThread() {
-        return () -> AndroidSchedulers.mainThread();
+    Executor providesExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 
     @Provides
     @Singleton
-    WorkerThread providesNetworkScheduler() {
-        return () -> Schedulers.from(Executors.newFixedThreadPool(1));
+    MainThread providesMainThread(AppExecutors executors) {
+        return () -> Schedulers.from(executors.mainThread());
+    }
+
+    @Provides
+    @Singleton
+    WorkerThread providesNetworkScheduler(Executor executor) {
+        return () -> Schedulers.from(executor);
     }
 }

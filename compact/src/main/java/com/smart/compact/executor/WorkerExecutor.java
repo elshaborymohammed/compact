@@ -17,9 +17,9 @@ public class WorkerExecutor implements Executor {
      */
     private static int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
     // Sets the amount of time an idle thread waits before terminating
-    private static final int KEEP_ALIVE_TIME = 1;
+    private static final int KEEP_ALIVE_TIME = 0;
     // Sets the Time Unit to seconds
-    private static final TimeUnit KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS;
+    private static final TimeUnit KEEP_ALIVE_TIME_UNIT = TimeUnit.MILLISECONDS;
     // Instantiates the queue of #Runnable as a LinkedBlockingQueue
     private final BlockingQueue<Runnable> blockingQueue = new LinkedBlockingQueue<>();
     // Creates a thread pool manager

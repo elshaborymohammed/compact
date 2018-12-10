@@ -22,6 +22,7 @@ import dagger.android.support.AndroidSupportInjection;
 public abstract class CompactFragment extends Fragment {
 
     private Unbinder unbinder;
+    private View inflate;
 
     @Override
     public void onAttach(Context context) {
@@ -32,7 +33,7 @@ public abstract class CompactFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = inflater.inflate(layoutRes(), container, false);
+        inflate = inflater.inflate(layoutRes(), container, false);
         setHasOptionsMenu(true);
         unbinder = ButterKnife.bind(this, inflate);
         onViewBound(inflate);
@@ -48,5 +49,9 @@ public abstract class CompactFragment extends Fragment {
     public void onDestroyView() {
         ButterKnifeUtils.unbind(unbinder);
         super.onDestroyView();
+    }
+
+    public View getInflate() {
+        return inflate;
     }
 }

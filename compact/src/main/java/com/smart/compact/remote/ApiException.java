@@ -19,6 +19,12 @@ public class ApiException extends Exception {
         this(response.code(), response.error());
     }
 
+    public static ApiException create(Throwable throwable) {
+        if (throwable instanceof ApiException)
+            return (ApiException) throwable;
+        return null;
+    }
+
     public int code() {
         return code;
     }
