@@ -14,6 +14,8 @@ import com.smart.compact.util.ButterKnifeUtils;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by lshabory on 3/8/18.
@@ -23,6 +25,7 @@ public abstract class CompactFragment extends Fragment {
 
     private Unbinder unbinder;
     private View inflate;
+    private final CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
     public void onAttach(Context context) {
@@ -37,6 +40,7 @@ public abstract class CompactFragment extends Fragment {
         setHasOptionsMenu(true);
         unbinder = ButterKnife.bind(this, inflate);
         onViewBound(inflate);
+        disposable.addAll(subscriptions());
         return inflate;
     }
 
@@ -45,8 +49,14 @@ public abstract class CompactFragment extends Fragment {
 
     protected abstract void onViewBound(View view);
 
+    protected Disposable[] subscriptions() {
+        return new Disposable[0];
+    }
+
     @Override
     public void onDestroyView() {
+        disposable.dispose();
+        disposable.clear();
         ButterKnifeUtils.unbind(unbinder);
         super.onDestroyView();
     }

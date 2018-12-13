@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -34,10 +33,11 @@ public class CompactRecyclerView {
         @Override
         public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
             this.context = recyclerView.getContext();
-            recyclerView.setLayoutManager(getLayoutManager());
+            recyclerView.setLayoutManager(layoutManager());
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-//            recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), getDividerItemDecorationOrientation()));
-            recyclerView.addItemDecoration(new SpacesItemDecoration.Grid(8));
+            for (RecyclerView.ItemDecoration itemDecoration : itemDecorations()) {
+                recyclerView.addItemDecoration(itemDecoration);
+            }
             super.onAttachedToRecyclerView(recyclerView);
         }
 
@@ -58,12 +58,14 @@ public class CompactRecyclerView {
             return position;
         }
 
-        protected RecyclerView.LayoutManager getLayoutManager() {
+        protected RecyclerView.LayoutManager layoutManager() {
             return new LinearLayoutManager(context);
         }
 
-        protected int getDividerItemDecorationOrientation() {
-            return DividerItemDecoration.VERTICAL;
+        protected RecyclerView.ItemDecoration[] itemDecorations() {
+            return new RecyclerView.ItemDecoration[]{
+                    new SpacesItemDecoration.Linear(8)
+            };
         }
 
         protected T get(int position) {
@@ -90,7 +92,6 @@ public class CompactRecyclerView {
         }
     }
 
-
     public static abstract class ViewHolder<T> extends RecyclerView.ViewHolder {
 
         public ViewHolder(@NonNull View itemView) {
@@ -101,11 +102,18 @@ public class CompactRecyclerView {
         protected abstract void bind(T object);
     }
 
-    private static class SpacesItemDecoration {
-        private static class Linear extends RecyclerView.ItemDecoration {
+    public static class SpacesItemDecoration {
+        public static class Linear extends RecyclerView.ItemDecoration {
             private int space;
+            private int top;
 
             public Linear(int space) {
+                this.top = space;
+                this.space = space;
+            }
+
+            public Linear(int top, int space) {
+                this.top = top;
                 this.space = space;
             }
 
@@ -117,14 +125,14 @@ public class CompactRecyclerView {
 
                 // Add top margin only for the first item to avoid double space between items
                 if (parent.getChildLayoutPosition(view) == 0) {
-                    outRect.top = 0;
+                    outRect.top = top;
                 } else {
-                    outRect.top = 0;
+                    outRect.top = top * 2;
                 }
             }
         }
 
-        private static class Grid extends RecyclerView.ItemDecoration {
+        public static class Grid extends RecyclerView.ItemDecoration {
             private int space;
 
             public Grid(int space) {

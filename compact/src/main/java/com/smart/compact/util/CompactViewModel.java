@@ -10,15 +10,15 @@ public class CompactViewModel extends ViewModel {
     private ReplayRelay<Integer> statusCode = ReplayRelay.create();
 
 
-    public Relay<Boolean> loading() {
+    public final Relay<Boolean> loading() {
         return loading;
     }
 
-    protected void loadingOn() {
+    protected final void loadingOn() {
         loading.accept(Boolean.TRUE);
     }
 
-    protected void loadingOff() {
+    protected final void loadingOff() {
         loading.accept(Boolean.FALSE);
     }
 }
