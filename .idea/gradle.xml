@@ -8,12 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/compact" />
             <option value="$PROJECT_DIR$/navigator-annotation" />
             <option value="$PROJECT_DIR$/navigator-processor" />
             <option value="$PROJECT_DIR$/requester-annotation" />
             <option value="$PROJECT_DIR$/requester-processor" />
+            <option value="$PROJECT_DIR$/sample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
