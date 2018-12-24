@@ -44,7 +44,7 @@ public class CompactRecyclerView {
         @Override
         public void onBindViewHolder(@NonNull VH vh, int i) {
             if (vh instanceof ViewHolder) {
-                ((ViewHolder<T>) vh).bind(get(i));
+                ((ViewHolder<T>) vh).bind(i, get(i));
             }
         }
 
