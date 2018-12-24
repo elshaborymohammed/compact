@@ -99,7 +99,7 @@ public class CompactRecyclerView {
             ButterKnife.bind(this, itemView);
         }
 
-        protected abstract void bind(T object);
+        protected abstract void bind(int position, T object);
     }
 
     public static class SpacesItemDecoration {

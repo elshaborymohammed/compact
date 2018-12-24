@@ -5,6 +5,9 @@ import android.arch.lifecycle.ViewModel;
 import com.jakewharton.rxrelay2.Relay;
 import com.jakewharton.rxrelay2.ReplayRelay;
 
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+
 public class CompactViewModel extends ViewModel {
     private ReplayRelay<Boolean> loading = ReplayRelay.create();
     private ReplayRelay<Integer> statusCode = ReplayRelay.create();
@@ -20,5 +23,17 @@ public class CompactViewModel extends ViewModel {
 
     protected final void loadingOff() {
         loading.accept(Boolean.FALSE);
+    }
+
+    public Consumer<Disposable> doOnSubscribe() {
+        return disposable -> loading().accept(Boolean.TRUE);
+    }
+
+    public <T> Consumer<T> doOnSuccess() {
+        return response -> loading().accept(Boolean.FALSE);
+    }
+
+    public Consumer<Throwable> doOnError() {
+        return throwable -> loading().accept(Boolean.FALSE);
     }
 }
