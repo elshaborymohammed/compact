@@ -1,6 +1,7 @@
 package com.compact;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -18,6 +19,8 @@ import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by lshabory on 3/8/18.
@@ -29,9 +32,20 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
+    private final CompositeDisposable disposable = new CompositeDisposable();
+
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
     private Unbinder unbinder;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(baseContext(newBase));
+    }
+
+    protected Context baseContext(Context newBase) {
+        return ContextWrapper.wrap(newBase, "ar");
+    }
 
     @SuppressLint("ResourceType")
     @Override
@@ -49,8 +63,18 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
 
     protected abstract void onCreate();
 
+    protected Disposable[] subscriptions() {
+        return new Disposable[0];
+    }
+
+    protected void subscribe(Disposable d) {
+        disposable.add(d);
+    }
+
     @Override
     protected void onDestroy() {
+        disposable.dispose();
+        disposable.clear();
         ButterKnifeUtils.unbind(unbinder);
         super.onDestroy();
     }

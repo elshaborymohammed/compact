@@ -1,13 +1,16 @@
 package com.compact;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import com.compact.util.ButterKnifeUtils;
 
@@ -17,11 +20,7 @@ import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-/**
- * Created by lshabory on 3/8/18.
- */
-
-public abstract class CompactFragment extends Fragment {
+public abstract class CompactDialogFragment extends DialogFragment {
 
     private Unbinder unbinder;
     private View inflate;
@@ -31,6 +30,7 @@ public abstract class CompactFragment extends Fragment {
     public void onAttach(Context context) {
         AndroidSupportInjection.inject(this);
         super.onAttach(context);
+        setCancelable(false);
     }
 
     @Nullable
@@ -44,6 +44,23 @@ public abstract class CompactFragment extends Fragment {
         return inflate;
     }
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        return dialog;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ViewGroup.LayoutParams params = getDialog().getWindow().getAttributes();
+        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        getDialog().getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+    }
+
     @LayoutRes
     protected abstract int layoutRes();
 
@@ -53,10 +70,6 @@ public abstract class CompactFragment extends Fragment {
         return new Disposable[0];
     }
 
-    protected void subscribe(Disposable d) {
-        disposable.add(d);
-    }
-    
     @Override
     public void onDestroyView() {
         disposable.dispose();
@@ -65,7 +78,15 @@ public abstract class CompactFragment extends Fragment {
         super.onDestroyView();
     }
 
+    protected void subscribe(Disposable d) {
+        disposable.add(d);
+    }
+
     public View getInflate() {
         return inflate;
+    }
+
+    protected void onError(Throwable throwable) {
+        throwable.printStackTrace();
     }
 }
