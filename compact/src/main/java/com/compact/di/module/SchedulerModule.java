@@ -18,7 +18,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 @Module
-public class SchedulerModule {git status
+public class SchedulerModule {
     @Provides
     @Singleton
     Executor providesExecutor() {
