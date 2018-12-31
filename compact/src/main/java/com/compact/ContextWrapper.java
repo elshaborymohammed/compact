@@ -27,7 +27,7 @@ public class ContextWrapper extends android.content.ContextWrapper {
         Resources res = context.getResources();
         Configuration configuration = res.getConfiguration();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             configuration.setLocale(newLocale);
 
             LocaleList localeList = new LocaleList(newLocale);
@@ -36,7 +36,7 @@ public class ContextWrapper extends android.content.ContextWrapper {
 
             context = context.createConfigurationContext(configuration);
 
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        } else if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             configuration.setLocale(newLocale);
             context = context.createConfigurationContext(configuration);
 

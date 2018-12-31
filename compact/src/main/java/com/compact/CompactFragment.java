@@ -23,9 +23,9 @@ import io.reactivex.disposables.Disposable;
 
 public abstract class CompactFragment extends Fragment {
 
+    private final CompositeDisposable disposable = new CompositeDisposable();
     private Unbinder unbinder;
     private View inflate;
-    private final CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
     public void onAttach(Context context) {
@@ -53,16 +53,16 @@ public abstract class CompactFragment extends Fragment {
         return new Disposable[0];
     }
 
-    protected void subscribe(Disposable d) {
-        disposable.add(d);
-    }
-    
     @Override
     public void onDestroyView() {
         disposable.dispose();
         disposable.clear();
         ButterKnifeUtils.unbind(unbinder);
         super.onDestroyView();
+    }
+
+    protected void subscribe(Disposable d) {
+        disposable.add(d);
     }
 
     public View getInflate() {

@@ -1,4 +1,4 @@
-package com.compact.util;
+package com.compact;
 
 import android.arch.lifecycle.ViewModel;
 

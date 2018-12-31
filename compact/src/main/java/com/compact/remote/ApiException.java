@@ -30,6 +30,11 @@ public class ApiException extends Exception {
     }
 
     @Nullable
+    public String error() {
+        return error;
+    }
+
+    @Nullable
     public <T> T error(Class<T> classOfT) {
         return new Gson().fromJson(error, classOfT);
     }

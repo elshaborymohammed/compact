@@ -22,9 +22,9 @@ import io.reactivex.disposables.Disposable;
 
 public abstract class CompactDialogFragment extends DialogFragment {
 
+    private final CompositeDisposable disposable = new CompositeDisposable();
     private Unbinder unbinder;
     private View inflate;
-    private final CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
     public void onAttach(Context context) {

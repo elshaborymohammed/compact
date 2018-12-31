@@ -33,7 +33,6 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
     }
 
     private final CompositeDisposable disposable = new CompositeDisposable();
-
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
     private Unbinder unbinder;
@@ -56,6 +55,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
             setContentView(layoutRes());
         unbinder = ButterKnife.bind(this);
         onCreate();
+        disposable.addAll(subscriptions());
     }
 
     @LayoutRes

@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 public class CompactRecyclerView {
 
     public static abstract class Adapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+        private RecyclerView recyclerView;
         private List<T> data = new ArrayList<>();
         private Context context;
 
@@ -24,6 +25,10 @@ public class CompactRecyclerView {
 
         public Adapter(List<T> data) {
             this.data = data;
+        }
+
+        public RecyclerView getRecyclerView() {
+            return recyclerView;
         }
 
         public Context getContext() {
@@ -35,16 +40,19 @@ public class CompactRecyclerView {
             this.context = recyclerView.getContext();
             recyclerView.setLayoutManager(layoutManager());
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            for (RecyclerView.ItemDecoration itemDecoration : itemDecorations()) {
-                recyclerView.addItemDecoration(itemDecoration);
-            }
+            if (null != itemDecorations())
+                for (RecyclerView.ItemDecoration itemDecoration : itemDecorations()) {
+                    recyclerView.addItemDecoration(itemDecoration);
+                }
             super.onAttachedToRecyclerView(recyclerView);
+            this.recyclerView = recyclerView;
         }
 
         @Override
         public void onBindViewHolder(@NonNull VH vh, int i) {
             if (vh instanceof ViewHolder) {
-                ((ViewHolder<T>) vh).bind(i, get(i));
+                ViewHolder<T> viewHolder = (ViewHolder<T>) vh;
+                viewHolder.bind(i, get(i));
             }
         }
 
