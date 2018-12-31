@@ -33,11 +33,11 @@ dependencies {
     implementation app.cardView
     implementation app.constraintLayout
     implementation app.animatedVector
-    implementation app.mediaCompat
+    implementation app.mediaCompat 
 
-    implementation di.dagger
-    implementation di.androidSupport
-    implementation di.android
+    api di.dagger
+    api di.androidSupport
+    api di.android
     annotationProcessor di.compiler
     annotationProcessor di.processor
 
@@ -53,7 +53,7 @@ dependencies {
     implementation http.logging
 
     implementation butterknife.butterknife
-    annotationProcessor butterknife.compiler
+//    annotationProcessor butterknife.compiler
 
     implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
 }
