@@ -1,8 +1,7 @@
-package com.compact.remote;
+package com.compact.requester.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -50,7 +49,8 @@ public class ApiResponse<T> {
                 try {
                     message = response.errorBody().string();
                 } catch (IOException ignored) {
-                    Log.e(ApiResponse.class.getSimpleName(), "error while parsing response", ignored);
+                    ignored.printStackTrace();
+                    System.err.println(ApiResponse.class.getSimpleName() + " error while parsing response " + ignored);
                 }
             }
             if (message == null || message.trim().length() == 0) {
@@ -109,7 +109,7 @@ public class ApiResponse<T> {
         try {
             return Integer.parseInt(matcher.group(1));
         } catch (NumberFormatException ex) {
-            Log.w(ApiResponse.class.getSimpleName(), String.format("cannot parse next page from %s", next));
+            System.err.println(ApiResponse.class.getSimpleName() + String.format(" cannot parse next page from %s", next));
             return null;
         }
     }

@@ -1,4 +1,4 @@
-package com.compact.remote;
+package com.compact.requester.adapter;
 
 
 import java.lang.annotation.Annotation;
@@ -65,18 +65,18 @@ public class CompactCallAdapter<R> implements CallAdapter<R, Single<ApiResponse<
 
         @Override
         public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
-            if (getRawType(returnType) != Single.class) {
+            if (Factory.getRawType(returnType) != Single.class) {
                 return null;
             }
-            Type observableType = getParameterUpperBound(0, (ParameterizedType) returnType);
-            Class<?> rawObservableType = getRawType(observableType);
+            Type observableType = Factory.getParameterUpperBound(0, (ParameterizedType) returnType);
+            Class<?> rawObservableType = Factory.getRawType(observableType);
             if (rawObservableType != ApiResponse.class) {
                 throw new IllegalArgumentException("type must be a resource");
             }
             if (!(observableType instanceof ParameterizedType)) {
                 throw new IllegalArgumentException("resource must be parameterized");
             }
-            Type bodyType = getParameterUpperBound(0, (ParameterizedType) observableType);
+            Type bodyType = Factory.getParameterUpperBound(0, (ParameterizedType) observableType);
             return new CompactCallAdapter<>(bodyType);
         }
     }

@@ -1,4 +1,4 @@
-package com.compact.remote;
+package com.compact.requester.adapter;
 
 import android.support.annotation.Nullable;
 

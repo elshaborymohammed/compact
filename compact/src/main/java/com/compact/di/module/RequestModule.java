@@ -1,13 +1,13 @@
 package com.compact.di.module;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.compact.di.qualifier.Cached;
 import com.compact.di.qualifier.DatePattern;
 import com.compact.di.qualifier.DefaultDatePattern;
 import com.compact.di.qualifier.Endpoint;
-import com.compact.remote.CompactCallAdapter;
+import com.compact.requester.adapter.CompactCallAdapter;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.inject.Singleton;
 

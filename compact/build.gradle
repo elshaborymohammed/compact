@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.androidcompact'
+group = 'com.github.androidcompact'
 
 android {
     compileSdkVersion 28
@@ -27,13 +27,15 @@ android {
 }
 
 dependencies {
+    implementation project(":adapter-compact")
+
     implementation app.appCompat
     implementation app.supportV4
     implementation app.design
     implementation app.cardView
     implementation app.constraintLayout
     implementation app.animatedVector
-    implementation app.mediaCompat 
+    implementation app.mediaCompat
 
     api di.dagger
     api di.androidSupport
@@ -46,7 +48,6 @@ dependencies {
 
     implementation restful.retrofit
     implementation restful.converter
-    implementation restful.adapter
     implementation restful.gson
 
     implementation http.okhttp
