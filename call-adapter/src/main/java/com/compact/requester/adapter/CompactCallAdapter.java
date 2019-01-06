@@ -1,6 +1,9 @@
 package com.compact.requester.adapter;
 
 
+import com.smart.compact.response.ApiException;
+import com.smart.compact.response.ApiResponse;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

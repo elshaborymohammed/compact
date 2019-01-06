@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.androidcompact'
+
+dependencies {
+    implementation project(":response")
+    compileOnly app.androidAnnotation
+    implementation restful.gson
+    implementation restful.retrofit
+    implementation reactive.rxJava
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8

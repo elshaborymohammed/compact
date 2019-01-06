@@ -1,1 +1,1 @@
-include ':sample', ':compact', ':navigator-annotation', ':navigator-processor', ':requester-annotation', ':requester-processor', ':adapter-compact'
+include ':sample', ':compact', ':navigator-annotation', ':navigator-processor', ':requester-annotation', ':requester-processor', ':call-adapter', ':response'

@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-    implementation project(":adapter-compact")
+    implementation project(':call-adapter')
 
     implementation app.appCompat
     implementation app.supportV4

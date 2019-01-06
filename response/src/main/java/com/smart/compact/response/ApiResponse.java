@@ -1,4 +1,4 @@
-package com.compact.requester.adapter;
+package com.smart.compact.response;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
