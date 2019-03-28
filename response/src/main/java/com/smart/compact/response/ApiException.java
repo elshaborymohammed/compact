@@ -1,8 +1,9 @@
 package com.smart.compact.response;
 
-import android.support.annotation.Nullable;
 
 import com.google.gson.Gson;
+
+import androidx.annotation.Nullable;
 
 public class ApiException extends Exception {
     private final int code;

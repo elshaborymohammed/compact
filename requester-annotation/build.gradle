@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.androidcompact'
 
 dependencies {
-    compileOnly app.androidAnnotation
+    compileOnly androidX.annotation
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

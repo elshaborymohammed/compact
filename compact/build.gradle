@@ -6,7 +6,6 @@ group = 'com.github.androidcompact'
 android {
     compileSdkVersion 28
     defaultConfig {
-//        applicationId "com.smart.android.compact"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -29,13 +28,13 @@ android {
 dependencies {
     implementation project(':call-adapter')
 
-    implementation app.appCompat
-    implementation app.supportV4
-    implementation app.design
-    implementation app.cardView
-    implementation app.constraintLayout
-    implementation app.animatedVector
-    implementation app.mediaCompat
+    implementation androidX.appCompat
+    implementation androidX.supportV4
+    implementation androidX.material
+    implementation androidX.cardView
+    implementation androidX.constraintLayout
+    implementation androidX.animatedVector
+    implementation androidX.mediaCompat
 
     api di.dagger
     api di.androidSupport
@@ -54,7 +53,4 @@ dependencies {
     implementation http.logging
 
     implementation butterknife.butterknife
-//    annotationProcessor butterknife.compiler
-
-    implementation 'com.jakewharton.rxrelay2:rxrelay:2.1.0'
 }

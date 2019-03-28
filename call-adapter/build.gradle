@@ -4,7 +4,7 @@ group = 'com.github.androidcompact'
 
 dependencies {
     implementation project(":response")
-    compileOnly app.androidAnnotation
+    compileOnly androidX.annotation
     implementation restful.gson
     implementation restful.retrofit
     implementation reactive.rxJava
