@@ -58,7 +58,7 @@ ext {
     ]
 
     //TODO Dagger
-    daggerVersion = '2.19'
+    daggerVersion = '2.21'
     di = [
             dagger        : "com.google.dagger:dagger:$daggerVersion",
             compiler      : "com.google.dagger:dagger-compiler:$daggerVersion",

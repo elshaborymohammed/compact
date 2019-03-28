@@ -26,29 +26,12 @@ android {
 }
 
 dependencies {
-    implementation project(':call-adapter')
-
     implementation androidX.appCompat
-    implementation androidX.supportV4
-    implementation androidX.material
-    implementation androidX.cardView
-    implementation androidX.constraintLayout
-    implementation androidX.animatedVector
-    implementation androidX.mediaCompat
+    implementation androidX.recyclerView
 
     api di.dagger
-    api di.androidSupport
     api di.android
-    annotationProcessor di.compiler
-    annotationProcessor di.processor
+    api di.androidSupport
 
     implementation reactive.rxJava
-    implementation reactive.rxAndroid
-
-    implementation restful.retrofit
-    implementation restful.converter
-    implementation restful.gson
-
-    implementation http.okhttp
-    implementation http.logging
 }
