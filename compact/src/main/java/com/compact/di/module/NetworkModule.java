@@ -3,8 +3,6 @@ package com.compact.di.module;
 import android.content.Context;
 
 import com.compact.di.qualifier.ApplicationContext;
-import com.compact.di.qualifier.Cached;
-import com.compact.di.qualifier.NonCached;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -56,20 +54,6 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    @NonCached
-    OkHttpClient provideOkHttpClientNonCached(Set<Protocol> protocols, Set<Interceptor> interceptors) {
-        OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .protocols(new ArrayList<>(protocols))
-                .connectTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS);
-        builder.interceptors().addAll(interceptors);
-        return builder.build();
-    }
-
-    @Provides
-    @Singleton
-    @Cached
     OkHttpClient provideOkHttpClientCached(Set<Protocol> protocols, Set<Interceptor> interceptors, Cache cache) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .protocols(new ArrayList<>(protocols))

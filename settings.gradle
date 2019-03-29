@@ -1,7 +1,7 @@
 include ':sample',
         ':compact',
         ':app_java',
-        ':app_kotlin',
+        ':app-kotlin',
         ':viewmodel',
         ':navigator-annotation',
         ':navigator-processor',

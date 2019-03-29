@@ -12,8 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -34,7 +32,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
     private final CompositeDisposable disposable = new CompositeDisposable();
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
-    private Unbinder unbinder;
+//    private Unbinder unbinder;
 
     @SuppressLint("ResourceType")
     @Override
@@ -43,7 +41,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
         super.onCreate(savedInstanceState);
         if (layoutRes() > -1)
             setContentView(layoutRes());
-        unbinder = ButterKnife.bind(this);
+//        unbinder = ButterKnife.bind(this);
         onCreate();
         disposable.addAll(subscriptions());
     }
@@ -65,7 +63,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
     protected void onDestroy() {
         disposable.dispose();
         disposable.clear();
-        ButterKnifeUtils.unbind(unbinder);
+//        ButterKnifeUtils.unbind(unbinder);
         super.onDestroy();
     }
 

@@ -24,5 +24,8 @@ android {
 dependencies {
     implementation androidX.appCompat
     implementation reactive.rxRelay
+
+    api androidX.viewModel
+    api androidX.extension
     api di.dagger
 }

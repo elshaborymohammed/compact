@@ -11,8 +11,6 @@ import com.compact.app.java.util.ButterKnifeUtils;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -24,7 +22,7 @@ import io.reactivex.disposables.Disposable;
 public abstract class CompactFragment extends Fragment {
 
     private final CompositeDisposable disposable = new CompositeDisposable();
-    private Unbinder unbinder;
+//    private Unbinder unbinder;
     private View inflate;
 
     @Override
@@ -38,7 +36,7 @@ public abstract class CompactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         inflate = inflater.inflate(layoutRes(), container, false);
         setHasOptionsMenu(true);
-        unbinder = ButterKnife.bind(this, inflate);
+//        unbinder = ButterKnife.bind(this, inflate);
         onViewBound(inflate);
         disposable.addAll(subscriptions());
         return inflate;
@@ -57,7 +55,7 @@ public abstract class CompactFragment extends Fragment {
     public void onDestroyView() {
         disposable.dispose();
         disposable.clear();
-        ButterKnifeUtils.unbind(unbinder);
+//        ButterKnifeUtils.unbind(unbinder);
         super.onDestroyView();
     }
 

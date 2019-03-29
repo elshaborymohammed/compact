@@ -1,6 +1,5 @@
 package com.compact.di.module;
 
-import com.compact.di.qualifier.Cached;
 import com.compact.di.qualifier.DatePattern;
 import com.compact.di.qualifier.DefaultDatePattern;
 import com.compact.di.qualifier.Endpoint;
@@ -25,23 +24,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module(includes = NetworkModule.class)
 public class RequestModule {
 
-    @Provides
-    @Singleton
-    @DefaultDatePattern
-    Gson provideGSONDefaultDatePattern() {
-        return provideGSONDatePattern("yyyy-MM-dd'T'HH:mm:ssZ");
-    }
-
-    @Provides
-    @Singleton
-    @DatePattern
-    Gson provideGSONDatePattern(@DatePattern String pattern) {
-        return new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .excludeFieldsWithoutExposeAnnotation()
-                .setDateFormat(pattern)
-                .create();
-    }
+//    @Provides
+//    @Singleton
+//    @DefaultDatePattern
+//    Gson provideGSONDefaultDatePattern() {
+//        return provideGSONDatePattern("yyyy-MM-dd'T'HH:mm:ssZ");
+//    }
+//
+//    @Provides
+//    @Singleton
+//    @DatePattern
+//    Gson provideGSONDatePattern(@DatePattern String pattern) {
+//        return new GsonBuilder()
+//                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+//                .excludeFieldsWithoutExposeAnnotation()
+//                .setDateFormat(pattern)
+//                .create();
+//    }
 
     @Provides
     @Singleton
@@ -54,14 +53,7 @@ public class RequestModule {
 
     @Provides
     @Singleton
-    Retrofit providesRequestCached(Retrofit.Builder builder, @Cached OkHttpClient okHttpClient) {
+    Retrofit providesRequestCached(Retrofit.Builder builder, OkHttpClient okHttpClient) {
         return builder.client(okHttpClient).build();
     }
-
-//    @Provides
-//    @Singleton
-//    @NonCached
-//    Retrofit providesRequestNonCached(Retrofit.Builder builder, @NonCached OkHttpClient okHttpClient) {
-//        return builder.client(okHttpClient).build();
-//    }
 }

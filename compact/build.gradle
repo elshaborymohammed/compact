@@ -29,12 +29,7 @@ dependencies {
     implementation project(':call-adapter')
 
     implementation androidX.appCompat
-    implementation androidX.supportV4
     implementation androidX.material
-    implementation androidX.cardView
-    implementation androidX.constraintLayout
-    implementation androidX.animatedVector
-    implementation androidX.mediaCompat
 
     api di.dagger
     api di.androidSupport

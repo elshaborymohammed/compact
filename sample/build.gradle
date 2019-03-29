@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -16,29 +19,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation project(":compact")
+    implementation project(':app-kotlin')
     implementation project(":response")
     implementation project(":viewmodel")
     implementation project(":call-adapter")
     implementation project(":requester-annotation")
-    annotationProcessor project(":requester-processor")
+    kapt project(":requester-processor")
 
     implementation androidX.appCompat
-    implementation androidX.supportV4
     implementation androidX.material
     implementation androidX.cardView
     implementation androidX.constraintLayout
-    implementation androidX.animatedVector
-    implementation androidX.mediaCompat
 
     api di.dagger
     api di.androidSupport
     api di.android
-    annotationProcessor di.compiler
-    annotationProcessor di.processor
+    kapt di.compiler
+    kapt di.processor
 
     implementation reactive.rxJava
     implementation reactive.rxAndroid
@@ -46,16 +53,21 @@ dependencies {
 
     implementation restful.retrofit
     implementation restful.converter
+    implementation restful.adapter
     implementation restful.gson
 
     implementation http.okhttp
     implementation http.logging
 
-    implementation butterknife.butterknife
-    annotationProcessor butterknife.compiler
+    implementation reactive.rxJava
 
     implementation image.glide
     implementation image.okhttp
     implementation image.transformations
-    annotationProcessor image.compiler
+    kapt image.compiler
+}
+
+kapt {
+    correctErrorTypes = true
+    generateStubs = true
 }

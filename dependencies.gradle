@@ -68,11 +68,11 @@ ext {
     ]
 
     //TODO ButterKnife
-    butterknifeVersion = '8.8.1'
-    butterknife = [
-            butterknife: "com.jakewharton:butterknife:$butterknifeVersion",
-            compiler   : "com.jakewharton:butterknife-compiler:$butterknifeVersion",
-    ]
+//    butterknifeVersion = '8.8.1'
+//    butterknife = [
+//            butterknife: "com.jakewharton:butterknife:$butterknifeVersion",
+//            compiler   : "com.jakewharton:butterknife-compiler:$butterknifeVersion",
+//    ]
 
     //TODO Glid
     glideVersion = '4.8.0'

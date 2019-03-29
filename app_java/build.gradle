@@ -28,5 +28,5 @@ dependencies {
     api di.android
 
     implementation reactive.rxJava
-    implementation butterknife.butterknife
+//    implementation butterknife.butterknife
 }
