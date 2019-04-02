@@ -13,9 +13,17 @@ import androidx.annotation.NonNull;
 
 @Singleton
 public class AppExecutors {
+    private static int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
     private final Executor diskIO;
     private final Executor networkIO;
     private final Executor mainThread;
+
+    @Inject
+    public AppExecutors() {
+        this.diskIO = Executors.newSingleThreadExecutor();
+        this.networkIO = Executors.newFixedThreadPool(NUMBER_OF_CORES);
+        this.mainThread = new MainThreadExecutor();
+    }
 
     @NonNull
     public final Executor diskIO() {
@@ -30,13 +38,6 @@ public class AppExecutors {
     @NonNull
     public final Executor mainThread() {
         return this.mainThread;
-    }
-
-    @Inject
-    public AppExecutors() {
-        this.diskIO = Executors.newSingleThreadExecutor();
-        this.networkIO = Executors.newFixedThreadPool(3);
-        this.mainThread = new MainThreadExecutor();
     }
 
     private class MainThreadExecutor implements Executor {

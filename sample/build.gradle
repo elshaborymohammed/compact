@@ -29,7 +29,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(":compact")
-    implementation project(':app-kotlin')
+    implementation project(':app')
     implementation project(":response")
     implementation project(":viewmodel")
     implementation project(":call-adapter")

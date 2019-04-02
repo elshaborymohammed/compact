@@ -1,36 +1,51 @@
 package com.smart.github.di
 
+import com.compact.di.module.GsonModule
+import com.compact.di.module.RequestModule
+import com.compact.di.qualifier.DatePattern
+import com.compact.di.qualifier.Endpoint
+import com.compact.requester.adapter.CompactCallAdapter
+import com.google.gson.Gson
 import com.smart.github.data.repository.TrendsRepository
 import com.smart.github.domain.protocol.ITrendsProtocol
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import dagger.multibindings.IntoSet
+import retrofit2.CallAdapter
+import retrofit2.Converter
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@Module
+@Module(includes = [
+    GsonModule::class,
+    RequestModule::class
+])
 class AppModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .build()
+    @DatePattern
+    fun providesDatePattern(): String {
+        return GsonModule.providesDatePattern()
     }
 
     @Provides
     @Singleton
-    fun providesRetrofit(client: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .client(client)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+    @Endpoint
+    fun providesEndpoint(): String {
+        return "https://api.github.com/"
+    }
+
+    @Provides
+    @IntoSet
+    internal fun providesGsonConverterFactory(gson: Gson): Converter.Factory {
+        return GsonConverterFactory.create(gson)
+    }
+
+    @Provides
+    @IntoSet
+    fun providesCompactCallAdaterFactory(): CallAdapter.Factory {
+        return CompactCallAdapter.Factory.create();
     }
 
     @Provides

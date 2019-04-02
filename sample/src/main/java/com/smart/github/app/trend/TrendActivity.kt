@@ -3,7 +3,7 @@ package com.smart.github.ui.trend
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import com.compact.app.kotlin.CompactActivity
+import com.compact.app.CompactActivity
 import com.smart.github.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.compact.app.kotlin.CompactRecyclerView
+import com.compact.widget.CompactRecyclerView
 import com.smart.github.domain.model.Trend
 
 class TrendAdapter : CompactRecyclerView.Adapter<Trend, TrendAdapter.ViewHolder>() {

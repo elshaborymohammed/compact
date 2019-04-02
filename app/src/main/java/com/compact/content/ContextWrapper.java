@@ -1,4 +1,4 @@
-package com.compact.util;
+package com.compact.content;
 
 import android.content.Context;
 import android.content.res.Configuration;

@@ -1,4 +1,4 @@
-package com.compact.app.kotlin;
+package com.compact.app;
 
 import android.content.Context;
 import android.os.Bundle;

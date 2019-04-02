@@ -8,8 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app-kotlin" />
-            <option value="$PROJECT_DIR$/app_java" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app-java" />
             <option value="$PROJECT_DIR$/call-adapter" />
             <option value="$PROJECT_DIR$/compact" />
             <option value="$PROJECT_DIR$/navigator-annotation" />

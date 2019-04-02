@@ -1,4 +1,4 @@
-package com.compact.app.kotlin;
+package com.compact.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -110,30 +110,53 @@ public class CompactRecyclerView {
 
     public static class SpacesItemDecoration {
         public static class Linear extends RecyclerView.ItemDecoration {
-            private int space;
+            private int firstTop;
+            private int firstLeft;
+            private int firstRight;
+            private int firstBottom;
+
             private int top;
+            private int left;
+            private int right;
+            private int bottom;
 
             public Linear(int space) {
                 this.top = space;
-                this.space = space;
+                this.left = space;
+                this.right = space;
+                this.bottom = space;
+
+                this.firstTop = space;
+                this.firstLeft = space;
+                this.firstRight = space;
+                this.firstBottom = space;
             }
 
-            public Linear(int top, int space) {
+            public Linear(int top, int left, int right, int bottom) {
                 this.top = top;
-                this.space = space;
+                this.left = left;
+                this.right = right;
+                this.bottom = bottom;
+
+                this.firstTop = top;
+                this.firstLeft = left;
+                this.firstRight = right;
+                this.firstBottom = bottom;
             }
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.left = space;
-                outRect.right = space;
-                outRect.bottom = space;
-
                 // Add top margin only for the first item to avoid double space between items
                 if (parent.getChildLayoutPosition(view) == 0) {
-                    outRect.top = top;
+                    outRect.top = firstTop;
+                    outRect.left = firstLeft;
+                    outRect.right = firstRight;
+                    outRect.bottom = firstBottom;
                 } else {
-                    outRect.top = top * 2;
+                    outRect.top = top;
+                    outRect.left = left;
+                    outRect.right = right;
+                    outRect.bottom = bottom;
                 }
             }
         }

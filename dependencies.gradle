@@ -82,14 +82,4 @@ ext {
             okhttp         : "com.github.bumptech.glide:okhttp3-integration:$glideVersion",
             transformations: "jp.wasabeef:glide-transformations:4.0.1",
     ]
-
-    //TODO CompactKit
-    compactVersion = '0.0.1-rc7'
-    compact = [
-            compact            : "com.github.androidcompact.compact:compact:$compactVersion",
-            callAdapter        : "com.github.androidcompact.compact:call-adapter:$compactVersion",
-            response           : "com.github.androidcompact.compact:response:$compactVersion",
-            requesterAnnotation: "com.github.androidcompact.compact:requester-annotation:$compactVersion",
-            requesterProcessor : "com.github.androidcompact.compact:requester-processor:$compactVersion",
-    ]
 }

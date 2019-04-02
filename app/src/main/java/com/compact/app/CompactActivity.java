@@ -1,4 +1,4 @@
-package com.compact.app.kotlin;
+package com.compact.app;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -25,6 +25,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
     }
 
     private final CompositeDisposable disposable = new CompositeDisposable();
