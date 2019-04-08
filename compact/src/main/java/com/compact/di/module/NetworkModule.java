@@ -13,6 +13,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
+import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -54,13 +55,16 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClientCached(Set<Protocol> protocols, Set<Interceptor> interceptors, Cache cache) {
+    OkHttpClient.Builder provideOkHttpClientCached(Set<Protocol> protocols, Set<Interceptor> interceptors, Cache cache, Authenticator authenticator) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .protocols(new ArrayList<>(protocols))
                 .cache(cache)
                 .connectTimeout(3 * 1000, TimeUnit.MILLISECONDS)
                 .readTimeout(60 * 1000, TimeUnit.MILLISECONDS);
         builder.interceptors().addAll(interceptors);
-        return builder.build();
+
+        if (null != authenticator)
+            builder.authenticator(authenticator);
+        return builder;
     }
 }
