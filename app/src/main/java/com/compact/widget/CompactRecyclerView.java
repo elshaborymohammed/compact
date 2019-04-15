@@ -137,15 +137,12 @@ public class CompactRecyclerView {
                     outRect.top = top * 2;
                     outRect.left = left;
                     outRect.right = right;
-                } else if (parent.getChildLayoutPosition(view) == parent.getLayoutManager().getChildCount() - 1) {
-                    outRect.top = top;
-                    outRect.left = left;
-                    outRect.right = right;
-                    outRect.bottom = (bottom == 0) ? top : bottom;
+                    outRect.bottom = bottom;
                 } else {
                     outRect.top = top;
                     outRect.left = left;
                     outRect.right = right;
+                    outRect.bottom = bottom;
                 }
             }
         }
