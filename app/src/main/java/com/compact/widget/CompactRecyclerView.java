@@ -2,6 +2,7 @@ package com.compact.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.util.TypedValue;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class CompactRecyclerView {
 
         protected RecyclerView.ItemDecoration[] itemDecorations() {
             return new RecyclerView.ItemDecoration[]{
-                    new SpacesItemDecoration.Linear(8)
+                    new SpacesItemDecoration.Linear(context, 8)
             };
         }
 
@@ -110,53 +111,41 @@ public class CompactRecyclerView {
 
     public static class SpacesItemDecoration {
         public static class Linear extends RecyclerView.ItemDecoration {
-            private int firstTop;
-            private int firstLeft;
-            private int firstRight;
-            private int firstBottom;
-
             private int top;
             private int left;
             private int right;
             private int bottom;
 
-            public Linear(int space) {
-                this.top = space;
-                this.left = space;
-                this.right = space;
-                this.bottom = space;
-
-                this.firstTop = space;
-                this.firstLeft = space;
-                this.firstRight = space;
-                this.firstBottom = space;
+            public Linear(Context context, int space) {
+                this.top = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space, context.getResources().getDisplayMetrics());
+                this.left = top;
+                this.right = top;
+                this.bottom = 0;
             }
 
-            public Linear(int top, int left, int right, int bottom) {
-                this.top = top;
-                this.left = left;
-                this.right = right;
-                this.bottom = bottom;
-
-                this.firstTop = top;
-                this.firstLeft = left;
-                this.firstRight = right;
-                this.firstBottom = bottom;
+            public Linear(Context context, int top, int left, int right, int bottom) {
+                this.top = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, top, context.getResources().getDisplayMetrics());
+                this.left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, left, context.getResources().getDisplayMetrics());
+                this.right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, right, context.getResources().getDisplayMetrics());
+                this.bottom = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, bottom, context.getResources().getDisplayMetrics());
             }
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 // Add top margin only for the first item to avoid double space between items
                 if (parent.getChildLayoutPosition(view) == 0) {
-                    outRect.top = firstTop;
-                    outRect.left = firstLeft;
-                    outRect.right = firstRight;
-                    outRect.bottom = firstBottom;
+                    outRect.top = top * 2;
+                    outRect.left = left;
+                    outRect.right = right;
+                } else if (parent.getChildLayoutPosition(view) == parent.getLayoutManager().getChildCount() - 1) {
+                    outRect.top = top;
+                    outRect.left = left;
+                    outRect.right = right;
+                    outRect.bottom = (bottom == 0) ? top : bottom;
                 } else {
                     outRect.top = top;
                     outRect.left = left;
                     outRect.right = right;
-                    outRect.bottom = bottom;
                 }
             }
         }
