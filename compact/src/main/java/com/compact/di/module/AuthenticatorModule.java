@@ -11,6 +11,6 @@ public class AuthenticatorModule {
     @Provides
     @Singleton
     Authenticator providesAuthenticator() {
-        return (route, response) -> null;
+        return Authenticator.NONE;
     }
 }

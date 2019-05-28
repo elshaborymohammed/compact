@@ -1,4 +1,4 @@
-package com.compact.app.java;
+package com.compact.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import butterknife.ButterKnife;
 
 public class CompactRecyclerView {
 
@@ -103,7 +104,7 @@ public class CompactRecyclerView {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-//            ButterKnife.bind(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         protected abstract void bind(int position, T object);

@@ -1,41 +1,22 @@
 package com.compact.requester.processor;
 
-import com.google.auto.service.AutoService;
-import com.google.common.collect.ImmutableSet;
 import com.compact.requester.annotation.Requester;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.JavaFile;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterSpec;
-import com.squareup.javapoet.TypeName;
-import com.squareup.javapoet.TypeSpec;
+import com.google.common.collect.ImmutableSet;
+import com.squareup.javapoet.*;
+import retrofit2.Retrofit;
 
+import javax.annotation.processing.*;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.lang.model.SourceVersion;
+import javax.lang.model.element.*;
+import javax.lang.model.util.Elements;
+import javax.tools.Diagnostic;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.processing.AbstractProcessor;
-import javax.annotation.processing.Filer;
-import javax.annotation.processing.Messager;
-import javax.annotation.processing.ProcessingEnvironment;
-import javax.annotation.processing.Processor;
-import javax.annotation.processing.RoundEnvironment;
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.element.VariableElement;
-import javax.lang.model.util.Elements;
-import javax.tools.Diagnostic;
-
-import retrofit2.Retrofit;
-
-@AutoService(Processor.class)
 public class RequesterProcessor extends AbstractProcessor {
 
     private Messager messager;

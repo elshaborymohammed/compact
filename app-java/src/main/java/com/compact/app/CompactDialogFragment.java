@@ -1,4 +1,4 @@
-package com.compact.app.java;
+package com.compact.app;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.compact.app.java.util.ButterKnifeUtils;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import com.compact.util.ButterKnifeUtils;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -21,7 +23,7 @@ import io.reactivex.disposables.Disposable;
 public abstract class CompactDialogFragment extends DialogFragment {
 
     private final CompositeDisposable disposable = new CompositeDisposable();
-//    private Unbinder unbinder;
+    private Unbinder unbinder;
     private View inflate;
 
     @Override
@@ -36,7 +38,7 @@ public abstract class CompactDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         inflate = inflater.inflate(layoutRes(), container, false);
         setHasOptionsMenu(true);
-//        unbinder = ButterKnife.bind(this, inflate);
+        unbinder = ButterKnife.bind(this, inflate);
         onViewBound(inflate);
         disposable.addAll(subscriptions());
         return inflate;
@@ -72,7 +74,7 @@ public abstract class CompactDialogFragment extends DialogFragment {
     public void onDestroyView() {
         disposable.dispose();
         disposable.clear();
-//        ButterKnifeUtils.unbind(unbinder);
+        ButterKnifeUtils.unbind(unbinder);
         super.onDestroyView();
     }
 

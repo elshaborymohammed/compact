@@ -25,7 +25,6 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-
     }
 
     private final CompositeDisposable disposable = new CompositeDisposable();

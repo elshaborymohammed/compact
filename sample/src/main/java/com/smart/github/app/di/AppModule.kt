@@ -44,8 +44,8 @@ class AppModule {
 
     @Provides
     @IntoSet
-    fun providesCompactCallAdaterFactory(): CallAdapter.Factory {
-        return CompactCallAdapter.Factory.create();
+    fun providesCompactCallAdapterFactory(): CallAdapter.Factory {
+        return CompactCallAdapter.Factory.create()
     }
 
     @Provides

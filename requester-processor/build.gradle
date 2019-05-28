@@ -6,7 +6,6 @@ dependencies {
     implementation project(":requester-annotation")
     implementation javaX.inject
     implementation restful.retrofit
-    implementation "com.google.auto.service:auto-service:1.0-rc1"
     implementation "com.google.guava:guava:21.0"
     implementation 'com.squareup:javapoet:1.11.1'
 }

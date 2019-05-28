@@ -58,7 +58,7 @@ ext {
     ]
 
     //TODO Dagger
-    daggerVersion = '2.21'
+    daggerVersion = '2.22.1'
     di = [
             dagger        : "com.google.dagger:dagger:$daggerVersion",
             compiler      : "com.google.dagger:dagger-compiler:$daggerVersion",
@@ -68,11 +68,11 @@ ext {
     ]
 
     //TODO ButterKnife
-//    butterknifeVersion = '8.8.1'
-//    butterknife = [
-//            butterknife: "com.jakewharton:butterknife:$butterknifeVersion",
-//            compiler   : "com.jakewharton:butterknife-compiler:$butterknifeVersion",
-//    ]
+    butterknifeVersion = '10.1.0'
+    butterknife = [
+            butterknife: "com.jakewharton:butterknife:$butterknifeVersion",
+            compiler   : "com.jakewharton:butterknife-compiler:$butterknifeVersion",
+    ]
 
     //TODO Glid
     glideVersion = '4.8.0'
