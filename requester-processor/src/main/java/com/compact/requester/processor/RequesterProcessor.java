@@ -1,7 +1,6 @@
 package com.compact.requester.processor;
 
 import com.compact.requester.annotation.Requester;
-import com.google.common.collect.ImmutableSet;
 import com.squareup.javapoet.*;
 import retrofit2.Retrofit;
 
@@ -13,9 +12,7 @@ import javax.lang.model.element.*;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class RequesterProcessor extends AbstractProcessor {
 
@@ -94,7 +91,9 @@ public class RequesterProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return ImmutableSet.of(Requester.class.getCanonicalName());
+        HashSet hashSet = new HashSet();
+        hashSet.add(Requester.class.getCanonicalName());
+        return hashSet;
     }
 
     @Override
