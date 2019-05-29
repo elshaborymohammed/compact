@@ -4,14 +4,13 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.TypedValue;
 import android.view.View;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompactRecyclerView {
 
@@ -72,7 +71,7 @@ public class CompactRecyclerView {
 
         protected RecyclerView.ItemDecoration[] itemDecorations() {
             return new RecyclerView.ItemDecoration[]{
-                    new SpacesItemDecoration.Linear(context, 8)
+                    new SpacesItemDecoration.Linear(context)
             };
         }
 
@@ -116,11 +115,19 @@ public class CompactRecyclerView {
             private int right;
             private int bottom;
 
-            public Linear(Context context, int space) {
-                this.top = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, space, context.getResources().getDisplayMetrics());
-                this.left = top;
-                this.right = top;
+            public Linear() {
+                this.top = 0;
+                this.left = 0;
+                this.right = 0;
                 this.bottom = 0;
+            }
+
+            public Linear(Context context) {
+                this(context, 8, 8, 8, 8);
+            }
+
+            public Linear(Context context, int space) {
+                this(context, space, space, space, 0);
             }
 
             public Linear(Context context, int top, int left, int right, int bottom) {
@@ -148,24 +155,39 @@ public class CompactRecyclerView {
         }
 
         public static class Grid extends RecyclerView.ItemDecoration {
-            private int space;
+            private int top;
+            private int left;
+            private int right;
+            private int bottom;
 
-            public Grid(int space) {
-                this.space = space;
+            public Grid() {
+                this.top = 0;
+                this.left = 0;
+                this.right = 0;
+                this.bottom = 0;
+            }
+
+            public Grid(Context context) {
+                this(context, 8, 8, 8, 8);
+            }
+
+            public Grid(Context context, int space) {
+                this(context, space, space, space, space);
+            }
+
+            public Grid(Context context, int top, int left, int right, int bottom) {
+                this.top = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, top, context.getResources().getDisplayMetrics());
+                this.left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, left, context.getResources().getDisplayMetrics());
+                this.right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, right, context.getResources().getDisplayMetrics());
+                this.bottom = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, bottom, context.getResources().getDisplayMetrics());
             }
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.left = space;
-                outRect.right = space;
-                outRect.bottom = space;
-
-                // Add top margin only for the first item to avoid double space between items
-                if (parent.getChildLayoutPosition(view) == 0) {
-                    outRect.top = 0;
-                } else {
-                    outRect.top = 0;
-                }
+                outRect.top = top;
+                outRect.left = left;
+                outRect.right = right;
+                outRect.bottom = bottom;
             }
         }
     }
