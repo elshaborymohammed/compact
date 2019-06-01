@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.smart.github.java"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(":compact")
+    implementation project(':app-java')
+    implementation project(":response")
+    implementation project(":viewmodel")
+    implementation project(":call-adapter")
+    implementation project(":requester-annotation")
+    annotationProcessor project(":requester-processor")
+
+    implementation androidX.appCompat
+    implementation androidX.material
+    implementation androidX.cardView
+    implementation androidX.vector
+    implementation androidX.constraintLayout
+
+    implementation di.dagger
+    implementation di.androidSupport
+    implementation di.android
+    annotationProcessor di.compiler
+    annotationProcessor di.processor
+
+    implementation reactive.rxJava
+    implementation reactive.rxAndroid
+    implementation reactive.rxRelay
+
+    implementation restful.retrofit
+    implementation restful.converter
+    implementation restful.adapter
+    implementation restful.gson
+
+    implementation http.okhttp
+    implementation http.logging
+
+    implementation image.glide
+    implementation image.okhttp
+    implementation image.transformations
+    annotationProcessor image.compiler
+
+    implementation butterknife.butterknife
+    annotationProcessor butterknife.compiler
+}

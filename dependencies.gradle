@@ -18,6 +18,7 @@ ext {
             cardView        : "androidx.cardview:cardview:$androidXCoreVersion",
             supportV4       : "androidx.legacy:legacy-support-v4:$androidXCoreVersion",
             mediaCompat     : "androidx.media:media:$androidXCoreVersion",
+            vector          : "androidx.vectordrawable:vectordrawable:$androidXCoreVersion",
             animatedVector  : "androidx.vectordrawable:vectordrawable-animated:$androidXCoreVersion",
             material        : "com.google.android.material:material:$androidXCoreVersion",
 

@@ -1,4 +1,4 @@
-include ':sample',
+include ':sample-kotlin', ':sample-java',
         ':compact',
         ':app-java',
         ':app',
