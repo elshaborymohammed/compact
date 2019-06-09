@@ -129,7 +129,11 @@ public class CompactRecyclerView {
             }
 
             public Linear(Context context, int space) {
-                this(context, space, space, space, 0);
+                this(context, space, space, space, space);
+            }
+
+            public Linear(Context context, int space, int bottom) {
+                this(context, space, space, space, bottom);
             }
 
             public Linear(Context context, int top, int left, int right, int bottom) {
@@ -142,17 +146,10 @@ public class CompactRecyclerView {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 // Add top margin only for the first item to avoid double space between items
-                if (parent.getChildLayoutPosition(view) == 0) {
-                    outRect.top = top * 2;
-                    outRect.left = left;
-                    outRect.right = right;
-                    outRect.bottom = bottom;
-                } else {
-                    outRect.top = top;
-                    outRect.left = left;
-                    outRect.right = right;
-                    outRect.bottom = bottom;
-                }
+                outRect.top = top;
+                outRect.left = left;
+                outRect.right = right;
+                outRect.bottom = bottom;
             }
         }
 
