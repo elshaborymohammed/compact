@@ -1,6 +1,9 @@
 package com.smart.sample
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.compact.executor.MainThread
+import com.compact.executor.WorkerThread
+import com.smart.sample.base.BaseTest
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.usecase.TrendsUseCase
 import com.smart.sample.ui.trend.TrendViewModel
@@ -16,15 +19,7 @@ import org.mockito.junit.MockitoJUnitRunner
 import javax.inject.Inject
 
 @RunWith(MockitoJUnitRunner::class)
-class TrendViewModelTestMock {
-    init {
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
-    }
-
-    // Force tests to be executed synchronously
-    @Rule
-    @JvmField
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+class TrendViewModelTestMock : BaseTest() {
 
     @Mock
     private lateinit var mockUseCase: TrendsUseCase
@@ -33,14 +28,14 @@ class TrendViewModelTestMock {
 
     @Before
     fun setUp() {
-        viewModel = TrendViewModel(mockUseCase)
+        viewModel = TrendViewModel(mockUseCase, WorkerThread { testScheduler }, MainThread { testScheduler })
 
         val just: Single<List<Trend>> = Single.wrap { it.onSuccess(mockTrends) }
         Mockito.`when`(mockUseCase.buildUseCaseObservable()).thenReturn(just)
     }
 
     @After
-    fun tearDown() {
+    override fun tearDown() {
         Mockito.verify(mockUseCase).buildUseCaseObservable()
         testObserver.assertSubscribed()
     }
@@ -63,16 +58,9 @@ class TrendViewModelTestMock {
         @BeforeClass
         @JvmStatic
         fun init() {
-            println("TrendViewModelTestMock.init")
             mockTrends = ArrayList()
             for (i in 0 until 5)
                 mockTrends.add(Trend(id = i, name = "name $i"))
-        }
-
-        @AfterClass
-        @JvmStatic
-        fun finalized() {
-            println("TrendViewModelTestMock.finalize")
         }
     }
 }

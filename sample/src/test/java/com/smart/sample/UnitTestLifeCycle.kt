@@ -2,7 +2,7 @@ package com.smart.sample
 
 import org.junit.*
 
-class ExampleUnitTest {
+class UnitTestLifeCycle {
 
     @Before
     fun setUp() {

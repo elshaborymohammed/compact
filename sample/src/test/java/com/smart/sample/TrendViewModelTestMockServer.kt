@@ -3,6 +3,7 @@ package com.smart.sample
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.gson.Gson
 import com.smart.compact.response.ApiException
+import com.smart.sample.base.BaseTest
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.ui.trend.TrendViewModel
 import io.reactivex.observers.TestObserver
@@ -14,25 +15,10 @@ import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
 
-class TrendViewModelTestMockServer {
-
-    // Force tests to be executed synchronously
-    @Rule
-    @JvmField
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
-//    @Rule
-//    @JvmField
-//    val schedulers = RxImmediateSchedulerRule()
-
-//    // Test rule for making the RxJava to run synchronously in unit test
-//    companion object {
-//
-//    }
+class TrendViewModelTestMockServer : BaseTest() {
 
     @Inject
     lateinit var viewModel: TrendViewModel
-    @Inject
-    lateinit var mockServer: MockWebServer
 
     private lateinit var mockTrends: ArrayList<Trend>
     private var subscriber = TestObserver<List<Trend>>()
@@ -46,11 +32,6 @@ class TrendViewModelTestMockServer {
         mockTrends.add(Trend(id = 2, name = "name 2"))
         mockTrends.add(Trend(id = 3, name = "name 3"))
         mockTrends.add(Trend(id = 4, name = "name 4"))
-    }
-
-    @After
-    fun tearDown() {
-        mockServer.shutdown()
     }
 
     @Test

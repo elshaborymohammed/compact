@@ -2,14 +2,17 @@ package com.smart.sample.di
 
 import com.compact.di.module.GsonModule
 import com.compact.di.module.RequestModule
+import com.compact.di.module.SchedulerModule
 import com.compact.di.qualifier.DatePattern
 import com.compact.di.qualifier.Endpoint
+import com.compact.executor.WorkerThread
 import com.compact.requester.adapter.CompactCallAdapter
 import com.google.gson.Gson
 import com.smart.sample.data.module.ProtocolModule
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet
+import io.reactivex.Scheduler
 import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,7 +21,8 @@ import javax.inject.Singleton
 @Module(includes = [
     GsonModule::class,
     RequestModule::class,
-    ProtocolModule::class
+    ProtocolModule::class,
+    SchedulerModule::class
 ])
 class AppModule {
 

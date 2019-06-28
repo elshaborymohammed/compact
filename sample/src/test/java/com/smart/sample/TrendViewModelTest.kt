@@ -17,10 +17,6 @@ import javax.inject.Inject
 //@Config(manifest=Config.NONE)
 //@Config(sdk = [Build.VERSION_CODES.O_MR1])
 class TrendViewModelTest {
-    // Force tests to be executed synchronously
-    @Rule
-    @JvmField
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Inject
     lateinit var viewModel: TrendViewModel
@@ -31,35 +27,12 @@ class TrendViewModelTest {
         com.smart.sample.di.DaggerTestAppComponent.builder().build().inject(this)
     }
 
-    @After
-    fun tearDown() {
-
-    }
-
     @Test
     fun call() {
         viewModel.get().subscribe(testObserver)
+        testObserver.awaitTerminalEvent()
         testObserver.assertSubscribed()
         testObserver.assertNoErrors()
         testObserver.assertSubscribed()
-    }
-
-    @Test
-    fun real() {
-        viewModel.get()
-                .subscribe(Consumer { println(it.toString()) })
-    }
-
-    @Test
-    fun int() {
-        Assert.assertEquals(viewModel.int(), 50)
-        println("int : ${viewModel.int()}")
-    }
-
-    // Test rule for making the RxJava to run synchronously in unit test
-    companion object {
-        @ClassRule
-        @JvmField
-        val schedulers = RxImmediateSchedulerRule()
     }
 }
