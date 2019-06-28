@@ -42,15 +42,10 @@ class TrendViewModelTestMockServer {
         com.smart.sample.di.DaggerTestAppComponent.builder().build().inject(this)
 
         mockTrends = ArrayList()
-//        for (i in 0 until 5)
-//            mockTrends.add(Trend(id = i, name = "name $i"))
-
         mockTrends.add(Trend(id = 1, name = "name 1"))
         mockTrends.add(Trend(id = 2, name = "name 2"))
         mockTrends.add(Trend(id = 3, name = "name 3"))
         mockTrends.add(Trend(id = 4, name = "name 4"))
-
-//        println(mockServer.url("test://api.github.com/").toString())
     }
 
     @After
