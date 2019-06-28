@@ -1,11 +1,12 @@
 package com.compact.di.module;
 
-import android.content.Context;
-import com.compact.di.qualifier.ApplicationContext;
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
-import okhttp3.*;
+import okhttp3.Authenticator;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 import javax.inject.Singleton;
@@ -17,16 +18,8 @@ import java.util.concurrent.TimeUnit;
  * Created by lshabory on 3/8/18.
  */
 
-@Module(includes = ContextModule.class)
-public class NetworkModule {
-
-    @Provides
-    @Singleton
-    Cache provideOkHttpCache(@ApplicationContext Context context) {
-        int cacheSize = 10 * 1024 * 1024; // 10 MiB
-        Cache cache = new Cache(context.getCacheDir(), cacheSize);
-        return cache;
-    }
+@Module
+public class TestNetworkModule {
 
     @Provides
     @IntoSet
@@ -48,10 +41,9 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    OkHttpClient.Builder provideOkHttpClientCached(Set<Protocol> protocols, Set<Interceptor> interceptors, Cache cache, Authenticator authenticator) {
+    OkHttpClient.Builder provideOkHttpClientCached(Set<Protocol> protocols, Set<Interceptor> interceptors, Authenticator authenticator) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .protocols(new ArrayList<>(protocols))
-                .cache(cache)
                 .connectTimeout(3 * 1000, TimeUnit.MILLISECONDS)
                 .readTimeout(60 * 1000, TimeUnit.MILLISECONDS);
         builder.interceptors().addAll(interceptors);

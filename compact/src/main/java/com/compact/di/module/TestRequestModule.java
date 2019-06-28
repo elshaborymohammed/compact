@@ -11,8 +11,8 @@ import javax.inject.Singleton;
  * Created by lshabory on 3/8/18.
  */
 
-@Module(includes = {RequestBuilderModule.class})
-public class RequestModule {
+@Module(includes = {TestRequestBuilderModule.class})
+public class TestRequestModule {
 
     @Provides
     @Singleton

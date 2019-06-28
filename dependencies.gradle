@@ -42,20 +42,22 @@ ext {
     ]
 
     //TODO OkHttp
-    okhttpVersion = '3.9.0'
+    okhttpVersion = '4.0.0'
     http = [
             okhttp : "com.squareup.okhttp3:okhttp:$okhttpVersion",
             logging: "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
+            mock   : "com.squareup.okhttp3:mockwebserver:$okhttpVersion",
     ]
 
     //TODO Retrofit and GSON
     retrofitVersion = '2.3.0'
     gsonVersion = '2.8.5'
     restful = [
-            retrofit : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            converter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            adapter  : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
-            gson     : "com.google.code.gson:gson:$gsonVersion",
+            retrofit    : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitMock: "com.squareup.retrofit2:retrofit-mock:$retrofitVersion",
+            converter   : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            adapter     : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            gson        : "com.google.code.gson:gson:$gsonVersion",
     ]
 
     //TODO Dagger
