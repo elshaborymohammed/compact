@@ -13,9 +13,14 @@ import javax.inject.Singleton
 class TrendViewModel
 @Inject constructor(private val useCase: TrendsUseCase, private val subscribeOn: WorkerThread, private val observeOn: MainThread) : CompactViewModel() {
 
+//    private val loadingRelay = BehaviorRelay.create<Boolean>()
+
     fun get(): Single<List<Trend>> {
         return useCase.buildUseCaseObservable()
                 .subscribeOn(subscribeOn.scheduler)
                 .observeOn(observeOn.scheduler)
+                .doOnSubscribe(doOnSubscribe())
+                .doOnSuccess(doOnSuccess())
+                .doOnError(doOnError())
     }
 }

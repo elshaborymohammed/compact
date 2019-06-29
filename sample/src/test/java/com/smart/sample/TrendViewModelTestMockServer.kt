@@ -21,6 +21,7 @@ class TrendViewModelTestMockServer : BaseTest() {
     private lateinit var mockTrends: List<Trend>
     private lateinit var mockTrend: Trend
     private var subscriber = TestObserver<List<Trend>>()
+    private var loading = TestObserver<Boolean>()
 
     @Before
     fun setUp() {
@@ -38,13 +39,15 @@ class TrendViewModelTestMockServer : BaseTest() {
     fun success() {
         mockHttpResponse(HttpURLConnection.HTTP_OK, "mock/trends.json")
         viewModel.get().subscribe(subscriber)
+        viewModel.loading().subscribe(loading)
 
-        subscriber.awaitTerminalEvent()
         subscriber.assertSubscribed()
+        subscriber.awaitTerminalEvent()
         subscriber.assertNoErrors()
         subscriber.assertSubscribed()
         subscriber.assertValue(mockTrends)
 
+        loading.assertValues(true, false)
     }
 
     @Test
