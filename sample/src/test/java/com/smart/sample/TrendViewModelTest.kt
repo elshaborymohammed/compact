@@ -1,16 +1,10 @@
 package com.smart.sample
 
-import android.os.Build
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.smart.sample.domain.model.Trend
-import com.smart.sample.rule.RxImmediateSchedulerRule
 import com.smart.sample.ui.trend.TrendViewModel
-import io.reactivex.functions.Consumer
 import io.reactivex.observers.TestObserver
-import org.junit.*
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
+import org.junit.Before
+import org.junit.Test
 import javax.inject.Inject
 
 //@RunWith(RobolectricTestRunner::class)

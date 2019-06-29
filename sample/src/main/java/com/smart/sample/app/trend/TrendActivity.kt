@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.compact.app.CompactActivity
 import com.smart.sample.R
-import com.smart.sample.app.trend.ResponseObserver
-import com.smart.sample.domain.model.Trend
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import javax.inject.Inject

@@ -153,4 +153,8 @@ data class Trend(
     override fun toString(): String {
         return "Trend(id=$id, name=$name)"
     }
+
+    override fun equals(other: Any?): Boolean {
+        return this.id == (other as Trend).id
+    }
 }

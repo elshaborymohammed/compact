@@ -1,18 +1,16 @@
 package com.smart.sample
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.smart.compact.response.ApiException
 import com.smart.sample.base.BaseTest
 import com.smart.sample.domain.model.Trend
+import com.smart.sample.testutils.TestUtils
 import com.smart.sample.ui.trend.TrendViewModel
 import io.reactivex.observers.TestObserver
 import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
+import java.net.HttpURLConnection
 import javax.inject.Inject
 
 class TrendViewModelTestMockServer : BaseTest() {
@@ -20,43 +18,47 @@ class TrendViewModelTestMockServer : BaseTest() {
     @Inject
     lateinit var viewModel: TrendViewModel
 
-    private lateinit var mockTrends: ArrayList<Trend>
+    private lateinit var mockTrends: List<Trend>
+    private lateinit var mockTrend: Trend
     private var subscriber = TestObserver<List<Trend>>()
 
     @Before
     fun setUp() {
         com.smart.sample.di.DaggerTestAppComponent.builder().build().inject(this)
 
-        mockTrends = ArrayList()
-        mockTrends.add(Trend(id = 1, name = "name 1"))
-        mockTrends.add(Trend(id = 2, name = "name 2"))
-        mockTrends.add(Trend(id = 3, name = "name 3"))
-        mockTrends.add(Trend(id = 4, name = "name 4"))
+        val listType = object : TypeToken<List<Trend>>() {
+
+        }.type
+        mockTrends = TestUtils.loadJson("mock/trends.json", listType)
+
+        mockTrend = TestUtils.loadJson("mock/trend.json", Trend::class.java)
     }
 
     @Test
     fun success() {
-        mockServer.enqueue(MockResponse().setResponseCode(200).setBody(Gson().toJson(mockTrends)))
+        mockHttpResponse(HttpURLConnection.HTTP_OK, "mock/trends.json")
         viewModel.get().subscribe(subscriber)
 
         subscriber.awaitTerminalEvent()
         subscriber.assertSubscribed()
         subscriber.assertNoErrors()
         subscriber.assertSubscribed()
-        subscriber.assertValueAt(0) {
-            it[0] == mockTrends[0]
-        }
-        subscriber.assertValue {
-            it.forEach { obj ->
-                println("TrendViewModelTestMockServer.call : $obj")
-            }
-            true
-        }
+        subscriber.assertValue(mockTrends)
+
     }
 
     @Test
-    fun error() {
-        mockServer.enqueue(MockResponse().setResponseCode(400).setBody(Gson().toJson(mockTrends)))
+    fun badRequest() {
+        mockServer.enqueue(MockResponse().setResponseCode(HttpURLConnection.HTTP_BAD_REQUEST))
+        viewModel.get().subscribe(subscriber)
+
+        subscriber.awaitTerminalEvent()
+        subscriber.assertError(ApiException::class.java)
+    }
+
+    @Test
+    fun unauthorized() {
+        mockServer.enqueue(MockResponse().setResponseCode(HttpURLConnection.HTTP_UNAUTHORIZED))
         viewModel.get().subscribe(subscriber)
 
         subscriber.awaitTerminalEvent()

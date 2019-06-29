@@ -6,7 +6,6 @@ import com.compact.executor.WorkerThread
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.usecase.TrendsUseCase
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 

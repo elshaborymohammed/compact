@@ -1,6 +1,5 @@
 package com.smart.sample
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.compact.executor.MainThread
 import com.compact.executor.WorkerThread
 import com.smart.sample.base.BaseTest
@@ -8,15 +7,15 @@ import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.usecase.TrendsUseCase
 import com.smart.sample.ui.trend.TrendViewModel
 import io.reactivex.Single
-import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.observers.TestObserver
-import io.reactivex.schedulers.Schedulers
-import org.junit.*
+import org.junit.After
+import org.junit.Before
+import org.junit.BeforeClass
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import javax.inject.Inject
 
 @RunWith(MockitoJUnitRunner::class)
 class TrendViewModelTestMock : BaseTest() {

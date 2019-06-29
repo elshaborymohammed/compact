@@ -1,6 +1,5 @@
 package com.smart.sample.di
 
-import com.compact.di.module.AuthenticatorModule
 import com.compact.di.module.TestNetworkModule
 import com.compact.di.module.TestSchedulerModule
 import com.smart.sample.TrendViewModelTest
@@ -14,7 +13,6 @@ import javax.inject.Singleton
     TestNetworkModule::class,
     TestAppModule::class,
     ViewModelModule::class,
-    AuthenticatorModule::class,
     TestSchedulerModule::class
 ])
 interface TestAppComponent {
