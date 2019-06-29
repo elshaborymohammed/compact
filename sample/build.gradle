@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -29,9 +29,6 @@ android {
 }
 
 dependencies {
-    compileOnly 'javax.annotation:jsr250-api:1.0'
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
@@ -44,6 +41,10 @@ dependencies {
     implementation project(":requester-annotation")
     kapt project(":requester-processor")
 
+    compileOnly javaX.annotation
+    implementation findbug
+
+    implementation androidX.ktx
     implementation androidX.appCompat
     implementation androidX.material
     implementation androidX.cardView
@@ -73,14 +74,14 @@ dependencies {
     implementation image.transformations
     kapt image.compiler
 
-    //TODO Test Lib
-    // Required -- JUnit 4 framework
+    /** Test Lib */
+    /** Required -- JUnit 4 framework */
     testImplementation 'junit:junit:4.12'
-    // Optional -- Robolectric environment
+    /** Optional -- Robolectric environment */
     testImplementation 'org.robolectric:robolectric:3.6.1'
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation 'android.arch.core:core-testing:1.1.1'
-    // Optional -- Mockito framework
+    /** Optional -- Mockito framework */
     testImplementation 'org.mockito:mockito-core:2.28.2'
     testImplementation 'org.mockito:mockito-inline:2.28.2'
     testImplementation http.mock

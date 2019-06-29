@@ -1,5 +1,8 @@
 ext {
-    //TODO Java Core
+    /** Google Find Bug */
+    findbug = 'com.google.code.findbugs:jsr305:3.0.2'
+
+    /** Java Core */
     javaxAnnotationsVersion = '1.0'
     javaxInjectVersion = '1'
     javaX = [
@@ -7,13 +10,14 @@ ext {
             inject    : "javax.inject:javax.inject:$javaxInjectVersion",
     ]
 
-    //TODO Android Compat
+    /** Android Compat */
     androidXCoreVersion = '1.0.0'
     androidXLifecycleVersion = '2.0.0-rc01'
     constraintLayoutVersion = '1.1.2'
     androidX = [
             annotation      : "androidx.annotation:annotation:$androidXCoreVersion",
             appCompat       : "androidx.appcompat:appcompat:$androidXCoreVersion",
+            ktx             : "androidx.core:core-ktx:$androidXCoreVersion",
             recyclerView    : "androidx.recyclerview:recyclerview:$androidXCoreVersion",
             cardView        : "androidx.cardview:cardview:$androidXCoreVersion",
             supportV4       : "androidx.legacy:legacy-support-v4:$androidXCoreVersion",
@@ -31,7 +35,7 @@ ext {
             constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
     ]
 
-    //TODO Reactive Lib
+    /** Reactive Lib */
     rxJavaVersion = '2.2.3'
     rxAndroidVersion = '2.0.1'
     rxRelayVersion = '2.1.0'
@@ -41,7 +45,7 @@ ext {
             rxRelay  : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
     ]
 
-    //TODO OkHttp
+    /** OkHttp */
     okhttpVersion = '4.0.0'
     http = [
             okhttp : "com.squareup.okhttp3:okhttp:$okhttpVersion",
@@ -49,7 +53,7 @@ ext {
             mock   : "com.squareup.okhttp3:mockwebserver:$okhttpVersion",
     ]
 
-    //TODO Retrofit and GSON
+    /** Retrofit and GSON */
     retrofitVersion = '2.3.0'
     gsonVersion = '2.8.5'
     restful = [
@@ -60,7 +64,7 @@ ext {
             gson        : "com.google.code.gson:gson:$gsonVersion",
     ]
 
-    //TODO Dagger
+    /** Dagger */
     daggerVersion = '2.22.1'
     di = [
             dagger        : "com.google.dagger:dagger:$daggerVersion",
@@ -70,14 +74,14 @@ ext {
             processor     : "com.google.dagger:dagger-android-processor:$daggerVersion",
     ]
 
-    //TODO ButterKnife
+    /** ButterKnife */
     butterknifeVersion = '10.1.0'
     butterknife = [
             butterknife: "com.jakewharton:butterknife:$butterknifeVersion",
             compiler   : "com.jakewharton:butterknife-compiler:$butterknifeVersion",
     ]
 
-    //TODO Glid
+    /** Glid */
     glideVersion = '4.8.0'
     image = [
             glide          : "com.github.bumptech.glide:glide:$glideVersion",
