@@ -2,11 +2,12 @@ package com.compact.requester.adapter;
 
 
 import com.smart.compact.response.ApiException;
-import com.smart.compact.response.ApiResponse;
 
+import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
 
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
@@ -21,10 +22,10 @@ import retrofit2.Retrofit;
  *
  * @param <R>
  */
-public class CompactCallAdapter<R> implements CallAdapter<R, Single<ApiResponse<R>>> {
+public class RxCompactCallAdapter<R> implements CallAdapter<R, Single<R>> {
     private final Type responseType;
 
-    public CompactCallAdapter(Type responseType) {
+    public RxCompactCallAdapter(Type responseType) {
         this.responseType = responseType;
     }
 
@@ -34,17 +35,23 @@ public class CompactCallAdapter<R> implements CallAdapter<R, Single<ApiResponse<
     }
 
     @Override
-    public Single<ApiResponse<R>> adapt(Call<R> call) {
-        return new Single<ApiResponse<R>>() {
+    public Single<R> adapt(Call<R> call) {
+        return new Single<R>() {
             @Override
-            protected void subscribeActual(SingleObserver<? super ApiResponse<R>> observer) {
+            protected void subscribeActual(SingleObserver<? super R> observer) {
                 call.enqueue(new Callback<R>() {
                     @Override
                     public void onResponse(Call<R> call, Response<R> response) {
                         if (response.isSuccessful()) {
-                            observer.onSuccess(new ApiResponse<>(response));
+                            if (response.code() == HttpURLConnection.HTTP_OK) {
+                                observer.onSuccess(response.body());
+                            }
                         } else {
-                            observer.onError(new ApiException(new ApiResponse<>(response)));
+                            try {
+                                observer.onError(new ApiException(response.code(), response.errorBody().string()));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
 
@@ -71,16 +78,8 @@ public class CompactCallAdapter<R> implements CallAdapter<R, Single<ApiResponse<
             if (Factory.getRawType(returnType) != Single.class) {
                 return null;
             }
-            Type observableType = Factory.getParameterUpperBound(0, (ParameterizedType) returnType);
-            Class<?> rawObservableType = Factory.getRawType(observableType);
-//            if (rawObservableType != ApiResponse.class) {
-//                throw new IllegalArgumentException("type must be a resource");
-//            }
-            if (!(observableType instanceof ParameterizedType)) {
-                throw new IllegalArgumentException("resource must be parameterized");
-            }
-            Type bodyType = Factory.getParameterUpperBound(0, (ParameterizedType) observableType);
-            return new CompactCallAdapter<>(bodyType);
+            Type bodyType = Factory.getParameterUpperBound(0, (ParameterizedType) returnType);
+            return new RxCompactCallAdapter<>(bodyType);
         }
     }
 }

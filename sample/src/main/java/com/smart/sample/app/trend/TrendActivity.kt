@@ -30,6 +30,6 @@ class TrendActivity : CompactActivity() {
 
         viewModel.get()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Consumer { adapter.swap(it) })
+                .subscribe(Consumer { adapter.swap(it) }, Consumer { it.printStackTrace() })
     }
 }
