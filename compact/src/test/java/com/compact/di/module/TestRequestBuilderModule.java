@@ -1,15 +1,17 @@
 package com.compact.di.module;
 
 import com.compact.di.qualifier.Endpoint;
+
+import java.util.Set;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.HttpUrl;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-
-import javax.inject.Singleton;
-import java.util.Set;
 
 /**
  * Created by lshabory on 3/8/18.

@@ -1,11 +1,11 @@
 package com.compact.di.module;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-
-import javax.inject.Singleton;
 
 /**
  * Created by lshabory on 3/8/18.

@@ -1,17 +1,24 @@
 package com.compact.di.module;
 
 import android.content.Context;
-import com.compact.di.qualifier.ApplicationContext;
-import dagger.Module;
-import dagger.Provides;
-import dagger.multibindings.IntoSet;
-import okhttp3.*;
-import okhttp3.logging.HttpLoggingInterceptor;
 
-import javax.inject.Singleton;
+import com.compact.di.qualifier.ApplicationContext;
+
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+import dagger.multibindings.IntoSet;
+import okhttp3.Authenticator;
+import okhttp3.Cache;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * Created by lshabory on 3/8/18.

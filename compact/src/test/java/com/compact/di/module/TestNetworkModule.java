@@ -1,5 +1,11 @@
 package com.compact.di.module;
 
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntoSet;
@@ -8,11 +14,6 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 import okhttp3.logging.HttpLoggingInterceptor;
-
-import javax.inject.Singleton;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by lshabory on 3/8/18.
