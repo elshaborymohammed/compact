@@ -74,12 +74,4 @@ public abstract class CompactDialogFragment extends DialogFragment {
     protected void subscribe(Disposable d) {
         disposable.add(d);
     }
-
-    public View getInflate() {
-        return inflate;
-    }
-
-    protected void onError(Throwable throwable) {
-        throwable.printStackTrace();
-    }
 }

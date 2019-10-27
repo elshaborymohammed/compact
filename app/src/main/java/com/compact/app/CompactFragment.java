@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by lshabory on 3/8/18.
@@ -19,8 +21,7 @@ import io.reactivex.disposables.Disposable;
 
 public abstract class CompactFragment extends Fragment {
 
-    private final CompositeDisposable disposable = new CompositeDisposable();
-    private View inflate;
+    private final CompositeDisposable disposables = new CompositeDisposable();
 
     @Override
     public void onAttach(Context context) {
@@ -31,11 +32,19 @@ public abstract class CompactFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        inflate = inflater.inflate(layoutRes(), container, false);
-        setHasOptionsMenu(true);
-        onViewBound(inflate);
-        disposable.addAll(subscriptions());
-        return inflate;
+        return inflater.inflate(layoutRes(), container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        postponeEnterTransition();
+        onViewBound(view);
+        disposables.addAll(subscriptions());
+        view.getViewTreeObserver().addOnPreDrawListener(() -> {
+            startPostponedEnterTransition();
+            return true;
+        });
     }
 
     @LayoutRes
@@ -49,16 +58,15 @@ public abstract class CompactFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        disposable.dispose();
-        disposable.clear();
+        disposables.clear();
         super.onDestroyView();
     }
 
     protected void subscribe(Disposable d) {
-        disposable.add(d);
+        disposables.add(d);
     }
 
-    public View getInflate() {
-        return inflate;
+    protected Consumer<Throwable> onError() {
+        return it -> it.printStackTrace();
     }
 }

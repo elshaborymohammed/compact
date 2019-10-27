@@ -1,4 +1,4 @@
-package com.smart.sample.di
+package com.smart.sample.app.di
 
 import com.compact.di.module.GsonModule
 import com.compact.di.module.RequestModule

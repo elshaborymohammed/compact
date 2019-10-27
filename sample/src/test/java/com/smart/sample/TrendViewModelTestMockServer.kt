@@ -5,7 +5,7 @@ import com.smart.compact.response.ApiException
 import com.smart.sample.base.BaseTest
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.testutils.TestUtils
-import com.smart.sample.ui.trend.TrendViewModel
+import com.smart.sample.app.trend.TrendViewModel
 import io.reactivex.observers.TestObserver
 import okhttp3.mockwebserver.MockResponse
 import org.junit.Before

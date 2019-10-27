@@ -1,4 +1,4 @@
-package com.smart.sample.ui.trend
+package com.smart.sample.app.trend
 
 import android.R
 import android.view.LayoutInflater

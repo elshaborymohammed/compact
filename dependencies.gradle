@@ -13,7 +13,7 @@ ext {
     /** Android Compat */
     androidXCoreVersion = '1.0.0'
     androidXLifecycleVersion = '2.0.0-rc01'
-    constraintLayoutVersion = '1.1.2'
+    constraintLayoutVersion = '2.0.0-alpha3'
     androidX = [
             annotation      : "androidx.annotation:annotation:$androidXCoreVersion",
             appCompat       : "androidx.appcompat:appcompat:$androidXCoreVersion",
@@ -29,9 +29,11 @@ ext {
             extension       : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion",
             compiler        : "androidx.lifecycle:lifecycle-compiler:$androidXLifecycleVersion",
             viewModel       : "androidx.lifecycle:lifecycle-viewmodel:$androidXLifecycleVersion",
+            viewModelKtx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion",
             liveData        : "androidx.lifecycle:lifecycle-livedata:$androidXLifecycleVersion",
             room            : "androidx.room:room-runtime:$androidXLifecycleVersion",
             roomRx          : "androidx.room:room-rxjava2:$androidXLifecycleVersion",
+            roomCompiler    : "androidx.room:room-compiler:$androidXLifecycleVersion",
             constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
     ]
 

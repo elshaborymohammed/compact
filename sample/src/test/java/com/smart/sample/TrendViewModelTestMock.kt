@@ -5,7 +5,7 @@ import com.compact.executor.WorkerThread
 import com.smart.sample.base.BaseTest
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.usecase.TrendsUseCase
-import com.smart.sample.ui.trend.TrendViewModel
+import com.smart.sample.app.trend.TrendViewModel
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver
 import org.junit.After

@@ -1,9 +1,9 @@
-package com.smart.sample.di
+package com.smart.sample.app.di
 
 import android.app.Application
 import com.compact.di.module.AuthenticatorModule
 import com.compact.di.module.NetworkModule
-import com.smart.sample.App
+import com.smart.sample.app.App
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

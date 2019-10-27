@@ -6,4 +6,5 @@ include ':sample',
         ':requester-annotation',
         ':requester-processor',
         ':call-adapter',
-        ':response'
+        ':response',
+        ':elmenus-task'

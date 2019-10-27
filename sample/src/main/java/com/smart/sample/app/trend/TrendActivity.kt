@@ -1,5 +1,6 @@
-package com.smart.sample.ui.trend
+package com.smart.sample.app.trend
 
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
@@ -28,8 +29,6 @@ class TrendActivity : CompactActivity() {
             recyclerView.adapter = it
         }
 
-        viewModel.get()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Consumer { adapter.swap(it) }, Consumer { it.printStackTrace() })
+        viewModel.data().observe(this, Observer { adapter.swap(it) })
     }
 }

@@ -4,6 +4,7 @@ import com.compact.di.module.TestNetworkModule
 import com.compact.di.module.TestSchedulerModule
 import com.smart.sample.TrendViewModelTest
 import com.smart.sample.TrendViewModelTestMockServer
+import com.smart.sample.app.di.ViewModelModule
 import com.smart.sample.base.BaseTest
 import dagger.Component
 import javax.inject.Singleton

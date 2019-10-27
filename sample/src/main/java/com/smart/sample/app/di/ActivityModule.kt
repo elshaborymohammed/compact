@@ -1,6 +1,6 @@
-package com.smart.sample.di
+package com.smart.sample.app.di
 
-import com.smart.sample.ui.trend.TrendActivity
+import com.smart.sample.app.trend.TrendActivity
 import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
