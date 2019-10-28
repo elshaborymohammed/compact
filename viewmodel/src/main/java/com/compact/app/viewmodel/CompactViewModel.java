@@ -1,34 +1,32 @@
 package com.compact.app.viewmodel;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.jakewharton.rxrelay2.Relay;
 import com.jakewharton.rxrelay2.ReplayRelay;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public abstract class CompactViewModel<T> extends ViewModel {
     protected final CompositeDisposable disposable = new CompositeDisposable();
     private ReplayRelay<Boolean> loading = ReplayRelay.create();
-    protected MutableLiveData<T> liveData = new MutableLiveData();
 
-    public LiveData<T> data() {
-        if (null == liveData.getValue()) {
-            disposable.addAll(subscriptions());
+    protected BehaviorRelay<T> data = BehaviorRelay.create();
+
+    public Observable<T> data() {
+        if (!data.hasValue()) {
+            call();
         }
-        return liveData;
+        return data.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    protected Disposable[] subscriptions() {
-        return new Disposable[0];
-    }
-
-    protected Disposable[] subscription() {
-        return new Disposable[0];
+    protected void call() {
     }
 
     public final Relay<Boolean> loading() {
@@ -50,14 +48,7 @@ public abstract class CompactViewModel<T> extends ViewModel {
     public Consumer<T> doOnSuccess() {
         return response -> {
             loadingOff();
-            liveData.postValue(response);
-        };
-    }
-
-    public Consumer<T> doOnNext() {
-        return response -> {
-            loadingOff();
-            liveData.postValue(response);
+            data.accept(response);
         };
     }
 

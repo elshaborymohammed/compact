@@ -47,6 +47,12 @@ public abstract class CompactFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
+
     @LayoutRes
     protected abstract int layoutRes();
 

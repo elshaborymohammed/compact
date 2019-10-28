@@ -25,6 +25,8 @@ android {
 
 dependencies {
     implementation androidX.appCompat
+    implementation reactive.rxJava
+    implementation reactive.rxAndroid
     implementation reactive.rxRelay
 
     api androidX.viewModel
