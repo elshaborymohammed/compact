@@ -1,11 +1,10 @@
-include ':sample-kotlin', ':sample-java',
+include ':sample',
         ':compact',
         ':app-java',
         ':app',
         ':viewmodel',
-        ':navigator-annotation',
-        ':navigator-processor',
         ':requester-annotation',
         ':requester-processor',
         ':call-adapter',
-        ':response'
+        ':response',
+        ':elmenus-task'

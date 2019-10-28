@@ -17,7 +17,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
- * A Retrofit adapter that converts the Call into a LiveData of ApiResponse.
+ * A Retrofit adapter that converts the Call into a ApiResponse.
  *
  * @param <R>
  */
@@ -73,9 +73,9 @@ public class CompactCallAdapter<R> implements CallAdapter<R, Single<ApiResponse<
             }
             Type observableType = Factory.getParameterUpperBound(0, (ParameterizedType) returnType);
             Class<?> rawObservableType = Factory.getRawType(observableType);
-            if (rawObservableType != ApiResponse.class) {
-                throw new IllegalArgumentException("type must be a resource");
-            }
+//            if (rawObservableType != ApiResponse.class) {
+//                throw new IllegalArgumentException("type must be a resource");
+//            }
             if (!(observableType instanceof ParameterizedType)) {
                 throw new IllegalArgumentException("resource must be parameterized");
             }

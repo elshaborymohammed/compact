@@ -63,7 +63,7 @@ public class NetworkModule {
                 .readTimeout(60 * 1000, TimeUnit.MILLISECONDS);
         builder.interceptors().addAll(interceptors);
 
-        if (null != authenticator)
+        if (Authenticator.NONE != authenticator)
             builder.authenticator(authenticator);
         return builder;
     }

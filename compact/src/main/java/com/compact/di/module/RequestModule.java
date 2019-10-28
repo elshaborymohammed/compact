@@ -11,12 +11,12 @@ import retrofit2.Retrofit;
  * Created by lshabory on 3/8/18.
  */
 
-@Module(includes = {NetworkModule.class, RequestBuilderModule.class})
+@Module(includes = {RequestBuilderModule.class})
 public class RequestModule {
 
     @Provides
     @Singleton
-    Retrofit providesRequestCached(Retrofit.Builder builder, OkHttpClient.Builder okHttpClientBuilder) {
+    Retrofit providesRequest(Retrofit.Builder builder, OkHttpClient.Builder okHttpClientBuilder) {
         return builder.client(okHttpClientBuilder.build()).build();
     }
 }
