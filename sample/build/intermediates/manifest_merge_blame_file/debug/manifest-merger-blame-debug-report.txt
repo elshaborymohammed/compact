@@ -1,0 +1,76 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:dist="http://schemas.android.com/apk/distribution"
+4    package="com.smart.sample"
+5    android:versionCode="1"
+6    android:versionName="1.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="21"
+9-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+10        android:targetSdkVersion="28" />
+10-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+11
+12    <dist:module dist:instant="true" />
+12-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:6:5-40
+12-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:6:18-37
+13
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:7:5-67
+14-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:7:22-64
+15
+16    <application
+16-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:9:5-24:19
+17        android:name="com.smart.sample.app.App"
+17-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:10:9-48
+18        android:allowBackup="true"
+18-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:11:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:22:18-86
+20        android:debuggable="true"
+21        android:icon="@drawable/ic_launcher"
+21-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:12:9-45
+22        android:label="@string/app_name"
+22-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:13:9-41
+23        android:roundIcon="@drawable/ic_launcher"
+23-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:14:9-50
+24        android:supportsRtl="true"
+24-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:15:9-35
+25        android:testOnly="true"
+26        android:theme="@style/AppTheme" >
+26-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:16:9-40
+27        <activity android:name="com.smart.sample.app.trend.TrendActivity" >
+27-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:17:9-23:20
+27-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:17:19-74
+28            <intent-filter>
+28-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:18:13-22:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:19:17-69
+29-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:19:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:21:17-77
+31-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:21:27-74
+32            </intent-filter>
+33        </activity>
+34
+35        <meta-data
+35-->[com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:11:9-13:43
+36            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+36-->[com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:12:13-84
+37            android:value="GlideModule" />
+37-->[com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:13:13-40
+38
+39        <provider
+39-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:23:9-27:43
+40            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+40-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:24:13-79
+41            android:authorities="com.smart.sample.lifecycle-process"
+41-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:25:13-69
+42            android:exported="false"
+42-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:26:13-37
+43            android:multiprocess="true" />
+43-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:27:13-40
+44    </application>
+45
+46</manifest>

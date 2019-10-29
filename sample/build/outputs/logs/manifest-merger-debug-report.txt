@@ -1,0 +1,248 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+MERGED from [:compact] /home/lshabory/Workspace/android/compact/compact/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:app] /home/lshabory/Workspace/android/compact/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.dagger:dagger-android-support:2.22.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/d228f1f5a0bcb2f974e84f8bb7f67947/jetified-dagger-android-support-2.22.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.dagger:dagger-android:2.22.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/b912e4ba21224088722c75f8401c9a0d/jetified-dagger-android-2.22.1/AndroidManifest.xml:17:1-22:12
+MERGED from [:viewmodel] /home/lshabory/Workspace/android/compact/viewmodel/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.core:core-ktx:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2710d24409c53ae86cbabbc55c2bd963/core-ktx-1.0.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.material:material:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6b0ca606a4e040992d19af2ede32bdf7/material-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4604ecacc40035ac74aab60f6bd089f8/constraintlayout-2.0.0-alpha3/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4193f0afa2b0f29f0acd837e29f16238/appcompat-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/f37a0d900b7d8ad7ce3b49d9eb2e5ae1/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/bb6cab10c82b1c892b890811a8f49f89/rxandroid-2.0.1/AndroidManifest.xml:15:1-21:12
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:2:1-16:12
+MERGED from [jp.wasabeef:glide-transformations:4.0.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/9d2cd7770764e2d79cf0613e1d5c34ee/jetified-glide-transformations-4.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.github.bumptech.glide:glide:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6235a474036f1c28e90bf4a941779fa7/jetified-glide-4.8.0/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/3b26a493dfc690465424144dc6e8dafa/lifecycle-extensions-2.0.0-rc01/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.fragment:fragment:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/daef95b485b3c0eb5316e02058220e53/fragment-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/98054bf8b3cf9de4479b871d7bcaf25a/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2d9290e325960186ef715a90a675da6b/vectordrawable-animated-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a209eb570c5097b2b7e7dd38335c56e7/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a4c84ddfa2efc305788ca60697ac417c/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/688fc54758d1b4d4dd2c11426a518352/vectordrawable-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/cf1785c418011e6cd49c4c3f7e5f8fcb/transition-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5ae68129a13fc26a2a9b98475779a04c/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a7b1cdfd6d86354be7d9685d338d4c51/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/9735ea09688d5fcfa3eacae6e60bd962/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/faa6f9a34156df986f8c6c47d5d63725/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/7fad737bbd65f8e454750cd0fa5fe692/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/ad256962854a719ef3470ad9d0bf8113/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/968ffad23f9a14412ac029537247664f/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/088071ded5de0cc1c7ecd24313de73b8/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/e9d7172dd7fa9f8f9fba019447b1275e/versionedparcelable-1.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/bac4a366f62fd738f600b22822f84077/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5a42744d070b65d8ab98a3e2aeabc051/jetified-gifdecoder-4.8.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/083f65b221947c6a2cd4ca604f065538/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-service:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/10104cbc0ee3b1980fe37715a42fe3a8/lifecycle-service-2.0.0-rc01/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/0573e8c59c4882115862707c29377d22/lifecycle-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/7080a11b44077e596b4fd39aefc471a2/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/ef42198f5ec48b822ac51a1914362007/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a21a43cf17fa967d9b986eb2a1bd4750/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5875006e6d26ae1a4728fc99d387018d/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/8087ddf834cb0883cb2f7163c0edc7e3/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/1b07be31bd8da4d955ce2bfbe9f0ac17/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/19e70af4fe21a3bb7fdd707e55253fc9/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:4:5-31
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+	xmlns:dist
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:3:5-61
+	android:versionCode
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:2:11-69
+dist:module
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:6:5-40
+	dist:instant
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:6:18-37
+uses-permission#android.permission.INTERNET
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:7:22-64
+application
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:9:5-24:19
+MERGED from [com.google.android.material:material:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6b0ca606a4e040992d19af2ede32bdf7/material-1.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6b0ca606a4e040992d19af2ede32bdf7/material-1.0.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4604ecacc40035ac74aab60f6bd089f8/constraintlayout-2.0.0-alpha3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4604ecacc40035ac74aab60f6bd089f8/constraintlayout-2.0.0-alpha3/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:10:5-14:19
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:10:5-14:19
+MERGED from [com.github.bumptech.glide:glide:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6235a474036f1c28e90bf4a941779fa7/jetified-glide-4.8.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6235a474036f1c28e90bf4a941779fa7/jetified-glide-4.8.0/AndroidManifest.xml:10:5-20
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/3b26a493dfc690465424144dc6e8dafa/lifecycle-extensions-2.0.0-rc01/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/3b26a493dfc690465424144dc6e8dafa/lifecycle-extensions-2.0.0-rc01/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:22:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/e9d7172dd7fa9f8f9fba019447b1275e/versionedparcelable-1.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/e9d7172dd7fa9f8f9fba019447b1275e/versionedparcelable-1.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5a42744d070b65d8ab98a3e2aeabc051/jetified-gifdecoder-4.8.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5a42744d070b65d8ab98a3e2aeabc051/jetified-gifdecoder-4.8.0/AndroidManifest.xml:9:5-20
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:22:5-28:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:22:5-28:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:22:18-86
+	android:supportsRtl
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:15:9-35
+	android:label
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:13:9-41
+	android:roundIcon
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:14:9-50
+	android:icon
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:12:9-45
+	android:allowBackup
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:11:9-35
+	android:theme
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:16:9-40
+	android:name
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:10:9-48
+activity#com.smart.sample.app.trend.TrendActivity
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:17:9-23:20
+	android:name
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:17:19-74
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:21:27-74
+uses-sdk
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+MERGED from [:compact] /home/lshabory/Workspace/android/compact/compact/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:compact] /home/lshabory/Workspace/android/compact/compact/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:app] /home/lshabory/Workspace/android/compact/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:app] /home/lshabory/Workspace/android/compact/app/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.dagger:dagger-android-support:2.22.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/d228f1f5a0bcb2f974e84f8bb7f67947/jetified-dagger-android-support-2.22.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.dagger:dagger-android-support:2.22.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/d228f1f5a0bcb2f974e84f8bb7f67947/jetified-dagger-android-support-2.22.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.dagger:dagger-android:2.22.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/b912e4ba21224088722c75f8401c9a0d/jetified-dagger-android-2.22.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.dagger:dagger-android:2.22.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/b912e4ba21224088722c75f8401c9a0d/jetified-dagger-android-2.22.1/AndroidManifest.xml:20:5-44
+MERGED from [:viewmodel] /home/lshabory/Workspace/android/compact/viewmodel/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:viewmodel] /home/lshabory/Workspace/android/compact/viewmodel/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.core:core-ktx:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2710d24409c53ae86cbabbc55c2bd963/core-ktx-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2710d24409c53ae86cbabbc55c2bd963/core-ktx-1.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.material:material:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6b0ca606a4e040992d19af2ede32bdf7/material-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6b0ca606a4e040992d19af2ede32bdf7/material-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4604ecacc40035ac74aab60f6bd089f8/constraintlayout-2.0.0-alpha3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha3] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4604ecacc40035ac74aab60f6bd089f8/constraintlayout-2.0.0-alpha3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4193f0afa2b0f29f0acd837e29f16238/appcompat-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/4193f0afa2b0f29f0acd837e29f16238/appcompat-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/f37a0d900b7d8ad7ce3b49d9eb2e5ae1/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/f37a0d900b7d8ad7ce3b49d9eb2e5ae1/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/bb6cab10c82b1c892b890811a8f49f89/rxandroid-2.0.1/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/bb6cab10c82b1c892b890811a8f49f89/rxandroid-2.0.1/AndroidManifest.xml:19:5-43
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:6:5-8:41
+MERGED from [jp.wasabeef:glide-transformations:4.0.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/9d2cd7770764e2d79cf0613e1d5c34ee/jetified-glide-transformations-4.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [jp.wasabeef:glide-transformations:4.0.1] /home/lshabory/.gradle/caches/transforms-2/files-2.1/9d2cd7770764e2d79cf0613e1d5c34ee/jetified-glide-transformations-4.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6235a474036f1c28e90bf4a941779fa7/jetified-glide-4.8.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6235a474036f1c28e90bf4a941779fa7/jetified-glide-4.8.0/AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/3b26a493dfc690465424144dc6e8dafa/lifecycle-extensions-2.0.0-rc01/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-extensions:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/3b26a493dfc690465424144dc6e8dafa/lifecycle-extensions-2.0.0-rc01/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/daef95b485b3c0eb5316e02058220e53/fragment-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/daef95b485b3c0eb5316e02058220e53/fragment-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/98054bf8b3cf9de4479b871d7bcaf25a/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/98054bf8b3cf9de4479b871d7bcaf25a/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2d9290e325960186ef715a90a675da6b/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2d9290e325960186ef715a90a675da6b/vectordrawable-animated-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a209eb570c5097b2b7e7dd38335c56e7/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a209eb570c5097b2b7e7dd38335c56e7/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a4c84ddfa2efc305788ca60697ac417c/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a4c84ddfa2efc305788ca60697ac417c/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/688fc54758d1b4d4dd2c11426a518352/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/688fc54758d1b4d4dd2c11426a518352/vectordrawable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/cf1785c418011e6cd49c4c3f7e5f8fcb/transition-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/cf1785c418011e6cd49c4c3f7e5f8fcb/transition-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5ae68129a13fc26a2a9b98475779a04c/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5ae68129a13fc26a2a9b98475779a04c/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a7b1cdfd6d86354be7d9685d338d4c51/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a7b1cdfd6d86354be7d9685d338d4c51/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/9735ea09688d5fcfa3eacae6e60bd962/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/9735ea09688d5fcfa3eacae6e60bd962/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/faa6f9a34156df986f8c6c47d5d63725/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/faa6f9a34156df986f8c6c47d5d63725/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/7fad737bbd65f8e454750cd0fa5fe692/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/7fad737bbd65f8e454750cd0fa5fe692/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/ad256962854a719ef3470ad9d0bf8113/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/ad256962854a719ef3470ad9d0bf8113/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/968ffad23f9a14412ac029537247664f/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/968ffad23f9a14412ac029537247664f/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/088071ded5de0cc1c7ecd24313de73b8/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/088071ded5de0cc1c7ecd24313de73b8/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/e9d7172dd7fa9f8f9fba019447b1275e/versionedparcelable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/e9d7172dd7fa9f8f9fba019447b1275e/versionedparcelable-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/bac4a366f62fd738f600b22822f84077/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/bac4a366f62fd738f600b22822f84077/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5a42744d070b65d8ab98a3e2aeabc051/jetified-gifdecoder-4.8.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5a42744d070b65d8ab98a3e2aeabc051/jetified-gifdecoder-4.8.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/083f65b221947c6a2cd4ca604f065538/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/083f65b221947c6a2cd4ca604f065538/lifecycle-viewmodel-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/10104cbc0ee3b1980fe37715a42fe3a8/lifecycle-service-2.0.0-rc01/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-service:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/10104cbc0ee3b1980fe37715a42fe3a8/lifecycle-service-2.0.0-rc01/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/0573e8c59c4882115862707c29377d22/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/0573e8c59c4882115862707c29377d22/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/7080a11b44077e596b4fd39aefc471a2/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/7080a11b44077e596b4fd39aefc471a2/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/ef42198f5ec48b822ac51a1914362007/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/ef42198f5ec48b822ac51a1914362007/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a21a43cf17fa967d9b986eb2a1bd4750/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a21a43cf17fa967d9b986eb2a1bd4750/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5875006e6d26ae1a4728fc99d387018d/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/5875006e6d26ae1a4728fc99d387018d/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/8087ddf834cb0883cb2f7163c0edc7e3/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/8087ddf834cb0883cb2f7163c0edc7e3/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/1b07be31bd8da4d955ce2bfbe9f0ac17/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/1b07be31bd8da4d955ce2bfbe9f0ac17/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/19e70af4fe21a3bb7fdd707e55253fc9/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/19e70af4fe21a3bb7fdd707e55253fc9/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+		ADDED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+		INJECTED from /home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml
+meta-data#com.bumptech.glide.integration.okhttp3.OkHttpGlideModule
+ADDED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:11:9-13:43
+	android:value
+		ADDED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:13:13-40
+	android:name
+		ADDED from [com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:12:13-84
+provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:23:9-27:43
+	android:authorities
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:25:13-69
+	android:multiprocess
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:27:13-40
+	android:exported
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:26:13-37
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:24:13-79

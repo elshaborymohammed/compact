@@ -1,13 +1,11 @@
 package com.smart.sample.app.trend
 
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.compact.app.CompactActivity
 import com.smart.sample.R
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
+import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 class TrendActivity : CompactActivity() {
@@ -29,6 +27,12 @@ class TrendActivity : CompactActivity() {
             recyclerView.adapter = it
         }
 
-        viewModel.data().observe(this, Observer { adapter.swap(it) })
+        viewModel.completable()
+    }
+
+    override fun subscriptions(): Array<Disposable> {
+        return arrayOf(
+                viewModel.loading().subscribe { println("Loading $it") }
+        )
     }
 }
