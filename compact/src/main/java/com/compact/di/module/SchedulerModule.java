@@ -3,6 +3,7 @@ package com.compact.di.module;
 import com.compact.executor.AppExecutors;
 import com.compact.executor.MainThread;
 import com.compact.executor.WorkerThread;
+import com.compact.executor.RxCompactSchedulers;
 
 import javax.inject.Singleton;
 
@@ -26,5 +27,11 @@ public class SchedulerModule {
     @Singleton
     WorkerThread providesNetworkScheduler(AppExecutors executors) {
         return () -> Schedulers.from(executors.networkIO());
+    }
+
+    @Provides
+    @Singleton
+    RxCompactSchedulers providesSchedulerCompose(WorkerThread workerThread, MainThread mainThread) {
+        return new RxCompactSchedulers(workerThread, mainThread);
     }
 }

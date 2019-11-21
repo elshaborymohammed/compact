@@ -13,7 +13,7 @@ import javax.inject.Inject
 class TrendViewModelTest {
 
     @Inject
-    lateinit var viewModel: TrendViewModel
+    lateinit var viewModel: TrendViewModel<Any?>
     private val testObserver = TestObserver<List<Trend>>()
 
     @Before

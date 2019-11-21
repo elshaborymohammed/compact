@@ -28,9 +28,9 @@ dependencies {
     implementation androidX.appCompat
     implementation androidX.material
 
-    api di.dagger
-    api di.androidSupport
-    api di.android
+    implementation di.dagger
+    implementation di.androidSupport
+    implementation di.android
     annotationProcessor di.compiler
     annotationProcessor di.processor
 

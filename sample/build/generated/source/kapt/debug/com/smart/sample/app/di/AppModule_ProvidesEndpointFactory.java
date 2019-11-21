@@ -5,9 +5,13 @@ import dagger.internal.Preconditions;
 import javax.annotation.Generated;
 
 @Generated(
-  value = "dagger.internal.codegen.ComponentProcessor",
-  comments = "https://google.github.io/dagger"
+    value = "dagger.internal.codegen.ComponentProcessor",
+    comments = "https://dagger.dev"
 )
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes"
+})
 public final class AppModule_ProvidesEndpointFactory implements Factory<String> {
   private final AppModule module;
 
@@ -25,7 +29,6 @@ public final class AppModule_ProvidesEndpointFactory implements Factory<String> 
   }
 
   public static String providesEndpoint(AppModule instance) {
-    return Preconditions.checkNotNull(
-        instance.providesEndpoint(), "Cannot return null from a non-@Nullable @Provides method");
+    return Preconditions.checkNotNull(instance.providesEndpoint(), "Cannot return null from a non-@Nullable @Provides method");
   }
 }

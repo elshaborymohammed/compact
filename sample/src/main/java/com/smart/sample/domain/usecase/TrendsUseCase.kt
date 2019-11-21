@@ -1,5 +1,6 @@
 package com.smart.sample.domain.usecase
 
+import com.smart.compact.response.Resource
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.protocol.ITrendsProtocol
 import io.reactivex.Completable
@@ -12,6 +13,10 @@ class TrendsUseCase @Inject constructor(private val trendsProtocol: ITrendsProto
 
     fun buildUseCaseObservable(): Single<List<Trend>> {
         return this.trendsProtocol.get()
+    }
+
+    fun buildUseCaseObservableResource(): Single<Resource<List<Trend>>> {
+        return this.trendsProtocol.resource()
     }
 
     fun completable(): Completable {

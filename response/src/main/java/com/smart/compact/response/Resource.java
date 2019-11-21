@@ -1,8 +1,10 @@
-package com.compact.model;
+package com.smart.compact.response;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import java.net.HttpURLConnection;
 
 /**
  * Created by lshabory on 1/31/2018.
@@ -26,20 +28,20 @@ public class Resource<T> {
         this.data = data;
     }
 
-    public static <T> Resource<T> ok(@NonNull int code, @Nullable String message, @NonNull T data) {
-        return new Resource(Status.OK, code, message, data);
+    public static <T> Resource<T> ok(@Nullable String message, @NonNull T data) {
+        return new Resource(Status.OK, HttpURLConnection.HTTP_OK, message, data);
     }
 
-    public static <T> Resource<T> created(@NonNull int code, @Nullable String message) {
-        return new Resource(Status.CREATED, code, message, null);
+    public static <T> Resource<T> created(@Nullable String message) {
+        return new Resource(Status.CREATED, HttpURLConnection.HTTP_CREATED, message, null);
     }
 
-    public static <T> Resource<T> accepted(@NonNull int code, @Nullable String message) {
-        return new Resource(Status.ACCEPTED, code, message, null);
+    public static <T> Resource<T> accepted(@Nullable String message) {
+        return new Resource(Status.ACCEPTED, HttpURLConnection.HTTP_ACCEPTED, message, null);
     }
 
-    public static <T> Resource<T> noContent(@NonNull int code, @Nullable String message) {
-        return new Resource(Status.NO_CONTENT, code, message, null);
+    public static <T> Resource<T> noContent(@Nullable String message) {
+        return new Resource(Status.NO_CONTENT, HttpURLConnection.HTTP_NO_CONTENT, message, null);
     }
 
     @NonNull

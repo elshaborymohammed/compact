@@ -8,17 +8,20 @@ import javax.annotation.Generated;
 import javax.inject.Provider;
 
 @Generated(
-  value = "dagger.internal.codegen.ComponentProcessor",
-  comments = "https://google.github.io/dagger"
+    value = "dagger.internal.codegen.ComponentProcessor",
+    comments = "https://dagger.dev"
 )
-public final class ProtocolModule_ProvidesTrendsProtocolFactory
-    implements Factory<ITrendsProtocol> {
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes"
+})
+public final class ProtocolModule_ProvidesTrendsProtocolFactory implements Factory<ITrendsProtocol> {
   private final ProtocolModule module;
 
   private final Provider<RequesterTrendsApi> apiProvider;
 
-  public ProtocolModule_ProvidesTrendsProtocolFactory(
-      ProtocolModule module, Provider<RequesterTrendsApi> apiProvider) {
+  public ProtocolModule_ProvidesTrendsProtocolFactory(ProtocolModule module,
+      Provider<RequesterTrendsApi> apiProvider) {
     this.module = module;
     this.apiProvider = apiProvider;
   }
@@ -28,15 +31,13 @@ public final class ProtocolModule_ProvidesTrendsProtocolFactory
     return providesTrendsProtocol(module, apiProvider.get());
   }
 
-  public static ProtocolModule_ProvidesTrendsProtocolFactory create(
-      ProtocolModule module, Provider<RequesterTrendsApi> apiProvider) {
+  public static ProtocolModule_ProvidesTrendsProtocolFactory create(ProtocolModule module,
+      Provider<RequesterTrendsApi> apiProvider) {
     return new ProtocolModule_ProvidesTrendsProtocolFactory(module, apiProvider);
   }
 
-  public static ITrendsProtocol providesTrendsProtocol(
-      ProtocolModule instance, RequesterTrendsApi api) {
-    return Preconditions.checkNotNull(
-        instance.providesTrendsProtocol(api),
-        "Cannot return null from a non-@Nullable @Provides method");
+  public static ITrendsProtocol providesTrendsProtocol(ProtocolModule instance,
+      RequesterTrendsApi api) {
+    return Preconditions.checkNotNull(instance.providesTrendsProtocol(api), "Cannot return null from a non-@Nullable @Provides method");
   }
 }

@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.androidcompact'
 
@@ -28,10 +30,15 @@ dependencies {
     implementation androidX.appCompat
     implementation androidX.material
     implementation androidX.recyclerView
+    implementation androidX.ktx
 
-    api di.dagger
-    api di.android
-    api di.androidSupport
+    implementation di.dagger
+    implementation di.android
+    implementation di.androidSupport
 
     implementation reactive.rxJava
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

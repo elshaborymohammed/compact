@@ -7,11 +7,14 @@ import javax.annotation.Generated;
 import javax.inject.Provider;
 
 @Generated(
-  value = "dagger.internal.codegen.ComponentProcessor",
-  comments = "https://google.github.io/dagger"
+    value = "dagger.internal.codegen.ComponentProcessor",
+    comments = "https://dagger.dev"
 )
-public final class CompactViewModelProviderFactory_Factory
-    implements Factory<CompactViewModelProviderFactory> {
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes"
+})
+public final class CompactViewModelProviderFactory_Factory implements Factory<CompactViewModelProviderFactory> {
   private final Provider<Map<Class<? extends ViewModel>, Provider<ViewModel>>> creatorsProvider;
 
   public CompactViewModelProviderFactory_Factory(
@@ -21,7 +24,7 @@ public final class CompactViewModelProviderFactory_Factory
 
   @Override
   public CompactViewModelProviderFactory get() {
-    return new CompactViewModelProviderFactory(creatorsProvider.get());
+    return newInstance(creatorsProvider.get());
   }
 
   public static CompactViewModelProviderFactory_Factory create(

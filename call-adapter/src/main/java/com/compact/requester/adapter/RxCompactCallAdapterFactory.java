@@ -1,5 +1,7 @@
 package com.compact.requester.adapter;
 
+import com.smart.compact.response.Resource;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -24,11 +26,14 @@ public class RxCompactCallAdapterFactory extends CallAdapter.Factory {
 
         if (rawType == Single.class) {
             Type bodyType = getParameterUpperBound(0, (ParameterizedType) returnType);
-            return new RxCompactCallAdapterSingle<>(bodyType);
 
+            if (getRawType(bodyType) == Resource.class) {
+                return new RxCompactCallAdapterSingleResource<>(getParameterUpperBound(0, (ParameterizedType) bodyType));
+            } else {
+                return new RxCompactCallAdapterSingle<>(bodyType);
+            }
         } else if (rawType == Completable.class) {
             return new RxCompactCallAdapterCompletable();
-
         } else {
             return null;
         }

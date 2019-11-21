@@ -1,5 +1,6 @@
 package com.smart.sample.data.api;
 
+import com.smart.compact.response.Resource;
 import com.smart.sample.domain.model.Trend;
 import io.reactivex.Completable;
 import io.reactivex.Single;
@@ -19,6 +20,10 @@ public final class RequesterTrendsApi {
 
   public final Single<List<Trend>> get() {
     return request.create(TrendsApi.class).get();
+  }
+
+  public final Single<Resource<List<Trend>>> resource() {
+    return request.create(TrendsApi.class).resource();
   }
 
   public final Completable completable() {

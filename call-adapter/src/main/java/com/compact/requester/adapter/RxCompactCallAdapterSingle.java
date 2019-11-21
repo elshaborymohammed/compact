@@ -42,6 +42,8 @@ final class RxCompactCallAdapterSingle<R> implements CallAdapter<R, Single<R>> {
                         if (response.isSuccessful()) {
                             if (response.code() == HttpURLConnection.HTTP_OK) {
                                 observer.onSuccess(response.body());
+                            } else {
+                                observer.onSuccess(null);
                             }
                         } else {
                             try {

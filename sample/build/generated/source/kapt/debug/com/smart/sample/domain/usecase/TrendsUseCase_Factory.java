@@ -6,9 +6,13 @@ import javax.annotation.Generated;
 import javax.inject.Provider;
 
 @Generated(
-  value = "dagger.internal.codegen.ComponentProcessor",
-  comments = "https://google.github.io/dagger"
+    value = "dagger.internal.codegen.ComponentProcessor",
+    comments = "https://dagger.dev"
 )
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes"
+})
 public final class TrendsUseCase_Factory implements Factory<TrendsUseCase> {
   private final Provider<ITrendsProtocol> trendsProtocolProvider;
 
@@ -18,7 +22,7 @@ public final class TrendsUseCase_Factory implements Factory<TrendsUseCase> {
 
   @Override
   public TrendsUseCase get() {
-    return new TrendsUseCase(trendsProtocolProvider.get());
+    return newInstance(trendsProtocolProvider.get());
   }
 
   public static TrendsUseCase_Factory create(Provider<ITrendsProtocol> trendsProtocolProvider) {

@@ -19,8 +19,8 @@ import javax.inject.Singleton
 @Module(includes = [
     GsonModule::class,
     RequestModule::class,
-    ProtocolModule::class,
-    SchedulerModule::class
+    SchedulerModule::class,
+    ProtocolModule::class
 ])
 class AppModule {
 
@@ -36,6 +36,7 @@ class AppModule {
     @Endpoint
     fun providesEndpoint(): String {
         return "https://api.github.com/"
+//        return "https://newbadawer.overcoffees.com/api/mobile/"
     }
 
     @Provides

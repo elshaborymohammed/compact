@@ -6,9 +6,13 @@ import javax.inject.Provider;
 import retrofit2.Retrofit;
 
 @Generated(
-  value = "dagger.internal.codegen.ComponentProcessor",
-  comments = "https://google.github.io/dagger"
+    value = "dagger.internal.codegen.ComponentProcessor",
+    comments = "https://dagger.dev"
 )
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes"
+})
 public final class RequesterTrendsApi_Factory implements Factory<RequesterTrendsApi> {
   private final Provider<Retrofit> requestProvider;
 
@@ -18,7 +22,7 @@ public final class RequesterTrendsApi_Factory implements Factory<RequesterTrends
 
   @Override
   public RequesterTrendsApi get() {
-    return new RequesterTrendsApi(requestProvider.get());
+    return newInstance(requestProvider.get());
   }
 
   public static RequesterTrendsApi_Factory create(Provider<Retrofit> requestProvider) {

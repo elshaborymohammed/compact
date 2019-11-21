@@ -6,11 +6,14 @@ import javax.annotation.Generated;
 import retrofit2.CallAdapter;
 
 @Generated(
-  value = "dagger.internal.codegen.ComponentProcessor",
-  comments = "https://google.github.io/dagger"
+    value = "dagger.internal.codegen.ComponentProcessor",
+    comments = "https://dagger.dev"
 )
-public final class AppModule_ProvidesCompactCallAdapterFactoryFactory
-    implements Factory<CallAdapter.Factory> {
+@SuppressWarnings({
+    "unchecked",
+    "rawtypes"
+})
+public final class AppModule_ProvidesCompactCallAdapterFactoryFactory implements Factory<CallAdapter.Factory> {
   private final AppModule module;
 
   public AppModule_ProvidesCompactCallAdapterFactoryFactory(AppModule module) {
@@ -27,8 +30,6 @@ public final class AppModule_ProvidesCompactCallAdapterFactoryFactory
   }
 
   public static CallAdapter.Factory providesCompactCallAdapterFactory(AppModule instance) {
-    return Preconditions.checkNotNull(
-        instance.providesCompactCallAdapterFactory(),
-        "Cannot return null from a non-@Nullable @Provides method");
+    return Preconditions.checkNotNull(instance.providesCompactCallAdapterFactory(), "Cannot return null from a non-@Nullable @Provides method");
   }
 }

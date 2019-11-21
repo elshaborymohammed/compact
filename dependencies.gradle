@@ -11,6 +11,9 @@ ext {
     ]
 
     /** Android Compat */
+//    androidXCoreVersion = '1.0.0'
+//    androidXLifecycleVersion = '2.0.0-rc01'
+//    constraintLayoutVersion = '2.0.0-alpha3'
     androidXCoreVersion = '1.0.0'
     androidXLifecycleVersion = '2.0.0-rc01'
     constraintLayoutVersion = '2.0.0-alpha3'
@@ -34,13 +37,14 @@ ext {
             room            : "androidx.room:room-runtime:$androidXLifecycleVersion",
             roomRx          : "androidx.room:room-rxjava2:$androidXLifecycleVersion",
             roomCompiler    : "androidx.room:room-compiler:$androidXLifecycleVersion",
+
             constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
     ]
 
     /** Reactive Lib */
-    rxJavaVersion = '2.2.3'
-    rxAndroidVersion = '2.0.1'
-    rxRelayVersion = '2.1.0'
+    rxJavaVersion = '2.2.14'
+    rxAndroidVersion = '2.1.1'
+    rxRelayVersion = '2.1.1'
     reactive = [
             rxJava   : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
             rxAndroid: "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
@@ -48,7 +52,7 @@ ext {
     ]
 
     /** OkHttp */
-    okhttpVersion = '4.0.0'
+    okhttpVersion = '4.2.2'
     http = [
             okhttp : "com.squareup.okhttp3:okhttp:$okhttpVersion",
             logging: "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
@@ -56,8 +60,8 @@ ext {
     ]
 
     /** Retrofit and GSON */
-    retrofitVersion = '2.3.0'
-    gsonVersion = '2.8.5'
+    retrofitVersion = '2.6.1'
+    gsonVersion = '2.8.6'
     restful = [
             retrofit    : "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitMock: "com.squareup.retrofit2:retrofit-mock:$retrofitVersion",
@@ -67,7 +71,7 @@ ext {
     ]
 
     /** Dagger */
-    daggerVersion = '2.22.1'
+    daggerVersion = '2.25.2'
     di = [
             dagger        : "com.google.dagger:dagger:$daggerVersion",
             compiler      : "com.google.dagger:dagger-compiler:$daggerVersion",
@@ -77,18 +81,18 @@ ext {
     ]
 
     /** ButterKnife */
-    butterknifeVersion = '10.1.0'
+    butterknifeVersion = '10.2.0'
     butterknife = [
             butterknife: "com.jakewharton:butterknife:$butterknifeVersion",
             compiler   : "com.jakewharton:butterknife-compiler:$butterknifeVersion",
     ]
 
     /** Glid */
-    glideVersion = '4.8.0'
+    glideVersion = '4.10.0'
     image = [
             glide          : "com.github.bumptech.glide:glide:$glideVersion",
             compiler       : "com.github.bumptech.glide:compiler:$glideVersion",
             okhttp         : "com.github.bumptech.glide:okhttp3-integration:$glideVersion",
-            transformations: "jp.wasabeef:glide-transformations:4.0.1",
+            transformations: "jp.wasabeef:glide-transformations:4.1.0",
     ]
 }

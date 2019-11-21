@@ -15,62 +15,68 @@
 12-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:6:5-40
 12-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:6:18-37
 13
-14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:7:5-67
-14-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:7:22-64
-15
-16    <application
-16-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:9:5-24:19
-17        android:name="com.smart.sample.app.App"
-17-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:10:9-48
-18        android:allowBackup="true"
-18-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:11:9-35
-19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/db14290e859cadb426e9706e454626cc/core-1.0.0/AndroidManifest.xml:22:18-86
-20        android:debuggable="true"
-21        android:icon="@drawable/ic_launcher"
-21-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:12:9-45
-22        android:label="@string/app_name"
-22-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:13:9-41
-23        android:roundIcon="@drawable/ic_launcher"
-23-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:14:9-50
-24        android:supportsRtl="true"
-24-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:15:9-35
-25        android:testOnly="true"
-26        android:theme="@style/AppTheme" >
-26-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:16:9-40
-27        <activity android:name="com.smart.sample.app.trend.TrendActivity" >
-27-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:17:9-23:20
-27-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:17:19-74
-28            <intent-filter>
-28-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:18:13-22:29
-29                <action android:name="android.intent.action.MAIN" />
-29-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:19:17-69
-29-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:19:25-66
-30
-31                <category android:name="android.intent.category.LAUNCHER" />
-31-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:21:17-77
-31-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:21:27-74
-32            </intent-filter>
-33        </activity>
-34
-35        <meta-data
-35-->[com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:11:9-13:43
-36            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
-36-->[com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:12:13-84
-37            android:value="GlideModule" />
-37-->[com.github.bumptech.glide:okhttp3-integration:4.8.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/2102b58cfef23a482382f9d67a525429/jetified-okhttp3-integration-4.8.0/AndroidManifest.xml:13:13-40
-38
-39        <provider
-39-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:23:9-27:43
-40            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-40-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:24:13-79
-41            android:authorities="com.smart.sample.lifecycle-process"
-41-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:25:13-69
-42            android:exported="false"
-42-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:26:13-37
-43            android:multiprocess="true" />
-43-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6ee36fda8172d663940b3453f337e1b4/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:27:13-40
-44    </application>
-45
-46</manifest>
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:8:5-80
+14-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:8:22-77
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:9:5-67
+15-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:9:22-64
+16    <uses-permission android:name="android.permission.CAMERA" />
+16-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:10:5-65
+16-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:10:22-62
+17
+18    <application
+18-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:12:5-27:19
+19        android:name="com.smart.sample.app.App"
+19-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:13:9-48
+20        android:allowBackup="true"
+20-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:14:9-35
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.0.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/e53a28596ef70f8e4cd8bd55e9b38ddd/core-1.0.0/AndroidManifest.xml:22:18-86
+22        android:debuggable="true"
+23        android:icon="@drawable/ic_launcher"
+23-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:15:9-45
+24        android:label="@string/app_name"
+24-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:16:9-41
+25        android:roundIcon="@drawable/ic_launcher"
+25-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:17:9-50
+26        android:supportsRtl="true"
+26-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:18:9-35
+27        android:testOnly="true"
+28        android:theme="@style/AppTheme" >
+28-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:19:9-40
+29        <activity android:name="com.smart.sample.app.trend.TrendActivity" >
+29-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:20:9-26:20
+29-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:20:19-74
+30            <intent-filter>
+30-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:21:13-25:29
+31                <action android:name="android.intent.action.MAIN" />
+31-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:22:17-69
+31-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:22:25-66
+32
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:24:17-77
+33-->/home/lshabory/Workspace/android/compact/sample/src/main/AndroidManifest.xml:24:27-74
+34            </intent-filter>
+35        </activity>
+36
+37        <meta-data
+37-->[com.github.bumptech.glide:okhttp3-integration:4.10.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a8fb2c2a3e0a205fde7fcbe7e7bc66d7/okhttp3-integration-4.10.0/AndroidManifest.xml:11:9-13:43
+38            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+38-->[com.github.bumptech.glide:okhttp3-integration:4.10.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a8fb2c2a3e0a205fde7fcbe7e7bc66d7/okhttp3-integration-4.10.0/AndroidManifest.xml:12:13-84
+39            android:value="GlideModule" />
+39-->[com.github.bumptech.glide:okhttp3-integration:4.10.0] /home/lshabory/.gradle/caches/transforms-2/files-2.1/a8fb2c2a3e0a205fde7fcbe7e7bc66d7/okhttp3-integration-4.10.0/AndroidManifest.xml:13:13-40
+40
+41        <provider
+41-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6662f2aea6c36f45a920fcf7231eed04/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:23:9-27:43
+42            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+42-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6662f2aea6c36f45a920fcf7231eed04/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:24:13-79
+43            android:authorities="com.smart.sample.lifecycle-process"
+43-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6662f2aea6c36f45a920fcf7231eed04/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:25:13-69
+44            android:exported="false"
+44-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6662f2aea6c36f45a920fcf7231eed04/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:26:13-37
+45            android:multiprocess="true" />
+45-->[androidx.lifecycle:lifecycle-process:2.0.0-rc01] /home/lshabory/.gradle/caches/transforms-2/files-2.1/6662f2aea6c36f45a920fcf7231eed04/lifecycle-process-2.0.0-rc01/AndroidManifest.xml:27:13-40
+46    </application>
+47
+48</manifest>

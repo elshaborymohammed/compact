@@ -2,8 +2,8 @@ package com.compact.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.util.TypedValue;
 import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -71,7 +71,7 @@ public class CompactRecyclerView {
 
         protected RecyclerView.ItemDecoration[] itemDecorations() {
             return new RecyclerView.ItemDecoration[]{
-                    new SpacesItemDecoration.Linear(context)
+                    SpacesItemDecoration.Linear.builder(context).space(8).build()
             };
         }
 
@@ -88,14 +88,29 @@ public class CompactRecyclerView {
             notifyDataSetChanged();
         }
 
-        public void addAll(List<T> data) {
-            this.data.addAll(data);
-            notifyDataSetChanged();
-        }
-
         public void add(T t) {
             this.data.add(t);
             notifyItemInserted(data.size() - 1);
+        }
+
+        public void addAll(List<T> data) {
+            this.data.addAll(data);
+            notifyItemRangeInserted(data.size() - 1, data.size());
+        }
+
+        public void replace(int position, T data) {
+            this.data.set(position, data);
+            notifyItemChanged(position);
+        }
+
+        public void remove(int position) {
+            this.data.remove(position);
+            notifyItemRemoved(position);
+        }
+
+        public void clear() {
+            this.data.clear();
+            notifyDataSetChanged();
         }
     }
 
@@ -110,84 +125,71 @@ public class CompactRecyclerView {
 
     public static class SpacesItemDecoration {
         public static class Linear extends RecyclerView.ItemDecoration {
-            private int top;
-            private int left;
-            private int right;
-            private int bottom;
+            private Builder builder;
 
-            public Linear() {
-                this.top = 0;
-                this.left = 0;
-                this.right = 0;
-                this.bottom = 0;
+            private Linear(Builder builder) {
+                this.builder = builder;
             }
 
-            public Linear(Context context) {
-                this(context, 8, 8, 8, 8);
-            }
-
-            public Linear(Context context, int space) {
-                this(context, space, space, space, 0);
-            }
-
-            public Linear(Context context, int top, int left, int right, int bottom) {
-                this.top = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, top, context.getResources().getDisplayMetrics());
-                this.left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, left, context.getResources().getDisplayMetrics());
-                this.right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, right, context.getResources().getDisplayMetrics());
-                this.bottom = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, bottom, context.getResources().getDisplayMetrics());
+            public static Builder builder(Context context) {
+                return new Builder(context);
             }
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                // Add top margin only for the first item to avoid double space between items
-                if (parent.getChildLayoutPosition(view) == 0) {
-                    outRect.top = top * 2;
-                    outRect.left = left;
-                    outRect.right = right;
-                    outRect.bottom = bottom;
+                if (builder.getOrientation() == RecyclerView.VERTICAL) {
+                    outRect.top = builder.getTop() * ((parent.getChildLayoutPosition(view) == 0) ? builder.getFirst() : 1);
+                    outRect.left = builder.getLeft();
+                    outRect.right = builder.getRight();
+                    outRect.bottom = builder.getBottom();
                 } else {
-                    outRect.top = top;
-                    outRect.left = left;
-                    outRect.right = right;
-                    outRect.bottom = bottom;
+                    outRect.top = builder.getTop();
+                    outRect.left = builder.getLeft() * ((parent.getChildLayoutPosition(view) == 0) ? builder.getFirst() : 1);
+                    outRect.right = builder.getRight();
+                    outRect.bottom = builder.getBottom();
+                }
+            }
+
+            public static class Builder extends LinearSpacesItemDecorationBuilder {
+                public Builder(Context context) {
+                    super(context);
+                }
+
+                @Override
+                public RecyclerView.ItemDecoration build() {
+                    return new Linear(this);
                 }
             }
         }
 
         public static class Grid extends RecyclerView.ItemDecoration {
-            private int top;
-            private int left;
-            private int right;
-            private int bottom;
+            private Builder builder;
 
-            public Grid() {
-                this.top = 0;
-                this.left = 0;
-                this.right = 0;
-                this.bottom = 0;
+            private Grid(Builder builder) {
+                this.builder = builder;
             }
 
-            public Grid(Context context) {
-                this(context, 8, 8, 8, 8);
-            }
-
-            public Grid(Context context, int space) {
-                this(context, space, space, space, space);
-            }
-
-            public Grid(Context context, int top, int left, int right, int bottom) {
-                this.top = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, top, context.getResources().getDisplayMetrics());
-                this.left = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, left, context.getResources().getDisplayMetrics());
-                this.right = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, right, context.getResources().getDisplayMetrics());
-                this.bottom = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, bottom, context.getResources().getDisplayMetrics());
+            public static Builder builder(Context context) {
+                return new Builder(context);
             }
 
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.top = top;
-                outRect.left = left;
-                outRect.right = right;
-                outRect.bottom = bottom;
+                outRect.top = builder.getTop();
+                outRect.left = builder.getLeft();
+                outRect.right = builder.getRight();
+                outRect.bottom = builder.getBottom();
+            }
+
+            public static class Builder extends SpacesItemDecorationBuilder {
+                public Builder(Context context) {
+                    super(context);
+                }
+
+                @Override
+                public RecyclerView.ItemDecoration build() {
+                    return new Grid(this);
+                }
             }
         }
     }
