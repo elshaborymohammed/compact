@@ -15,27 +15,31 @@ public class Resource<T> {
     @NonNull
     private final int code;
     @Nullable
-    private final T data;
-    @Nullable
     private final String message;
+    @Nullable
+    private final T data;
 
-    private Resource(@NonNull Status status, @NonNull int code, @Nullable T data, @Nullable String message) {
+    private Resource(@NonNull Status status, @NonNull int code, @Nullable String message, @Nullable T data) {
         this.status = status;
-        this.data = data;
-        this.message = message;
         this.code = code;
+        this.message = message;
+        this.data = data;
     }
 
-    public static <T> Resource<T> loading(@Nullable T data) {
-        return new Resource(Status.LOADING, 000, data, null);
+    public static <T> Resource<T> ok(@NonNull int code, @Nullable String message, @NonNull T data) {
+        return new Resource(Status.OK, code, message, data);
     }
 
-    public static <T> Resource<T> success(@NonNull int code, @Nullable String message, @NonNull T data) {
-        return new Resource(Status.SUCCESS, code, data, message);
+    public static <T> Resource<T> created(@NonNull int code, @Nullable String message) {
+        return new Resource(Status.CREATED, code, message, null);
     }
 
-    public static <T> Resource<T> error(@NonNull int code, @Nullable String message, @Nullable T data) {
-        return new Resource(Status.ERROR, code, data, message);
+    public static <T> Resource<T> accepted(@NonNull int code, @Nullable String message) {
+        return new Resource(Status.ACCEPTED, code, message, null);
+    }
+
+    public static <T> Resource<T> noContent(@NonNull int code, @Nullable String message) {
+        return new Resource(Status.NO_CONTENT, code, message, null);
     }
 
     @NonNull
@@ -69,8 +73,9 @@ public class Resource<T> {
     }
 
     public enum Status {
-        SUCCESS,
-        ERROR,
-        LOADING,
+        OK,
+        CREATED,
+        ACCEPTED,
+        NO_CONTENT,
     }
 }
