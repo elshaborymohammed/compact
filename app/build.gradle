@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.androidcompact'
 
@@ -37,7 +35,6 @@ dependencies {
     implementation di.androidSupport
 
     implementation reactive.rxJava
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()
