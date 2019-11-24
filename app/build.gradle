@@ -30,11 +30,15 @@ dependencies {
     implementation androidX.recyclerView
     implementation androidX.ktx
 
-    implementation di.dagger
-    implementation di.android
-    implementation di.androidSupport
+//    implementation di.dagger
+//    implementation di.android
+//    implementation di.androidSupport
 
     implementation reactive.rxJava
+
+    dagger.android.each {
+        add(it.configuration, it.dependency, it.options)
+    }
 }
 repositories {
     mavenCentral()

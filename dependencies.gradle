@@ -95,4 +95,17 @@ ext {
             okhttp         : "com.github.bumptech.glide:okhttp3-integration:$glideVersion",
             transformations: "jp.wasabeef:glide-transformations:4.1.0",
     ]
+
+
+    dagger = [
+            base   : [
+                    [configuration: "implementation", dependency: di.compiler],
+                    [configuration: "implementation", dependency: di.processor],
+            ],
+            android: [
+                    [configuration: "implementation", dependency: di.dagger],
+                    [configuration: "implementation", dependency: di.android],
+                    [configuration: "implementation", dependency: di.androidSupport],
+            ]
+    ]
 }
