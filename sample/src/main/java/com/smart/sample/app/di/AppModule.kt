@@ -5,7 +5,7 @@ import com.compact.di.module.RequestModule
 import com.compact.di.module.SchedulerModule
 import com.compact.di.qualifier.DatePattern
 import com.compact.di.qualifier.Endpoint
-import com.compact.requester.adapter.RxCompactCallAdapter
+import com.compact.requester.adapter.RxCompactCallAdapterFactory
 import com.google.gson.Gson
 import com.smart.sample.data.module.ProtocolModule
 import dagger.Module
@@ -19,8 +19,8 @@ import javax.inject.Singleton
 @Module(includes = [
     GsonModule::class,
     RequestModule::class,
-    ProtocolModule::class,
-    SchedulerModule::class
+    SchedulerModule::class,
+    ProtocolModule::class
 ])
 class AppModule {
 
@@ -36,6 +36,7 @@ class AppModule {
     @Endpoint
     fun providesEndpoint(): String {
         return "https://api.github.com/"
+//        return "https://newbadawer.overcoffees.com/api/mobile/"
     }
 
     @Provides
@@ -47,6 +48,6 @@ class AppModule {
     @Provides
     @IntoSet
     fun providesCompactCallAdapterFactory(): CallAdapter.Factory {
-        return RxCompactCallAdapter.Factory.create()
+        return RxCompactCallAdapterFactory.create()
     }
 }

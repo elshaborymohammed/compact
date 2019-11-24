@@ -2,32 +2,17 @@ package com.compact.app.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
-import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.jakewharton.rxrelay2.Relay;
 import com.jakewharton.rxrelay2.ReplayRelay;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
-public abstract class CompactViewModel<T> extends ViewModel {
+public abstract class CompactViewModel extends ViewModel {
+
     protected final CompositeDisposable disposable = new CompositeDisposable();
     private ReplayRelay<Boolean> loading = ReplayRelay.create();
-
-    protected BehaviorRelay<T> data = BehaviorRelay.create();
-
-    public Observable<T> data() {
-        if (!data.hasValue()) {
-            call();
-        }
-        return data.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
-    }
-
-    protected void call() {
-    }
 
     public final Relay<Boolean> loading() {
         return loading;
@@ -41,27 +26,36 @@ public abstract class CompactViewModel<T> extends ViewModel {
         loading.accept(Boolean.FALSE);
     }
 
-    public Consumer<Disposable> doOnSubscribe() {
+    protected Consumer<Disposable> doOnSubscribe() {
         return disposable -> loadingOn();
     }
 
-    public Consumer<T> doOnSuccess() {
-        return response -> {
-            loadingOff();
-            data.accept(response);
-        };
+    protected <T> Consumer<T> doOnSuccess() {
+        return response -> loadingOff();
     }
 
-    public Consumer<Throwable> doOnError() {
+    protected Consumer<Throwable> doOnError() {
         return throwable -> loading().accept(Boolean.FALSE);
     }
 
-    @Override
-    protected void onCleared() {
+    protected boolean addDisposable(Disposable d) {
+        return disposable.add(d);
+    }
+
+    protected boolean removeDisposable(Disposable d) {
+        return disposable.remove(d);
+    }
+
+    protected void dispose() {
         if (!disposable.isDisposed()) {
             disposable.clear();
             disposable.dispose();
         }
+    }
+
+    @Override
+    protected void onCleared() {
+        this.dispose();
         super.onCleared();
     }
 }

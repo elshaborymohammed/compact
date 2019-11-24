@@ -49,6 +49,8 @@ dependencies {
     implementation androidX.material
     implementation androidX.cardView
     implementation androidX.constraintLayout
+    implementation androidX.viewModel
+    implementation androidX.extension
 
     api di.dagger
     api di.androidSupport

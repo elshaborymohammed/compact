@@ -16,7 +16,7 @@ import javax.inject.Inject
 class TrendViewModelTestMockServer : BaseTest() {
 
     @Inject
-    lateinit var viewModel: TrendViewModel
+    lateinit var viewModel: TrendViewModel<Any?>
 
     private lateinit var mockTrends: List<Trend>
     private lateinit var mockTrend: Trend

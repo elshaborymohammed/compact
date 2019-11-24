@@ -5,10 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.compact.widget.CompactRecyclerView
 import com.smart.sample.domain.model.Trend
 
 class TrendAdapter : CompactRecyclerView.Adapter<Trend, TrendAdapter.ViewHolder>() {
+
+    override fun itemDecorations(): Array<RecyclerView.ItemDecoration> {
+        return arrayOf(CompactRecyclerView.SpacesItemDecoration.Linear.builder(context).first(2).build())
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -26,7 +31,6 @@ class TrendAdapter : CompactRecyclerView.Adapter<Trend, TrendAdapter.ViewHolder>
         override fun bind(position: Int, obj: Trend?) {
             name.text = obj?.fullName
         }
-
     }
 
 }

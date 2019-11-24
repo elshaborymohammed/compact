@@ -22,7 +22,7 @@ class TrendViewModelTestMock : BaseTest() {
 
     @Mock
     private lateinit var mockUseCase: TrendsUseCase
-    lateinit var viewModel: TrendViewModel
+    lateinit var viewModel: TrendViewModel<Any?>
     private val testObserver = TestObserver<List<Trend>>()
 
     @Before

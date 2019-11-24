@@ -4,8 +4,7 @@ import com.compact.di.module.GsonModule
 import com.compact.di.module.RequestModule
 import com.compact.di.qualifier.DatePattern
 import com.compact.di.qualifier.Endpoint
-import com.compact.requester.adapter.CompactCallAdapter
-import com.compact.requester.adapter.RxCompactCallAdapter
+import com.compact.requester.adapter.RxCompactCallAdapterCompletable
 import com.google.gson.Gson
 import com.smart.sample.data.module.ProtocolModule
 import dagger.Module
@@ -51,7 +50,7 @@ class TestAppModule {
     @Provides
     @IntoSet
     fun providesCompactCallAdapterFactory(): CallAdapter.Factory {
-        return RxCompactCallAdapter.Factory.create()
+        return RxCompactCallAdapterCompletable.Factory.create()
     }
 
     @Singleton

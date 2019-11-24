@@ -10,10 +10,10 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by lshabory on 3/8/18.
@@ -50,7 +50,7 @@ public abstract class CompactFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        setHasOptionsMenu(true);
     }
 
     @LayoutRes
@@ -62,17 +62,13 @@ public abstract class CompactFragment extends Fragment {
         return new Disposable[0];
     }
 
-    @Override
-    public void onDestroyView() {
-        disposables.clear();
-        super.onDestroyView();
-    }
-
     protected void subscribe(Disposable d) {
         disposables.add(d);
     }
 
-    protected Consumer<Throwable> onError() {
-        return it -> it.printStackTrace();
+    @Override
+    public void onDestroyView() {
+        disposables.clear();
+        super.onDestroyView();
     }
 }

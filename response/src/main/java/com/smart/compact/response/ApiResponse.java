@@ -1,16 +1,19 @@
 package com.smart.compact.response;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import retrofit2.Response;
 
 /**
@@ -22,13 +25,13 @@ public class ApiResponse<T> {
     private static final Pattern LINK_PATTERN = Pattern.compile("<([^>]*)>[\\s]*;[\\s]*rel=\"([a-zA-Z0-9]+)\"");
     private static final Pattern PAGE_PATTERN = Pattern.compile("\\bpage=(\\d+)");
     private static final String NEXT_LINK = "next";
+    @NonNull
+    public final Map<String, String> links;
     private final int code;
     @Nullable
     private final T body;
     @Nullable
     private final String errorMessage;
-    @NonNull
-    public final Map<String, String> links;
 
     public ApiResponse(Throwable error) {
         code = 500;
@@ -47,9 +50,9 @@ public class ApiResponse<T> {
             if (response.errorBody() != null) {
                 try {
                     message = response.errorBody().string();
-                } catch (IOException ignored) {
-                    ignored.printStackTrace();
-                    System.err.println(ApiResponse.class.getSimpleName() + " error while parsing response " + ignored);
+                } catch (IOException io) {
+                    io.printStackTrace();
+                    Logger.getGlobal().log(Level.WARNING, ApiResponse.class.getSimpleName() + " error while parsing response " + io);
                 }
             }
             if (message == null || message.trim().length() == 0) {

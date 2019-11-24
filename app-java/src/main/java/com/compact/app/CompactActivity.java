@@ -2,28 +2,30 @@ package com.compact.app;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.Fragment;
+
+import com.compact.util.ButterKnifeUtils;
+
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import com.compact.util.ButterKnifeUtils;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.support.HasSupportFragmentInjector;
+import dagger.android.HasAndroidInjector;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-
-import javax.inject.Inject;
 
 /**
  * Created by lshabory on 3/8/18.
  */
 
-public abstract class CompactActivity extends AppCompatActivity implements HasSupportFragmentInjector {
+public abstract class CompactActivity extends AppCompatActivity implements HasAndroidInjector {
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -31,7 +33,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
 
     private final CompositeDisposable disposable = new CompositeDisposable();
     @Inject
-    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+    DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
     private Unbinder unbinder;
 
     @SuppressLint("ResourceType")
@@ -68,7 +70,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasSu
     }
 
     @Override
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return fragmentDispatchingAndroidInjector;
+    public AndroidInjector<Object> androidInjector() {
+        return dispatchingAndroidInjector;
     }
 }
