@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel;
 import com.jakewharton.rxrelay2.Relay;
 import com.jakewharton.rxrelay2.ReplayRelay;
 
+import io.reactivex.CompletableTransformer;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.SingleTransformer;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 public abstract class CompactViewModel extends ViewModel {
 
@@ -26,16 +28,34 @@ public abstract class CompactViewModel extends ViewModel {
         loading.accept(Boolean.FALSE);
     }
 
-    protected Consumer<Disposable> doOnSubscribe() {
-        return disposable -> loadingOn();
+    public final <T> ObservableTransformer<T, T> composeLoadingObservable() {
+        return upstream -> upstream
+                .doOnSubscribe(it -> {
+                    addDisposable(it);
+                    loadingOn();
+                })
+                .doOnNext(it -> loadingOff())
+                .doOnError(it -> loadingOff());
     }
 
-    protected <T> Consumer<T> doOnSuccess() {
-        return response -> loadingOff();
+    public final <T> SingleTransformer<T, T> composeLoadingSingle() {
+        return upstream -> upstream
+                .doOnSubscribe(it -> {
+                    addDisposable(it);
+                    loadingOn();
+                })
+                .doOnSuccess(it -> loadingOff())
+                .doOnError(it -> loadingOff());
     }
 
-    protected Consumer<Throwable> doOnError() {
-        return throwable -> loading().accept(Boolean.FALSE);
+    public final CompletableTransformer composeLoadingCompletable() {
+        return upstream -> upstream
+                .doOnSubscribe(it -> {
+                    addDisposable(it);
+                    loadingOn();
+                })
+                .doOnComplete(() -> loadingOff())
+                .doOnError(it -> loadingOff());
     }
 
     protected boolean addDisposable(Disposable d) {

@@ -20,25 +20,26 @@ class TrendViewModel
 
     override fun call() {
         useCase.buildUseCaseObservable()
-                .doOnSubscribe(doOnSubscribe())
-                .subscribe(doOnSuccess(), doOnError())
+                .compose(composeLoadingSingle())
+                .subscribe(onSuccess(), onError())
     }
 
     fun trends(): Single<List<Trend>> {
         return useCase.buildUseCaseObservable()
                 .compose(scheduler.applyOnSingle())
-                .doOnSubscribe(doOnSubscribe())
+                .compose(composeLoadingSingle())
     }
 
     fun trendsResource(): Single<Resource<List<Trend>>> {
         return useCase.buildUseCaseObservableResource()
                 .compose(scheduler.applyOnSingle())
-                .doOnSubscribe(doOnSubscribe())
+                .compose(composeLoadingSingle())
     }
 
     fun completable() {
         useCase.completable()
                 .compose(scheduler.applyOnCompletable())
+                .compose(composeLoadingCompletable())
                 .doOnSubscribe {
                     println("doOnSubscribe")
                 }

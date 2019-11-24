@@ -29,12 +29,12 @@ public abstract class CompactDataViewModel<T> extends CompactViewModel {
 
     protected abstract void call();
 
-    @Override
-    protected Consumer<T> doOnSuccess() {
-        return response -> {
-            loadingOff();
-            data.accept(response);
-        };
+    protected Consumer<T> onSuccess() {
+        return it -> data.accept(it);
+    }
+
+    protected Consumer<Throwable> onError() {
+        return it -> data.error(it);
     }
 
     @Override
