@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">App Extensions</string>
+
+    <string name="field_required">This field is required</string>
+    <string name="accepts_letter_only">Accepts letter only</string>
+    <string name="invalid_email_or_mobile">Invalid email or mobile</string>
+    <string name="invalid_mobile_number">Invalid mobile number</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="password_too_short">Password too short, Can\'t be less than 8 characters</string>
+    <string name="password_does_not_match">Password Doesn\'t match</string>
+</resources>

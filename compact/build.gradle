@@ -3,15 +3,13 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.androidcompact'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion androidX.sdk.compileSdkVersion
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion androidX.sdk.minSdkVersion
+        targetSdkVersion androidX.sdk.targetSdkVersion
+        versionCode androidX.sdk.versionCode
+        versionName androidX.sdk.versionName
     }
-
     buildTypes {
         release {
             minifyEnabled false
