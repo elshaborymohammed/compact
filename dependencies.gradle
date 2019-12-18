@@ -18,6 +18,14 @@ ext {
     androidXLifecycleVersion = '2.0.0-rc01'
     constraintLayoutVersion = '2.0.0-alpha3'
     androidX = [
+            /** Android Config SDK */
+            sdk : [
+                    minSdkVersion    : 21,
+                    targetSdkVersion : 28,
+                    compileSdkVersion: 28,
+                    versionCode      : 1,
+                    versionName      : "1.0",
+            ],
             annotation      : "androidx.annotation:annotation:$androidXCoreVersion",
             appCompat       : "androidx.appcompat:appcompat:$androidXCoreVersion",
             ktx             : "androidx.core:core-ktx:$androidXCoreVersion",
