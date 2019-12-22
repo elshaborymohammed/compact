@@ -34,6 +34,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
     implementation project(":compact")
+    implementation project(":otpview")
     implementation project(':app')
     implementation project(":response")
     implementation project(":viewmodel")

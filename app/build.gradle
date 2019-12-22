@@ -10,7 +10,6 @@ android {
         versionCode androidX.sdk.versionCode
         versionName androidX.sdk.versionName
     }
-
     buildTypes {
         release {
             minifyEnabled false

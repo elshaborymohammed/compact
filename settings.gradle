@@ -1,4 +1,4 @@
-include ':sample',
+include ':sample', ':otpview',
         ':compact',
         ':app-java',
         ':app',
