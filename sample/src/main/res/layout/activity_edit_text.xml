@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:inputType="number" />
+            android:inputType="number"
+            app:line="false" />
 
         <com.compact.widget.OTPView
             android:id="@+id/otp_2"
@@ -34,6 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:inputType="number"
+            android:maxLength="8"
+            android:textSize="22sp"
             app:line="false" />
 
     </LinearLayout>
