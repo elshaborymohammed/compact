@@ -78,22 +78,41 @@ public class OTPView extends AppCompatEditText {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         int availableWidth = getWidth(); //- ViewCompat.getPaddingEnd(this) - ViewCompat.getPaddingStart(this);
-        int top = 0;
-        int bottom = (int) (getHeight() - (getHeight() * 0.20));
-        int rectWidth = bottom;
-        int allSpace = availableWidth - (rectWidth * maxLength);
-        int space = allSpace / (maxLength + 1);
+        int rectWidth = getHeight(); //(int) (getHeight() - (getHeight() * 0.20));
+        int rectHeight = getHeight(); //(int) (getHeight() - (getHeight() * 0.20));
+        int space = 8;
+        int allSpace = (maxLength + 1) * space;
+        int top;
+        int bottom;
         int left;
+        int right;
 
-        rect = new ArrayList<>();
-        for (int i = 0; i < maxLength; i++) {
-            left = (rectWidth * i) + (space * (i + 1));
-            rect.add(new Rect(
-                    left,
-                    top,
-                    left + rectWidth,
-                    bottom
-            ));
+        if ((rectWidth * maxLength + allSpace) > availableWidth) {
+            rectWidth = (availableWidth - allSpace) / maxLength;
+            rectHeight = rectWidth;
+            top = (getHeight() - rectHeight) / 2;
+            bottom = top + rectHeight;
+
+            rect = new ArrayList<>();
+            for (int i = 0; i < maxLength; i++) {
+                left = (rectWidth * i) + (space * (i + 1));
+                right = left + rectWidth;
+
+                rect.add(new Rect(left, top, right, bottom));
+            }
+        } else {
+            allSpace = availableWidth - (rectWidth * maxLength);
+            space = allSpace / (maxLength + 1);
+            top = (getHeight() - rectHeight) / 2;
+            bottom = top + rectHeight;
+
+            rect = new ArrayList<>();
+            for (int i = 0; i < maxLength; i++) {
+                left = (rectWidth * i) + (space * (i + 1));
+                right = left + rectWidth;
+
+                rect.add(new Rect(left, top, right, bottom));
+            }
         }
     }
 
