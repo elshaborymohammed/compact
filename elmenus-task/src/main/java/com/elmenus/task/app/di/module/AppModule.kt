@@ -7,7 +7,7 @@ import com.compact.di.module.SchedulerModule
 import com.compact.di.qualifier.ApplicationContext
 import com.compact.di.qualifier.DatePattern
 import com.compact.di.qualifier.Endpoint
-import com.compact.requester.adapter.RxCompactCallAdapterCompletable
+import com.compact.requester.adapter.RxCompactCallAdapterFactory
 import com.elmenus.task.data.local.AppDatabase
 import com.elmenus.task.data.local.dao.ItemsDao
 import com.elmenus.task.data.local.dao.TagsDao
@@ -70,7 +70,7 @@ class AppModule {
     @Provides
     @IntoSet
     fun providesCompactCallAdapterFactory(): CallAdapter.Factory {
-        return RxCompactCallAdapterCompletable.Factory.create()
+        return RxCompactCallAdapterFactory.create()
     }
 
     /**

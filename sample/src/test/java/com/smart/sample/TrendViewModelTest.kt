@@ -1,7 +1,7 @@
 package com.smart.sample
 
 import com.smart.sample.domain.model.Trend
-import com.smart.sample.app.trend.TrendViewModel
+import com.smart.sample.app.ui.TrendViewModel
 import io.reactivex.observers.TestObserver
 import org.junit.Before
 import org.junit.Test

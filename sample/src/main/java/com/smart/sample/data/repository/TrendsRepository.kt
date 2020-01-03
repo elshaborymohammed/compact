@@ -6,8 +6,11 @@ import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.protocol.ITrendsProtocol
 import io.reactivex.Completable
 import io.reactivex.Single
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class TrendsRepository constructor(private val api: RequesterTrendsApi) : ITrendsProtocol {
+@Singleton
+class TrendsRepository @Inject constructor(private val api: RequesterTrendsApi) : ITrendsProtocol {
     override fun completable(): Completable {
         return api.completable()
     }
@@ -19,5 +22,4 @@ class TrendsRepository constructor(private val api: RequesterTrendsApi) : ITrend
     override fun resource(): Single<Resource<List<Trend>>> {
         return api.resource()
     }
-
 }

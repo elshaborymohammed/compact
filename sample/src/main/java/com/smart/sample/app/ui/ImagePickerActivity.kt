@@ -1,4 +1,4 @@
-package com.smart.sample.app.trend
+package com.smart.sample.app.ui
 
 import android.app.Activity
 import android.content.Intent

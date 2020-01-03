@@ -1,4 +1,4 @@
-package com.compact.widget;
+package com.compact.widget.recyclerview;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -38,13 +38,27 @@ public class CompactRecyclerView {
         public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
             this.context = recyclerView.getContext();
             recyclerView.setLayoutManager(layoutManager());
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setItemAnimator(itemAnimator());
             if (null != itemDecorations())
                 for (RecyclerView.ItemDecoration itemDecoration : itemDecorations()) {
                     recyclerView.addItemDecoration(itemDecoration);
                 }
             super.onAttachedToRecyclerView(recyclerView);
             this.recyclerView = recyclerView;
+        }
+
+        protected RecyclerView.ItemAnimator itemAnimator() {
+            return new DefaultItemAnimator();
+        }
+
+        protected RecyclerView.LayoutManager layoutManager() {
+            return new LinearLayoutManager(context);
+        }
+
+        protected RecyclerView.ItemDecoration[] itemDecorations() {
+            return new RecyclerView.ItemDecoration[]{
+                    SpacesItemDecoration.Linear.builder(context).space(8).build()
+            };
         }
 
         @Override
@@ -63,16 +77,6 @@ public class CompactRecyclerView {
         @Override
         public long getItemId(int position) {
             return position;
-        }
-
-        protected RecyclerView.LayoutManager layoutManager() {
-            return new LinearLayoutManager(context);
-        }
-
-        protected RecyclerView.ItemDecoration[] itemDecorations() {
-            return new RecyclerView.ItemDecoration[]{
-                    SpacesItemDecoration.Linear.builder(context).space(8).build()
-            };
         }
 
         protected T get(int position) {
@@ -140,14 +144,12 @@ public class CompactRecyclerView {
                 if (builder.getOrientation() == RecyclerView.VERTICAL) {
                     outRect.top = builder.getTop() * ((parent.getChildLayoutPosition(view) == 0) ? builder.getFirst() : 1);
                     outRect.left = builder.getLeft();
-                    outRect.right = builder.getRight();
-                    outRect.bottom = builder.getBottom();
                 } else {
                     outRect.top = builder.getTop();
                     outRect.left = builder.getLeft() * ((parent.getChildLayoutPosition(view) == 0) ? builder.getFirst() : 1);
-                    outRect.right = builder.getRight();
-                    outRect.bottom = builder.getBottom();
                 }
+                outRect.right = builder.getRight();
+                outRect.bottom = builder.getBottom();
             }
 
             public static class Builder extends LinearSpacesItemDecorationBuilder {

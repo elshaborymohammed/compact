@@ -50,7 +50,9 @@ public class NetworkModule {
     @Provides
     @IntoSet
     Interceptor providesBodyInterceptors() {
-        return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.level(HttpLoggingInterceptor.Level.BODY);
+        return interceptor;
     }
 
     @Provides
@@ -59,10 +61,11 @@ public class NetworkModule {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .protocols(new ArrayList<>(protocols))
                 .cache(cache)
-                .connectTimeout(3 * 1000, TimeUnit.MILLISECONDS)
-                .readTimeout(60 * 1000, TimeUnit.MILLISECONDS);
-        builder.interceptors().addAll(interceptors);
+                .connectTimeout(3, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS);
 
+        builder.interceptors().addAll(interceptors);
         if (Authenticator.NONE != authenticator)
             builder.authenticator(authenticator);
         return builder;
