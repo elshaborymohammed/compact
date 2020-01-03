@@ -3,7 +3,7 @@ package com.smart.sample.app.di
 import androidx.lifecycle.ViewModel
 import com.compact.app.viewmodel.di.key.ViewModelKey
 import com.compact.app.viewmodel.di.module.ViewModelInjectionModule
-import com.smart.sample.app.trend.TrendViewModel
+import com.smart.sample.app.ui.TrendViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

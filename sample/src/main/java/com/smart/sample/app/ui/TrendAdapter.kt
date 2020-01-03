@@ -1,4 +1,4 @@
-package com.smart.sample.app.trend
+package com.smart.sample.app.ui
 
 import android.R
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.compact.widget.CompactRecyclerView
+import com.compact.widget.recyclerview.CompactRecyclerView
 import com.smart.sample.domain.model.Trend
 
 class TrendAdapter : CompactRecyclerView.Adapter<Trend, TrendAdapter.ViewHolder>() {

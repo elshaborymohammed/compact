@@ -62,24 +62,24 @@ class ItemsFragment : CompactFragment, TagAdapter.OnClickListener, TagAdapter.On
 
     override fun subscriptions(): Array<Disposable> {
         return arrayOf(
-                tagViewModel.loading().subscribe(onLoading(), onError()),
-                itemViewModel.loading().subscribe(onLoading(), onError()),
-                itemViewModel.data()
-                        .subscribe(Consumer {
-                            println("$it")
-                            itemAdapter.swap(it)
-                        }, onError()),
-                tagViewModel.data()
-                        .subscribe(Consumer {
-                            tagAdapter.swap(it)
-                            tagAdapter.setSelectedIndex(tagViewModel.SeletcedTag)
-                        }, onError())
+//                tagViewModel.loading().subscribe(onLoading(), onError()),
+//                itemViewModel.loading().subscribe(onLoading(), onError()),
+//                itemViewModel.data()
+//                        .subscribe(Consumer {
+//                            println("$it")
+//                            itemAdapter.swap(it)
+//                        }, onError()),
+//                tagViewModel.data()
+//                        .subscribe(Consumer {
+//                            tagAdapter.swap(it)
+//                            tagAdapter.setSelectedIndex(tagViewModel.SeletcedTag)
+//                        }, onError())
         )
     }
 
     override fun onClickTag(position: Int, obj: Tag) {
 //        itemAdapter.swap(null)
-        tagViewModel.SeletcedTag = position
+        tagViewModel.selectedTag = position
         fetchItems(obj.name)
     }
 

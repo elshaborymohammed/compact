@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.compact.widget.CompactRecyclerView
+import com.compact.widget.recyclerview.CompactRecyclerView
 import com.elmenus.task.R
 import com.elmenus.task.app.GlideApp
 import com.elmenus.task.domain.model.Item

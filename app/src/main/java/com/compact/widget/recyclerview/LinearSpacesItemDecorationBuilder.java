@@ -1,4 +1,4 @@
-package com.compact.widget;
+package com.compact.widget.recyclerview;
 
 import android.content.Context;
 

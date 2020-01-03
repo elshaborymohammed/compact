@@ -1,4 +1,4 @@
-package com.compact.widget;
+package com.compact.widget.recyclerview;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -21,6 +21,14 @@ public abstract class SpacesItemDecorationBuilder {
 
     public SpacesItemDecorationBuilder space(int space) {
         return top(space).left(space).right(space).bottom(0);
+    }
+
+    public SpacesItemDecorationBuilder horizontal(int space) {
+        return left(space).right(space);
+    }
+
+    public SpacesItemDecorationBuilder vertical(int space) {
+        return top(space).bottom(space);
     }
 
     public SpacesItemDecorationBuilder first(int factor) {

@@ -7,7 +7,7 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.compact.widget.CompactRecyclerView
+import com.compact.widget.recyclerview.CompactRecyclerView
 import com.elmenus.task.R
 import com.elmenus.task.app.GlideApp
 import com.elmenus.task.domain.model.Tag
@@ -34,7 +34,7 @@ open class TagAdapter : CompactRecyclerView.Adapter<Tag, RecyclerView.ViewHolder
     }
 
     override fun itemDecorations(): Array<RecyclerView.ItemDecoration> {
-        return arrayOf(CompactRecyclerView.SpacesItemDecoration.Linear(context, 0, 4, 4, 0))
+        return arrayOf(CompactRecyclerView.SpacesItemDecoration.Linear.builder(context).horizontal(8).build())
     }
 
     override fun layoutManager(): RecyclerView.LayoutManager {

@@ -1,4 +1,4 @@
-package com.smart.sample.app.trend
+package com.smart.sample.app.ui
 
 import com.compact.app.viewmodel.CompactDataViewModel
 import com.compact.executor.RxCompactSchedulers
