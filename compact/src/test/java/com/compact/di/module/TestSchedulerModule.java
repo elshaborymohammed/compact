@@ -1,6 +1,7 @@
 package com.compact.di.module;
 
 import com.compact.executor.MainThread;
+import com.compact.executor.RxCompactSchedulers;
 import com.compact.executor.WorkerThread;
 
 import java.util.concurrent.TimeUnit;
@@ -31,13 +32,19 @@ public class TestSchedulerModule {
         return () -> testScheduler();
     }
 
+    @Provides
+    @Singleton
+    RxCompactSchedulers providesSchedulerCompose(WorkerThread workerThread, MainThread mainThread) {
+        return new RxCompactSchedulers(workerThread, mainThread);
+    }
+
     Scheduler testScheduler() {
 //        return Schedulers.trampoline();
         return new Scheduler() {
 
             @Override
             public Worker createWorker() {
-                return new ExecutorScheduler.ExecutorWorker(runnable -> runnable.run());
+                return new ExecutorScheduler.ExecutorWorker(runnable -> runnable.run(), false);
             }
 
             @Override

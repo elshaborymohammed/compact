@@ -11,16 +11,15 @@
 
     <application
         android:name="com.smart.sample.app.App"
-        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.smart.sample.app.ui.OTPWidgetsActivity">
+
+        <activity android:name=".app.ui.TrendActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,4 +1,4 @@
-package com.smart.compact.response;
+package com.compact.response;
 
 
 import androidx.annotation.Nullable;

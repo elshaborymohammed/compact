@@ -1,12 +1,13 @@
 package com.compact.requester.adapter;
 
-import com.smart.compact.response.Resource;
+import com.compact.response.Resource;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import io.reactivex.Completable;
+import io.reactivex.Observable;
 import io.reactivex.Single;
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
@@ -24,6 +25,15 @@ public class RxCompactCallAdapterFactory extends CallAdapter.Factory {
     public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
         Class<?> rawType = getRawType(returnType);
 
+//        if (rawType == Observable.class) {
+//            Type bodyType = getParameterUpperBound(0, (ParameterizedType) returnType);
+//
+//            if (getRawType(bodyType) == Resource.class) {
+//                return new RxCompactCallAdapterObservableResource<>(getParameterUpperBound(0, (ParameterizedType) bodyType));
+//            } else {
+//                return new RxCompactCallAdapterObservable<>(bodyType);
+//            }
+//        } else
         if (rawType == Single.class) {
             Type bodyType = getParameterUpperBound(0, (ParameterizedType) returnType);
 

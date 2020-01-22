@@ -1,4 +1,4 @@
-package com.smart.compact.response;
+package com.compact.response;
 
 
 import androidx.annotation.NonNull;
@@ -28,7 +28,7 @@ public class Resource<T> {
         this.data = data;
     }
 
-    public static <T> Resource<T> ok(@Nullable String message, @NonNull T data) {
+    public static <T> Resource<T> ok(@Nullable String message, @Nullable T data) {
         return new Resource(Status.OK, HttpURLConnection.HTTP_OK, message, data);
     }
 

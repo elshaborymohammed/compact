@@ -1,7 +1,6 @@
 package com.compact.requester.adapter;
 
-
-import com.smart.compact.response.ApiException;
+import com.compact.response.ApiException;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

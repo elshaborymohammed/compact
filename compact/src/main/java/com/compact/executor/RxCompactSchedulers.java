@@ -30,4 +30,12 @@ public class RxCompactSchedulers {
     public CompletableTransformer applyOnCompletable() {
         return upstream -> upstream.subscribeOn(subscribeOn).observeOn(observeOn).unsubscribeOn(subscribeOn);
     }
+
+    public Scheduler workerExecutor() {
+        return subscribeOn;
+    }
+
+    public Scheduler mainExecutor() {
+        return observeOn;
+    }
 }

@@ -32,6 +32,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    implementation findbug
+    compileOnly javaX.annotation
 
     implementation project(":compact")
     implementation project(":otpview")
@@ -41,9 +43,6 @@ dependencies {
     implementation project(":call-adapter")
     implementation project(":requester-annotation")
     kapt project(":requester-processor")
-
-    compileOnly javaX.annotation
-    implementation findbug
 
     implementation androidX.ktx
     implementation androidX.appCompat
@@ -77,6 +76,7 @@ dependencies {
     implementation image.transformations
     kapt image.compiler
 
+    testImplementation project(":compact")
     /** Test Lib */
     /** Required -- JUnit 4 framework */
     testImplementation 'junit:junit:4.12'
@@ -87,8 +87,8 @@ dependencies {
     /** Optional -- Mockito framework */
     testImplementation 'org.mockito:mockito-core:2.28.2'
     testImplementation 'org.mockito:mockito-inline:2.28.2'
-    testImplementation http.mock
 
+    testImplementation http.mock
     testImplementation di.dagger
     kaptTest di.compiler
 

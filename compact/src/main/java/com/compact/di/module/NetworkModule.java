@@ -57,7 +57,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    OkHttpClient.Builder provideOkHttpClientCached(Set<Protocol> protocols, Set<Interceptor> interceptors, Cache cache, Authenticator authenticator) {
+    OkHttpClient.Builder provideOkHttpClient(Set<Protocol> protocols, Set<Interceptor> interceptors, Cache cache, Authenticator authenticator) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .protocols(new ArrayList<>(protocols))
                 .cache(cache)

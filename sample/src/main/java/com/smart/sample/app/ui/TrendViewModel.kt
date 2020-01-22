@@ -2,7 +2,7 @@ package com.smart.sample.app.ui
 
 import com.compact.app.viewmodel.CompactDataViewModel
 import com.compact.executor.RxCompactSchedulers
-import com.smart.compact.response.Resource
+import com.compact.response.Resource
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.usecase.TrendsUseCase
 import io.reactivex.CompletableTransformer
@@ -19,9 +19,14 @@ class TrendViewModel
 @Inject constructor(private val useCase: TrendsUseCase, private val scheduler: RxCompactSchedulers) : CompactDataViewModel<List<Trend>>() {
 
     override fun call() {
-        useCase.buildUseCaseObservable()
+        get().subscribe(onSuccess(), onError())
+    }
+
+    private fun get(): Single<List<Trend>> {
+        return useCase.buildUseCaseObservable()
+                .subscribeOn(scheduler.workerExecutor())
+                .observeOn(scheduler.workerExecutor())
                 .compose(composeLoadingSingle())
-                .subscribe(onSuccess(), onError())
     }
 
     fun trends(): Single<List<Trend>> {

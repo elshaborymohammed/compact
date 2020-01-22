@@ -1,6 +1,6 @@
 package com.compact.requester.adapter;
 
-import com.smart.compact.response.Resource;
+import com.compact.response.Resource;
 
 import io.reactivex.SingleObserver;
 

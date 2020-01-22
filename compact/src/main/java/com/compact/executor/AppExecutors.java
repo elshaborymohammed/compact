@@ -1,8 +1,5 @@
 package com.compact.executor;
 
-import android.os.Handler;
-import android.os.Looper;
-
 import androidx.annotation.NonNull;
 
 import java.util.concurrent.Executor;
@@ -13,16 +10,15 @@ import javax.inject.Singleton;
 
 @Singleton
 public class AppExecutors {
-    private static int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
     private final Executor diskIO;
     private final Executor networkIO;
     private final Executor mainThread;
 
     @Inject
-    public AppExecutors() {
+    public AppExecutors(WorkerExecutor networkIO, MainExecutor mainThread) {
         this.diskIO = Executors.newSingleThreadExecutor();
-        this.networkIO = Executors.newFixedThreadPool(NUMBER_OF_CORES);
-        this.mainThread = new MainThreadExecutor();
+        this.networkIO = networkIO;
+        this.mainThread = mainThread;
     }
 
     @NonNull
@@ -38,13 +34,5 @@ public class AppExecutors {
     @NonNull
     public final Executor mainThread() {
         return this.mainThread;
-    }
-
-    private class MainThreadExecutor implements Executor {
-        private final Handler mainThreadHandler = new Handler(Looper.getMainLooper());
-
-        public void execute(@NonNull Runnable runnable) {
-            this.mainThreadHandler.post(runnable);
-        }
     }
 }

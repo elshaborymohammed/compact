@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
  * Created by lshabory on 3/8/18.
  */
 
-@Module(includes = {RequestBuilderModule.class})
+@Module
 public class RequestModule {
 
     @Provides

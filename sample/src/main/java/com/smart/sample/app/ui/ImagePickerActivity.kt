@@ -3,9 +3,11 @@ package com.smart.sample.app.ui
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.*
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.checkSelfPermission
 import com.compact.picker.ImagePicker
 import com.smart.sample.R
 import kotlinx.android.synthetic.main.activity_image_picker.*
@@ -16,7 +18,7 @@ class ImagePickerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_picker)
         action_image.setOnClickListener {
-            if (ActivityCompat.checkSelfPermission(this, ImagePicker.PERMISSIONS[0]) !== PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(this, ImagePicker.PERMISSIONS[0]) != PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, ImagePicker.PERMISSIONS, ImagePicker.REQUEST_CODE)
             } else {
                 ImagePicker.pick(this)
@@ -29,7 +31,7 @@ class ImagePickerActivity : AppCompatActivity() {
         when (requestCode) {
             ImagePicker.REQUEST_CODE -> {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.isNotEmpty() && grantResults[0] == PERMISSION_GRANTED) {
                     ImagePicker.pick(this)
 
                 }

@@ -1,6 +1,6 @@
 package com.smart.sample.data.repository
 
-import com.smart.compact.response.Resource
+import com.compact.response.Resource
 import com.smart.sample.data.api.RequesterTrendsApi
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.protocol.ITrendsProtocol

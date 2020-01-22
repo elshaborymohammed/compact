@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import retrofit2.Call;
@@ -20,10 +22,10 @@ import retrofit2.Response;
  *
  * @param <R>
  */
-final class RxCompactCallAdapterSingleResource<R> implements CallAdapter<R, Single<Resource<R>>> {
+final class RxCompactCallAdapterObservableResource<R> implements CallAdapter<R, Observable<Resource<R>>> {
     private final Type responseType;
 
-    public RxCompactCallAdapterSingleResource(Type responseType) {
+    public RxCompactCallAdapterObservableResource(Type responseType) {
         this.responseType = responseType;
     }
 
@@ -33,32 +35,32 @@ final class RxCompactCallAdapterSingleResource<R> implements CallAdapter<R, Sing
     }
 
     @Override
-    public Single<Resource<R>> adapt(Call<R> call) {
-        return new Single<Resource<R>>() {
+    public Observable<Resource<R>> adapt(Call<R> call) {
+        return new Observable<Resource<R>>() {
             @Override
-            protected void subscribeActual(SingleObserver<? super Resource<R>> observer) {
+            protected void subscribeActual(Observer<? super Resource<R>> observer) {
                 call(call, observer);
             }
         };
     }
 
-    private void call(Call<R> call, SingleObserver<? super Resource<R>> observer) {
+    private void call(Call<R> call, Observer<? super Resource<R>> observer) {
         call.enqueue(new Callback<R>() {
             @Override
             public void onResponse(Call<R> call, Response<R> response) {
                 if (response.isSuccessful()) {
                     switch (response.code()) {
                         case HttpURLConnection.HTTP_OK:
-                            observer.onSuccess(Resource.ok(response.message(), response.body()));
+                            observer.onNext(Resource.ok(response.message(), response.body()));
                             break;
                         case HttpURLConnection.HTTP_CREATED:
-                            observer.onSuccess(Resource.created(response.message()));
+                            observer.onNext(Resource.created(response.message()));
                             break;
                         case HttpURLConnection.HTTP_ACCEPTED:
-                            observer.onSuccess(Resource.accepted(response.message()));
+                            observer.onNext(Resource.accepted(response.message()));
                             break;
                         case HttpURLConnection.HTTP_NO_CONTENT:
-                            observer.onSuccess(Resource.noContent(response.message()));
+                            observer.onNext(Resource.noContent(response.message()));
                             break;
                         default:
                             observer.onError(new Throwable("Response succeeded but can't Recognize status...."));

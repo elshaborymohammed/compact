@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import retrofit2.Call;
@@ -18,10 +20,10 @@ import retrofit2.Response;
  *
  * @param <R>
  */
-final class RxCompactCallAdapterSingle<R> implements CallAdapter<R, Single<R>> {
+final class RxCompactCallAdapterObservable<R> implements CallAdapter<R, Observable<R>> {
     private final Type responseType;
 
-    public RxCompactCallAdapterSingle(Type responseType) {
+    public RxCompactCallAdapterObservable(Type responseType) {
         this.responseType = responseType;
     }
 
@@ -31,15 +33,15 @@ final class RxCompactCallAdapterSingle<R> implements CallAdapter<R, Single<R>> {
     }
 
     @Override
-    public Single<R> adapt(Call<R> call) {
-        return new Single<R>() {
+    public Observable<R> adapt(Call<R> call) {
+        return new Observable<R>() {
             @Override
-            protected void subscribeActual(SingleObserver<? super R> observer) {
+            protected void subscribeActual(Observer<? super R> observer) {
                 call.enqueue(new Callback<R>() {
                     @Override
                     public void onResponse(Call<R> call, Response<R> response) {
                         if (response.isSuccessful()) {
-                            observer.onSuccess(response.body());
+                            observer.onNext(response.body());
                         } else {
                             try {
                                 observer.onError(new ApiException(response.code(), response.errorBody().string()));

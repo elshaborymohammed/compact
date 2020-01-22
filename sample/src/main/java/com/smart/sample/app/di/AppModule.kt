@@ -1,6 +1,7 @@
 package com.smart.sample.app.di
 
 import com.compact.di.module.GsonModule
+import com.compact.di.module.RequestBuilderModule
 import com.compact.di.module.RequestModule
 import com.compact.di.module.SchedulerModule
 import com.compact.di.qualifier.DatePattern
@@ -18,6 +19,7 @@ import javax.inject.Singleton
 
 @Module(includes = [
     GsonModule::class,
+    RequestBuilderModule::class,
     RequestModule::class,
     SchedulerModule::class,
     ProtocolModule::class

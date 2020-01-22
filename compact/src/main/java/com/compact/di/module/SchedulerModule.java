@@ -1,9 +1,10 @@
 package com.compact.di.module;
 
-import com.compact.executor.AppExecutors;
+import com.compact.executor.MainExecutor;
 import com.compact.executor.MainThread;
-import com.compact.executor.WorkerThread;
 import com.compact.executor.RxCompactSchedulers;
+import com.compact.executor.WorkerExecutor;
+import com.compact.executor.WorkerThread;
 
 import javax.inject.Singleton;
 
@@ -19,14 +20,14 @@ import io.reactivex.schedulers.Schedulers;
 public class SchedulerModule {
     @Provides
     @Singleton
-    MainThread providesMainThread(AppExecutors executors) {
-        return () -> Schedulers.from(executors.mainThread());
+    MainThread providesMainThread(MainExecutor executor) {
+        return () -> Schedulers.from(executor);
     }
 
     @Provides
     @Singleton
-    WorkerThread providesNetworkScheduler(AppExecutors executors) {
-        return () -> Schedulers.from(executors.networkIO());
+    WorkerThread providesNetworkScheduler(WorkerExecutor executor) {
+        return () -> Schedulers.from(executor);
     }
 
     @Provides

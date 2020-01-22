@@ -32,7 +32,7 @@ class TrendActivity : CompactActivity() {
 
     override fun subscriptions(): Array<Disposable> {
         return arrayOf(
-                viewModel.loading().subscribe { },
+                viewModel.loading().subscribe(::println),
                 viewModel.trendsResource().subscribe({
                     adapter.swap(it.data())
                 }, {
