@@ -2,6 +2,7 @@ package com.elmenus.task.app.di.module
 
 import android.content.Context
 import com.compact.di.module.GsonModule
+import com.compact.di.module.RequestBuilderModule
 import com.compact.di.module.RequestModule
 import com.compact.di.module.SchedulerModule
 import com.compact.di.qualifier.ApplicationContext
@@ -31,6 +32,7 @@ import javax.inject.Singleton
         includes = [
             GsonModule::class,
             RequestModule::class,
+            RequestBuilderModule::class,
             ProtocolModule::class,
             SchedulerModule::class
         ]

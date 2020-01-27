@@ -5,8 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.compact.app.CompactActivity
+import com.compact.app.extensions.R.string.invalid_email
+import com.compact.app.extensions.phone
 import com.smart.sample.R
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class TrendActivity : CompactActivity() {
@@ -22,12 +25,15 @@ class TrendActivity : CompactActivity() {
     }
 
     override fun onCreate() {
+
         viewModel = ViewModelProviders.of(this, factory).get(TrendViewModel::class.java)
 
         var recyclerView = findViewById<RecyclerView>(R.id.list)
         adapter = TrendAdapter().also {
             recyclerView.adapter = it
         }
+
+        text.phone(invalid_email)
     }
 
     override fun subscriptions(): Array<Disposable> {

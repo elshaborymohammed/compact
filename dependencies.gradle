@@ -11,9 +11,6 @@ ext {
     ]
 
     /** Android Compat */
-//    androidXCoreVersion = '1.0.0'
-//    androidXLifecycleVersion = '2.0.0-rc01'
-//    constraintLayoutVersion = '2.0.0-alpha3'
     androidXCoreVersion = '1.0.0'
     androidXLifecycleVersion = '2.0.0-rc01'
     constraintLayoutVersion = '2.0.0-alpha3'
@@ -35,7 +32,7 @@ ext {
             mediaCompat     : "androidx.media:media:$androidXCoreVersion",
             vector          : "androidx.vectordrawable:vectordrawable:$androidXCoreVersion",
             animatedVector  : "androidx.vectordrawable:vectordrawable-animated:$androidXCoreVersion",
-            material        : "com.google.android.material:material:$androidXCoreVersion",
+            material        : "com.google.android.material:material:1.2.0-alpha02",
 
             extension       : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion",
             compiler        : "androidx.lifecycle:lifecycle-compiler:$androidXLifecycleVersion",

@@ -38,6 +38,7 @@ dependencies {
     implementation project(":compact")
     implementation project(":otpview")
     implementation project(':app')
+    implementation project(':app-extensions')
     implementation project(":response")
     implementation project(":viewmodel")
     implementation project(":call-adapter")
