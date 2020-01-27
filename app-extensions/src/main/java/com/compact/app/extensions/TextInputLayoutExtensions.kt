@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
  * @author Mohammed Elshabory
  */
 
-fun TextInputLayout.loginName(@StringRes res: Int): Observable<Boolean>? {
+fun TextInputLayout.loginName(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
                 .compose(beforeMap())
@@ -25,11 +25,11 @@ fun TextInputLayout.loginName(@StringRes res: Int): Observable<Boolean>? {
     }
 }
 
-fun TextInputLayout.loginName(): Observable<Boolean>? {
+fun TextInputLayout.loginName(): Observable<Boolean> {
     return loginName(R.string.invalid_email_or_mobile)
 }
 
-fun TextInputLayout.phone(@StringRes res: Int): Observable<Boolean>? {
+fun TextInputLayout.phone(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
                 .compose(beforeMap())
@@ -38,11 +38,11 @@ fun TextInputLayout.phone(@StringRes res: Int): Observable<Boolean>? {
     }
 }
 
-fun TextInputLayout.phone(): Observable<Boolean>? {
+fun TextInputLayout.phone(): Observable<Boolean> {
     return phone(R.string.invalid_mobile_number)
 }
 
-fun TextInputLayout.email(@StringRes res: Int): Observable<Boolean>? {
+fun TextInputLayout.email(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
                 .compose(beforeMap())
@@ -51,7 +51,7 @@ fun TextInputLayout.email(@StringRes res: Int): Observable<Boolean>? {
     }
 }
 
-fun TextInputLayout.email(): Observable<Boolean>? {
+fun TextInputLayout.email(): Observable<Boolean> {
     return email(R.string.invalid_email)
 }
 
@@ -64,7 +64,7 @@ fun TextInputLayout.password(@StringRes res: Int): Observable<Boolean> {
     }
 }
 
-fun TextInputLayout.confirmPassword(password: TextInputLayout): Observable<Boolean>? {
+fun TextInputLayout.confirmPassword(password: TextInputLayout): Observable<Boolean> {
     return confirmPassword(R.string.password_does_not_match, password)
 }
 
@@ -82,7 +82,7 @@ fun TextInputLayout.confirmPassword(@StringRes res: Int, password: TextInputLayo
     }
 }
 
-fun TextInputLayout.password(): Observable<Boolean>? {
+fun TextInputLayout.password(): Observable<Boolean> {
     return password(R.string.password_too_short)
 }
 
@@ -95,7 +95,7 @@ fun TextInputLayout.notNullOrEmpty(@StringRes res: Int): Observable<Boolean> {
     }
 }
 
-fun TextInputLayout.notNullOrEmpty(): Observable<Boolean>? {
+fun TextInputLayout.notNullOrEmpty(): Observable<Boolean> {
     return notNullOrEmpty(R.string.field_required)
 }
 
