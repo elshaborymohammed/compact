@@ -1,11 +1,50 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlActivated">@color/colorAccent</item>
+
+        <item name="textInputStyle">@style/App.Widget.TextInputLayout</item>
+        <item name="spinnerStyle">@style/Widget.AppCompat.Spinner.Underlined</item>
+    </style>
+
+    <style name="App.Widget.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="boxStrokeErrorColor">@color/colorAccent</item>
+        <item name="background">@null</item>
+        <item name="hintAnimationEnabled">true</item>
+        <item name="hintEnabled">true</item>
+        <item name="hintTextAppearance">@style/App.TextAppearance.Hint</item>
+        <item name="errorTextAppearance">@style/App.TextAppearance.Error</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="App.Widget.TextInputEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="App.TextAppearance.Error" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColorHint">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="App.TextAppearance.Hint" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:paddingBottom">0dp</item>
     </style>
 
 </resources>

@@ -1,14 +1,12 @@
 package com.compact.app.extensions
 
 import androidx.annotation.StringRes
-import com.compact.app.extensions.R
 import com.google.android.material.textfield.TextInputLayout
 import com.jakewharton.rxbinding3.widget.textChanges
 import io.reactivex.Observable
 import io.reactivex.ObservableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 /**
@@ -16,6 +14,34 @@ import java.util.concurrent.TimeUnit
  * @author Mohammed Elshabory
  */
 
+fun TextInputLayout.text(): CharSequence {
+    return if (this.editText != null) this.editText!!.editableText.toString() else ""
+}
+
+fun TextInputLayout.error(boolean: Boolean, @StringRes res: Int) {
+    isErrorEnabled = true
+    error = if (boolean) null else resources.getString(res)
+}
+
+private fun <T> beforeMap(): ObservableTransformer<T, T> {
+    return ObservableTransformer {
+        it.debounce(800, TimeUnit.MILLISECONDS)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .skip(1)
+    }
+}
+
+private fun afterMap(inputLayout: TextInputLayout, @StringRes res: Int): ObservableTransformer<Boolean, Boolean> {
+    return ObservableTransformer { it ->
+        it.doOnNext { inputLayout.error(it, res) }
+                .doOnError(Throwable::printStackTrace)
+    }
+}
+
+/***
+ * user name validation
+ * */
 fun TextInputLayout.loginName(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
@@ -29,6 +55,25 @@ fun TextInputLayout.loginName(): Observable<Boolean> {
     return loginName(R.string.invalid_email_or_mobile)
 }
 
+/***
+ * user name validation
+ * */
+fun TextInputLayout.userName(@StringRes res: Int): Observable<Boolean> {
+    editText!!.apply {
+        return textChanges()
+                .compose(beforeMap())
+                .map { it.isUserName() }
+                .compose(afterMap(this@userName, res))
+    }
+}
+
+fun TextInputLayout.userName(): Observable<Boolean> {
+    return userName(R.string.invalid_username)
+}
+
+/***
+ * phone validation
+ * */
 fun TextInputLayout.phone(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
@@ -42,6 +87,9 @@ fun TextInputLayout.phone(): Observable<Boolean> {
     return phone(R.string.invalid_mobile_number)
 }
 
+/***
+ * email validation
+ * */
 fun TextInputLayout.email(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
@@ -55,6 +103,9 @@ fun TextInputLayout.email(): Observable<Boolean> {
     return email(R.string.invalid_email)
 }
 
+/***
+ * password validation
+ * */
 fun TextInputLayout.password(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
@@ -64,10 +115,13 @@ fun TextInputLayout.password(@StringRes res: Int): Observable<Boolean> {
     }
 }
 
-fun TextInputLayout.confirmPassword(password: TextInputLayout): Observable<Boolean> {
-    return confirmPassword(R.string.password_does_not_match, password)
+fun TextInputLayout.password(): Observable<Boolean> {
+    return password(R.string.password_too_short)
 }
 
+/***
+ * confirm password validation
+ * */
 fun TextInputLayout.confirmPassword(@StringRes res: Int, password: TextInputLayout): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(),
@@ -82,10 +136,13 @@ fun TextInputLayout.confirmPassword(@StringRes res: Int, password: TextInputLayo
     }
 }
 
-fun TextInputLayout.password(): Observable<Boolean> {
-    return password(R.string.password_too_short)
+fun TextInputLayout.confirmPassword(password: TextInputLayout): Observable<Boolean> {
+    return confirmPassword(R.string.password_does_not_match, password)
 }
 
+/***
+ * not null or empty validation
+ * */
 fun TextInputLayout.notNullOrEmpty(@StringRes res: Int): Observable<Boolean> {
     editText!!.apply {
         return textChanges()
@@ -99,27 +156,18 @@ fun TextInputLayout.notNullOrEmpty(): Observable<Boolean> {
     return notNullOrEmpty(R.string.field_required)
 }
 
-fun TextInputLayout.error(boolean: Boolean, @StringRes res: Int) {
-    isErrorEnabled = true
-    error = if (boolean) resources.getString(res) else null
-}
-
-fun <T> beforeMap(): ObservableTransformer<T, T> {
-    return ObservableTransformer {
-        it.debounce(800, TimeUnit.MILLISECONDS)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .skip(1)
+/***
+ * digits validation
+ * */
+fun TextInputLayout.digits(@StringRes res: Int): Observable<Boolean> {
+    editText!!.apply {
+        return textChanges()
+                .compose(beforeMap())
+                .map { it.isDigits() }
+                .compose(afterMap(this@digits, res))
     }
 }
 
-fun afterMap(inputLayout: TextInputLayout, @StringRes res: Int): ObservableTransformer<Boolean, Boolean> {
-    return ObservableTransformer { it ->
-        it.doOnNext { inputLayout.error(it, res) }
-                .doOnError(Throwable::printStackTrace)
-    }
-}
-
-fun TextInputLayout.text(): CharSequence {
-    return if (this.editText != null) this.editText!!.editableText.toString() else ""
+fun TextInputLayout.digits(): Observable<Boolean> {
+    return digits(R.string.invalid_digits)
 }
