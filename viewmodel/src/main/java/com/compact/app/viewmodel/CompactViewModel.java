@@ -31,7 +31,7 @@ public abstract class CompactViewModel extends ViewModel {
     public final <T> ObservableTransformer<T, T> composeLoadingObservable() {
         return upstream -> upstream
                 .doOnSubscribe(it -> {
-                    addDisposable(it);
+                    subscribe(it);
                     loadingOn();
                 })
                 .doOnNext(it -> loadingOff())
@@ -41,7 +41,7 @@ public abstract class CompactViewModel extends ViewModel {
     public final <T> SingleTransformer<T, T> composeLoadingSingle() {
         return upstream -> upstream
                 .doOnSubscribe(it -> {
-                    addDisposable(it);
+                    subscribe(it);
                     loadingOn();
                 })
                 .doOnSuccess(it -> loadingOff())
@@ -51,14 +51,14 @@ public abstract class CompactViewModel extends ViewModel {
     public final CompletableTransformer composeLoadingCompletable() {
         return upstream -> upstream
                 .doOnSubscribe(it -> {
-                    addDisposable(it);
+                    subscribe(it);
                     loadingOn();
                 })
-                .doOnComplete(() -> loadingOff())
+                .doOnComplete(this::loadingOff)
                 .doOnError(it -> loadingOff());
     }
 
-    protected boolean addDisposable(Disposable d) {
+    protected boolean subscribe(Disposable d) {
         return disposable.add(d);
     }
 

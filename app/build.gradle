@@ -30,6 +30,7 @@ dependencies {
     implementation androidX.ktx
 
     implementation reactive.rxJava
+    implementation restful.gson
 
     dagger.android.each {
         add(it.configuration, it.dependency, it.options)

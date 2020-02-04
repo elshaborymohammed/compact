@@ -4,7 +4,6 @@ import com.compact.response.ApiException;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
 
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;

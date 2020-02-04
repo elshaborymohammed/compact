@@ -1,17 +1,21 @@
-package com.smart.sample.app.di
+package com.smart.sample.base.di
 
 import com.compact.di.module.GsonModule
-import com.compact.di.module.RequestBuilderModule
-import com.compact.di.module.RequestModule
-import com.compact.di.module.SchedulerModule
+import com.compact.di.module.TestNetworkModule
+import com.compact.di.module.TestRequestBuilderModule
+import com.compact.di.module.TestRequestModule
 import com.compact.di.qualifier.DatePattern
 import com.compact.di.qualifier.Endpoint
 import com.compact.requester.adapter.RxCompactCallAdapterFactory
 import com.google.gson.Gson
-import com.smart.sample.data.module.ProtocolModule
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet
+import okhttp3.Authenticator
+import okhttp3.Request
+import okhttp3.Response
+import okhttp3.Route
+import okhttp3.mockwebserver.MockWebServer
 import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,12 +23,11 @@ import javax.inject.Singleton
 
 @Module(includes = [
     GsonModule::class,
-    RequestBuilderModule::class,
-    RequestModule::class,
-    SchedulerModule::class,
-    ProtocolModule::class
+    TestNetworkModule::class,
+    TestRequestModule::class,
+    TestRequestBuilderModule::class
 ])
-class AppModule {
+class TestAppModule {
 
     @Provides
     @Singleton
@@ -36,8 +39,8 @@ class AppModule {
     @Provides
     @Singleton
     @Endpoint
-    fun providesEndpoint(): String {
-        return "https://api.github.com/"
+    fun providesEndpoint(mockWebServer: MockWebServer): String {
+        return mockWebServer.url("/").toString()
     }
 
     @Provides
@@ -50,5 +53,20 @@ class AppModule {
     @IntoSet
     fun providesCompactCallAdapterFactory(): CallAdapter.Factory {
         return RxCompactCallAdapterFactory.create()
+    }
+
+    @Singleton
+    @Provides
+    fun providesMockWebServer(): MockWebServer = MockWebServer()
+
+    @Provides
+    @Singleton
+    fun providesAuthenticator(): Authenticator {
+        return object : Authenticator {
+            override fun authenticate(route: Route?, response: Response): Request? {
+                println("TestAppModule.authenticate")
+                return null
+            }
+        }
     }
 }

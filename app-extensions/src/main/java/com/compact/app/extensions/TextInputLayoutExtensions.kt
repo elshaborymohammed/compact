@@ -171,3 +171,15 @@ fun TextInputLayout.digits(@StringRes res: Int): Observable<Boolean> {
 fun TextInputLayout.digits(): Observable<Boolean> {
     return digits(R.string.invalid_digits)
 }
+
+/***
+ * custom Regex validation
+ * */
+fun TextInputLayout.matches(regex: Regex, @StringRes res: Int): Observable<Boolean> {
+    editText!!.apply {
+        return textChanges()
+                .compose(beforeMap())
+                .map { it.matches(regex) }
+                .compose(afterMap(this@matches, res))
+    }
+}

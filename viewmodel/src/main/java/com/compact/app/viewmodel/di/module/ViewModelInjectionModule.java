@@ -1,8 +1,9 @@
 package com.compact.app.viewmodel.di.module;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.compact.app.viewmodel.CompactViewModelProviderFactory;
 
-import androidx.lifecycle.ViewModelProvider;
 import dagger.Binds;
 import dagger.Module;
 

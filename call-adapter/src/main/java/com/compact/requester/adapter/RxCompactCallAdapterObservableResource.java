@@ -10,8 +10,6 @@ import java.net.HttpURLConnection;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.Single;
-import io.reactivex.SingleObserver;
 import retrofit2.Call;
 import retrofit2.CallAdapter;
 import retrofit2.Callback;

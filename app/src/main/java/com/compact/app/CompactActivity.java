@@ -57,6 +57,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasAn
 
     @Override
     protected void onDestroy() {
+        "".matches("");
         disposable.dispose();
         disposable.clear();
         super.onDestroy();

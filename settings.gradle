@@ -7,5 +7,4 @@ include ':sample', ':otpview',
         ':requester-annotation',
         ':requester-processor',
         ':call-adapter',
-        ':response',
-        ':elmenus-task'
+        ':response'

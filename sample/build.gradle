@@ -4,11 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.smart.sample"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -53,9 +53,9 @@ dependencies {
     implementation androidX.viewModel
     implementation androidX.extension
 
-    api di.dagger
-    api di.androidSupport
-    api di.android
+    implementation di.dagger
+    implementation di.androidSupport
+    implementation di.android
     kapt di.compiler
     kapt di.processor
 
@@ -77,7 +77,6 @@ dependencies {
     implementation image.transformations
     kapt image.compiler
 
-    testImplementation project(":compact")
     /** Test Lib */
     /** Required -- JUnit 4 framework */
     testImplementation 'junit:junit:4.12'
@@ -89,6 +88,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.28.2'
     testImplementation 'org.mockito:mockito-inline:2.28.2'
 
+//    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+//    testImplementation project(":compact")
     testImplementation http.mock
     testImplementation di.dagger
     kaptTest di.compiler

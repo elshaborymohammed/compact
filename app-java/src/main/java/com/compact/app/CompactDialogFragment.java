@@ -8,14 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import com.compact.util.ButterKnifeUtils;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.compact.util.ButterKnifeUtils;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
