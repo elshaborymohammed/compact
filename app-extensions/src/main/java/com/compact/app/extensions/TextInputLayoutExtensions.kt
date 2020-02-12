@@ -14,8 +14,16 @@ import java.util.concurrent.TimeUnit
  * @author Mohammed Elshabory
  */
 
-fun TextInputLayout.text(): CharSequence {
+fun TextInputLayout.text(): String {
     return if (this.editText != null) this.editText!!.editableText.toString() else ""
+}
+
+fun TextInputLayout.text(text: String) {
+    this.editText?.setText(text)
+}
+
+fun TextInputLayout.text(@StringRes text: Int) {
+    this.editText?.setText(text)
 }
 
 fun TextInputLayout.error(boolean: Boolean, @StringRes res: Int) {
