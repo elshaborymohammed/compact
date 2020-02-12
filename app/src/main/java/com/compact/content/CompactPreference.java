@@ -25,9 +25,8 @@ public abstract class CompactPreference<T> {
         return "";
     }
 
-    @SuppressWarnings("unchecked")
     public T get() {
-        return sharedPreferences().getString(key(), defValue()).isEmpty() ? null :
+        return sharedPreferences().getString(key(), defValue()) == null ? null :
                 (T) new Gson().fromJson(sharedPreferences().getString(key(), ""), getType());
     }
 

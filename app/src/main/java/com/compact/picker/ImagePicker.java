@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,7 @@ public class ImagePicker {
     public static final int REQUEST_CODE = 10001;
     public static final String[] PERMISSIONS = {
             Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-//            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.READ_EXTERNAL_STORAGE
     };
 
     private static final List<Intent> intents = new ArrayList<>();
@@ -34,6 +35,18 @@ public class ImagePicker {
 //        Intent intent = actionPick();
 //        activity.startActivityForResult(Intent.createChooser(intent, "Pick Image"), REQUEST_CODE);
 //        activity.startActivityForResult(actionGetContentChooser(), REQUEST_CODE);
+    }
+
+    public static void pick(Fragment fragment) {
+        Intent intent = Intent.createChooser(actionPick(), null);
+        if (!intents.isEmpty()) {
+            intent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intents.toArray(new Parcelable[]{}));
+        }
+        fragment.startActivityForResult(intent, REQUEST_CODE);
+
+//        Intent intent = actionPick();
+//        fragment.startActivityForResult(Intent.createChooser(intent, "Pick Image"), REQUEST_CODE);
+//        fragment.startActivityForResult(actionGetContentChooser(), REQUEST_CODE);
     }
 
     private static Intent actionPick() {
