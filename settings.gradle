@@ -1,6 +1,6 @@
-include ':sample', ':otpview',
+include ':sample'
+include ':otpview',
         ':compact',
-        ':app-java',
         ':app',
         ':app-extensions',
         ':viewmodel',

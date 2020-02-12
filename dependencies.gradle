@@ -11,53 +11,47 @@ ext {
     ]
 
     /** Android Compat */
-    androidXCoreVersion = '1.0.0'
-    androidXLifecycleVersion = '2.0.0-rc01'
-    constraintLayoutVersion = '2.0.0-alpha3'
     androidX = [
             /** Android Config SDK */
-            sdk : [
+            sdk             : [
                     minSdkVersion    : 21,
                     targetSdkVersion : 28,
                     compileSdkVersion: 28,
                     versionCode      : 1,
                     versionName      : "1.0",
             ],
-            annotation      : "androidx.annotation:annotation:$androidXCoreVersion",
-            appCompat       : "androidx.appcompat:appcompat:$androidXCoreVersion",
-            ktx             : "androidx.core:core-ktx:$androidXCoreVersion",
-            recyclerView    : "androidx.recyclerview:recyclerview:$androidXCoreVersion",
-            cardView        : "androidx.cardview:cardview:$androidXCoreVersion",
-            supportV4       : "androidx.legacy:legacy-support-v4:$androidXCoreVersion",
-            mediaCompat     : "androidx.media:media:$androidXCoreVersion",
-            vector          : "androidx.vectordrawable:vectordrawable:$androidXCoreVersion",
-            animatedVector  : "androidx.vectordrawable:vectordrawable-animated:$androidXCoreVersion",
-            material        : "com.google.android.material:material:1.2.0-alpha02",
+            annotation      : "androidx.annotation:annotation:1.1.0",
+            appCompat       : "androidx.appcompat:appcompat:1.1.0",
+            ktx             : "androidx.core:core-ktx:1.2.0",
+            recyclerView    : "androidx.recyclerview:recyclerview:1.1.0",
+            cardView        : "androidx.cardview:cardview:1.0.0",
+            supportV4       : "androidx.legacy:legacy-support-v4:1.0.0",
+            mediaCompat     : "androidx.media:media:1.0.0",
+            vector          : "androidx.vectordrawable:vectordrawable:1.0.0",
+            animatedVector  : "androidx.vectordrawable:vectordrawable-animated:1.0.0",
 
-            extension       : "androidx.lifecycle:lifecycle-extensions:$androidXLifecycleVersion",
-            compiler        : "androidx.lifecycle:lifecycle-compiler:$androidXLifecycleVersion",
-            viewModel       : "androidx.lifecycle:lifecycle-viewmodel:$androidXLifecycleVersion",
-            viewModelKtx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidXLifecycleVersion",
-            liveData        : "androidx.lifecycle:lifecycle-livedata:$androidXLifecycleVersion",
-            room            : "androidx.room:room-runtime:$androidXLifecycleVersion",
-            roomRx          : "androidx.room:room-rxjava2:$androidXLifecycleVersion",
-            roomCompiler    : "androidx.room:room-compiler:$androidXLifecycleVersion",
+            extension       : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+            compiler        : "androidx.lifecycle:lifecycle-compiler:2.2.0",
+            viewModel       : "androidx.lifecycle:lifecycle-viewmodel:2.2.0",
+            viewModelKtx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
+            liveData        : "androidx.lifecycle:lifecycle-livedata:2.2.0",
+            room            : "androidx.room:room-runtime:2.2.0",
+            roomRx          : "androidx.room:room-rxjava2:2.2.0",
+            roomCompiler    : "androidx.room:room-compiler:2.2.0",
 
-            constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            material        : "com.google.android.material:material:1.2.0-alpha04",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:2.0.0-alpha3",
     ]
 
     /** Reactive Lib */
-    rxJavaVersion = '2.2.14'
-    rxAndroidVersion = '2.1.1'
-    rxRelayVersion = '2.1.1'
     reactive = [
-            rxJava   : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
-            rxAndroid: "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
-            rxRelay  : "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion",
+            rxJava   : "io.reactivex.rxjava2:rxjava:2.2.17",
+            rxAndroid: "io.reactivex.rxjava2:rxandroid:2.1.1",
+            rxRelay  : "com.jakewharton.rxrelay2:rxrelay:2.1.1",
     ]
 
     /** OkHttp */
-    okhttpVersion = '4.2.2'
+    okhttpVersion = '4.3.1'
     http = [
             okhttp : "com.squareup.okhttp3:okhttp:$okhttpVersion",
             logging: "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
@@ -65,7 +59,7 @@ ext {
     ]
 
     /** Retrofit and GSON */
-    retrofitVersion = '2.6.1'
+    retrofitVersion = '2.7.1'
     gsonVersion = '2.8.6'
     restful = [
             retrofit    : "com.squareup.retrofit2:retrofit:$retrofitVersion",
@@ -76,7 +70,7 @@ ext {
     ]
 
     /** Dagger */
-    daggerVersion = '2.25.2'
+    daggerVersion = '2.26'
     di = [
             dagger        : "com.google.dagger:dagger:$daggerVersion",
             compiler      : "com.google.dagger:dagger-compiler:$daggerVersion",
@@ -93,7 +87,7 @@ ext {
     ]
 
     /** Glid */
-    glideVersion = '4.10.0'
+    glideVersion = '4.11.0'
     image = [
             glide          : "com.github.bumptech.glide:glide:$glideVersion",
             compiler       : "com.github.bumptech.glide:compiler:$glideVersion",

@@ -6,7 +6,7 @@ dependencies {
     implementation project(":requester-annotation")
     implementation javaX.inject
     implementation restful.retrofit
-    implementation 'com.squareup:javapoet:1.11.1'
+    implementation 'com.squareup:javapoet:1.12.1'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
