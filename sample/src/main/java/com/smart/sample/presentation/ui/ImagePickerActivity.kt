@@ -7,6 +7,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.checkSelfPermission
+import com.compact.app.extensions.base64
+import com.compact.app.extensions.setImageBase64
 import com.compact.picker.ImagePicker
 import com.smart.sample.R
 import kotlinx.android.synthetic.main.activity_image_picker.*
@@ -20,7 +22,13 @@ class ImagePickerActivity : AppCompatActivity() {
             if (checkSelfPermission(this, ImagePicker.PERMISSIONS[0]) != PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, ImagePicker.PERMISSIONS, ImagePicker.REQUEST_CODE)
             } else {
-                ImagePicker.pick(this)
+                ImagePicker.build(this)
+            }
+        }
+
+        action_image_backup.setOnClickListener {
+            action_image.base64()?.apply {
+                action_image_backup.setImageBase64(this)
             }
         }
     }
@@ -31,8 +39,7 @@ class ImagePickerActivity : AppCompatActivity() {
             ImagePicker.REQUEST_CODE -> {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.isNotEmpty() && grantResults[0] == PERMISSION_GRANTED) {
-                    ImagePicker.pick(this)
-
+                    ImagePicker.build(this)
                 }
                 return
             }
@@ -41,14 +48,10 @@ class ImagePickerActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        println("requestCode = [${requestCode}], resultCode = [${resultCode}], data = [${data}]")
         if (requestCode == ImagePicker.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             try {
-                println("requestCode = [${requestCode}], resultCode = [${resultCode}]")
-
-                if (data != null) {
-                    println("data = [${data}]")
-                    action_image.setImageURI(data.data)
-                }
+                data?.apply { ImagePicker.setImage(action_image, data) }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

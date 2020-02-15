@@ -11,6 +11,7 @@ ext {
     ]
 
     /** Android Compat */
+    navigationVersion = "2.2.0"
     androidX = [
             /** Android Config SDK */
             sdk             : [
@@ -29,18 +30,34 @@ ext {
             mediaCompat     : "androidx.media:media:1.0.0",
             vector          : "androidx.vectordrawable:vectordrawable:1.0.0",
             animatedVector  : "androidx.vectordrawable:vectordrawable-animated:1.0.0",
-
-            extension       : "androidx.lifecycle:lifecycle-extensions:2.2.0",
-            compiler        : "androidx.lifecycle:lifecycle-compiler:2.2.0",
-            viewModel       : "androidx.lifecycle:lifecycle-viewmodel:2.2.0",
-            viewModelKtx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
-            liveData        : "androidx.lifecycle:lifecycle-livedata:2.2.0",
-            room            : "androidx.room:room-runtime:2.2.0",
-            roomRx          : "androidx.room:room-rxjava2:2.2.0",
-            roomCompiler    : "androidx.room:room-compiler:2.2.0",
-
             material        : "com.google.android.material:material:1.2.0-alpha04",
             constraintLayout: "androidx.constraintlayout:constraintlayout:2.0.0-alpha3",
+
+            lifecycle       : [
+                    extension   : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+                    compiler    : "androidx.lifecycle:lifecycle-compiler:2.2.0",
+                    liveData    : "androidx.lifecycle:lifecycle-livedata:2.2.0",
+                    viewModel   : "androidx.lifecycle:lifecycle-viewmodel:2.2.0",
+                    viewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
+            ],
+            room            : [
+                    runtime : "androidx.room:room-runtime:2.2.0",
+                    rxjava  : "androidx.room:room-rxjava2:2.2.0",
+                    Compiler: "androidx.room:room-compiler:2.2.0",
+            ],
+            navigation      : [
+                    classpath: "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion",
+                    java     : [
+                            safeargs: "androidx.navigation.safeargs",
+                            fragment: "androidx.navigation:navigation-fragment:$navigationVersion",
+                            ui      : "androidx.navigation:navigation-ui:$navigationVersion",
+                    ],
+                    kts      : [
+                            safeargs: "androidx.navigation.safeargs.kotlin",
+                            fragment: "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+                            ui      : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+                    ]
+            ]
     ]
 
     /** Reactive Lib */

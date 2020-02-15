@@ -28,7 +28,7 @@ dependencies {
     implementation reactive.rxAndroid
     implementation reactive.rxRelay
 
-    implementation androidX.viewModel
-    implementation androidX.extension
+    implementation androidX.lifecycle.viewModel
+    implementation androidX.lifecycle.extension
     implementation di.dagger
 }
