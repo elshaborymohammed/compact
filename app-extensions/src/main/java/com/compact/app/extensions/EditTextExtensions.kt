@@ -48,7 +48,7 @@ fun EditText.loginName(@StringRes res: Int): Observable<Boolean> {
 }
 
 fun EditText.loginName(): Observable<Boolean> {
-    return loginName(R.string.invalid_email_or_mobile)
+    return loginName(R.string.invalid_login_name)
 }
 
 /***

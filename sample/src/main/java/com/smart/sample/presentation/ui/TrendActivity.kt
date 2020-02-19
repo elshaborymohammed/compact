@@ -30,7 +30,7 @@ class TrendActivity : CompactActivity() {
             recyclerView.adapter = it
         }
 
-        login_name.loginName().subscribe()
+        login_name.loginName().subscribe(::println)
         username.userName().subscribe()
         digits.digits().subscribe()
         phone.phone().subscribe()
