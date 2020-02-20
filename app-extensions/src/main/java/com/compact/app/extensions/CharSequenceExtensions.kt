@@ -1,6 +1,7 @@
 package com.compact.app.extensions
 
 import android.util.Patterns
+import java.util.regex.Pattern
 
 /**
  * CharSequence Extensions.
@@ -20,7 +21,7 @@ fun CharSequence.isEmail(): Boolean {
 }
 
 fun CharSequence.isPhone(): Boolean {
-    return matches(Patterns.PHONE.toRegex())
+    return matches(Pattern.compile("^[0-9]{10}$").toRegex())
 }
 
 fun CharSequence.isDigits(): Boolean {
@@ -28,7 +29,11 @@ fun CharSequence.isDigits(): Boolean {
 }
 
 fun CharSequence.isUserName(): Boolean {
-    return matches(Regex("^[a-z0-9_-]{3,15}\$"))
+    return matches(Pattern.compile("^[a-zA-Z]+$").toRegex())
+}
+
+fun CharSequence.isFullName(): Boolean {
+    return matches(Pattern.compile("^[A-Za-z][A-Za-z\\s]+$").toRegex())
 }
 
 fun CharSequence.isNotNullOrEmpty(): Boolean {
