@@ -15,10 +15,6 @@ fun ProgressBar.loading(it: Boolean) {
     visibility = if (it) View.VISIBLE else View.GONE
 }
 
-//fun View.visibility(it: Boolean) {
-//    visibility = if (it) View.VISIBLE else View.GONE
-//}
-
 fun <T : View> T.setVisibility(it: Boolean) {
     visibility = if (it) View.VISIBLE else View.GONE
 }

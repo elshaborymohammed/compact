@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
  */
 
 fun EditText.error(boolean: Boolean, @StringRes res: Int) {
-    error = if (boolean) null else resources.getString(res)
+    error = if (!boolean) null else resources.getString(res)
 }
 
 private fun <T> beforeMap(): ObservableTransformer<T, T> {
@@ -48,7 +48,7 @@ fun EditText.loginName(@StringRes res: Int): Observable<Boolean> {
 }
 
 fun EditText.loginName(): Observable<Boolean> {
-    return loginName(R.string.invalid_login_name)
+    return loginName(R.string.invalid_login)
 }
 
 /***
@@ -80,7 +80,7 @@ fun EditText.phone(@StringRes res: Int): Observable<Boolean> {
 }
 
 fun EditText.phone(): Observable<Boolean> {
-    return phone(R.string.invalid_mobile_number)
+    return phone(R.string.invalid_phone)
 }
 
 /***
@@ -112,7 +112,7 @@ fun EditText.password(@StringRes res: Int): Observable<Boolean> {
 }
 
 fun EditText.password(): Observable<Boolean> {
-    return password(R.string.password_too_short)
+    return password(R.string.invalid_password)
 }
 
 /***
@@ -133,7 +133,7 @@ fun EditText.confirmPassword(@StringRes res: Int, password: TextInputLayout): Ob
 }
 
 fun EditText.confirmPassword(password: TextInputLayout): Observable<Boolean> {
-    return confirmPassword(R.string.password_does_not_match, password)
+    return confirmPassword(R.string.invalid_password_confirmation, password)
 }
 
 /***

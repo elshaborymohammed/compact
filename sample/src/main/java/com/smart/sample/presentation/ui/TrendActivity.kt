@@ -1,7 +1,6 @@
 package com.smart.sample.presentation.ui
 
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.compact.app.CompactActivity
 import com.compact.app.extensions.*
@@ -23,15 +22,16 @@ class TrendActivity : CompactActivity() {
     }
 
     override fun onCreate() {
-        viewModel = ViewModelProviders.of(this, factory).get(TrendViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(TrendViewModel::class.java)
 
         var recyclerView = findViewById<RecyclerView>(R.id.list)
         adapter = TrendAdapter().also {
             recyclerView.adapter = it
         }
 
-        login_name.loginName().subscribe(::println)
-        username.userName().subscribe()
+        login_name.login().subscribe()
+        username.username().subscribe()
+        full_name.fullName().subscribe()
         digits.digits().subscribe()
         phone.phone().subscribe()
         email.email().subscribe()

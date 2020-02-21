@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Sample</string>
+
+    <string name="field_required">This field is required2</string>
+    <string name="accepts_letter_only">Accepts letter only2</string>
+    <string name="invalid_username">Invalid username2</string>
+    <string name="invalid_digits">This field must be digits only2</string>
+    <string name="invalid_login_name">Invalid email or mobile2</string>
+    <string name="invalid_mobile_number">Invalid mobile number2</string>
+    <string name="invalid_email">Invalid email2</string>
+    <string name="password_too_short">Password too short, Can\'t be less than 8 characters2</string>
+    <string name="password_does_not_match">Password Doesn\'t match2</string>
 </resources>

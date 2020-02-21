@@ -23,8 +23,8 @@ fun TextInputLayout.text(text: String) {
     this.editText?.setText(text)
 }
 
-fun TextInputLayout.text(@StringRes text: Int) {
-    this.editText?.setText(text)
+fun TextInputLayout.text(@StringRes res: Int) {
+    this.editText?.setText(res)
 }
 
 fun TextInputLayout.noError() {
@@ -56,7 +56,10 @@ private fun afterMap(inputLayout: TextInputLayout, @StringRes res: Int): Observa
     }
 }
 
-private fun checkText(inputLayout: TextInputLayout, text: CharSequence, boolean: Boolean, @StringRes res: Int, @StringRes required: Int = R.string.field_required): Boolean {
+private fun checkText(inputLayout: TextInputLayout, text: CharSequence,
+                      boolean: Boolean,
+                      @StringRes required: Int,
+                      @StringRes invalid: Int): Boolean {
     return when {
         text.contains("no") -> {
             inputLayout.error(required)
@@ -67,7 +70,7 @@ private fun checkText(inputLayout: TextInputLayout, text: CharSequence, boolean:
             true
         }
         else -> {
-            inputLayout.error(res)
+            inputLayout.error(invalid)
             false
         }
     }
@@ -86,13 +89,14 @@ private fun predictor() = BiFunction { text: CharSequence, focus: Boolean ->
 }
 
 /***
- * user name validation
+ * login validation
  * */
-fun TextInputLayout.loginName(@StringRes required: Int = R.string.field_required, @StringRes res: Int = R.string.invalid_login_name): Observable<Boolean> {
+fun TextInputLayout.login(@StringRes required: Int = R.string.field_required,
+                          @StringRes invalid: Int = R.string.invalid_login): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@loginName, it, it.isPhone() || it.isEmail(), res) }
+                .map { checkText(this@login, it, it.isPhone() || it.isEmail(), required, invalid) }
                 .compose(afterMap())
 
     }
@@ -101,11 +105,25 @@ fun TextInputLayout.loginName(@StringRes required: Int = R.string.field_required
 /***
  * user name validation
  * */
-fun TextInputLayout.userName(@StringRes required: Int = R.string.field_required, @StringRes res: Int = R.string.invalid_username): Observable<Boolean> {
+fun TextInputLayout.username(@StringRes required: Int = R.string.field_required,
+                             @StringRes invalid: Int = R.string.invalid_username): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@userName, it, it.isUserName(), res) }
+                .map { checkText(this@username, it, it.isUserName(), required, invalid) }
+                .compose(afterMap())
+    }
+}
+
+/***
+ * full name validation
+ * */
+fun TextInputLayout.fullName(@StringRes required: Int = R.string.field_required,
+                             @StringRes invalid: Int = R.string.invalid_full_name): Observable<Boolean> {
+    editText!!.apply {
+        return Observable.combineLatest(textChanges(), focusChanges(), predictor())
+                .compose(beforeMap())
+                .map { checkText(this@fullName, it, it.isFullName(), required, invalid) }
                 .compose(afterMap())
     }
 }
@@ -113,11 +131,12 @@ fun TextInputLayout.userName(@StringRes required: Int = R.string.field_required,
 /***
  * phone validation
  * */
-fun TextInputLayout.phone(@StringRes required: Int = R.string.field_required, @StringRes res: Int = R.string.invalid_mobile_number): Observable<Boolean> {
+fun TextInputLayout.phone(@StringRes required: Int = R.string.field_required,
+                          @StringRes invalid: Int = R.string.invalid_phone): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@phone, it, it.isPhone(), res) }
+                .map { checkText(this@phone, it, it.isPhone(), required, invalid) }
                 .compose(afterMap())
     }
 }
@@ -125,11 +144,12 @@ fun TextInputLayout.phone(@StringRes required: Int = R.string.field_required, @S
 /***
  * email validation
  * */
-fun TextInputLayout.email(@StringRes required: Int = R.string.field_required, @StringRes res: Int = R.string.invalid_email): Observable<Boolean> {
+fun TextInputLayout.email(@StringRes required: Int = R.string.field_required,
+                          @StringRes invalid: Int = R.string.invalid_email): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@email, it, it.isEmail(), res) }
+                .map { checkText(this@email, it, it.isEmail(), required, invalid) }
                 .compose(afterMap())
     }
 }
@@ -137,11 +157,12 @@ fun TextInputLayout.email(@StringRes required: Int = R.string.field_required, @S
 /***
  * password validation
  * */
-fun TextInputLayout.password(@StringRes required: Int = R.string.field_required, @StringRes res: Int = R.string.password_too_short): Observable<Boolean> {
+fun TextInputLayout.password(@StringRes required: Int = R.string.field_required,
+                             @StringRes invalid: Int = R.string.invalid_password): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@password, it, it.isPassword(), res) }
+                .map { checkText(this@password, it, it.isPassword(), required, invalid) }
                 .compose(afterMap())
     }
 }
@@ -149,7 +170,7 @@ fun TextInputLayout.password(@StringRes required: Int = R.string.field_required,
 /***
  * confirm password validation
  * */
-fun TextInputLayout.confirmPassword(password: TextInputLayout, @StringRes res: Int = R.string.password_does_not_match): Observable<Boolean> {
+fun TextInputLayout.confirmPassword(password: TextInputLayout, @StringRes invalid: Int = R.string.invalid_password_confirmation): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(),
                 password.editText!!.textChanges(),
@@ -162,18 +183,19 @@ fun TextInputLayout.confirmPassword(password: TextInputLayout, @StringRes res: I
                 .observeOn(AndroidSchedulers.mainThread())
                 .skip(1)
                 .distinctUntilChanged()
-                .compose(afterMap(this@confirmPassword, res))
+                .compose(afterMap(this@confirmPassword, invalid))
     }
 }
 
 /***
  * not null or empty validation
  * */
-fun TextInputLayout.notNullOrEmpty(@StringRes res: Int = R.string.field_required): Observable<Boolean> {
+fun TextInputLayout.notNullOrEmpty(@StringRes required: Int = R.string.field_required,
+                                   @StringRes invalid: Int = R.string.field_required): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@notNullOrEmpty, it, it.isNotNullOrEmpty(), res) }
+                .map { checkText(this@notNullOrEmpty, it, it.isNotNullOrEmpty(), required, invalid) }
                 .compose(afterMap())
     }
 }
@@ -181,11 +203,12 @@ fun TextInputLayout.notNullOrEmpty(@StringRes res: Int = R.string.field_required
 /***
  * digits validation
  * */
-fun TextInputLayout.digits(@StringRes res: Int = R.string.invalid_digits): Observable<Boolean> {
+fun TextInputLayout.digits(@StringRes required: Int = R.string.field_required,
+                           @StringRes invalid: Int = R.string.invalid_digits): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@digits, it, it.isDigits(), res) }
+                .map { checkText(this@digits, it, it.isDigits(), required, invalid) }
                 .compose(afterMap())
     }
 }
@@ -193,11 +216,21 @@ fun TextInputLayout.digits(@StringRes res: Int = R.string.invalid_digits): Obser
 /***
  * custom Regex validation
  * */
-fun TextInputLayout.matches(regex: Regex, @StringRes res: Int): Observable<Boolean> {
+fun TextInputLayout.matches(regex: Regex, @StringRes invalid: Int): Observable<Boolean> {
+    editText!!.apply {
+        return textChanges().compose(beforeMap())
+                .map { it.matches(regex) }
+                .compose(afterMap(this@matches, invalid))
+    }
+}
+
+fun TextInputLayout.matchesAndRequired(regex: Regex,
+                                       @StringRes invalid: Int,
+                                       @StringRes required: Int = R.string.field_required): Observable<Boolean> {
     editText!!.apply {
         return Observable.combineLatest(textChanges(), focusChanges(), predictor())
                 .compose(beforeMap())
-                .map { checkText(this@matches, it, it.isDigits(), res) }
+                .map { checkText(this@matchesAndRequired, it, it.matches(regex), required, invalid) }
                 .compose(afterMap())
     }
 }
