@@ -2,9 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.androidcompact.app'
-
 android {
     compileSdkVersion androidX.sdk.compileSdkVersion
     defaultConfig {
@@ -39,6 +36,4 @@ dependencies {
     api 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
     api 'com.jakewharton.rxbinding3:rxbinding-material:3.1.0'
 }
-repositories {
-    mavenCentral()
-}
+apply from: rootProject.file('release-bintray.gradle')

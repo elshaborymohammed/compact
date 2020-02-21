@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.androidcompact'
 
 android {
     compileSdkVersion androidX.sdk.compileSdkVersion
@@ -26,3 +24,4 @@ dependencies {
     implementation androidX.appCompat
     implementation androidX.material
 }
+apply from: rootProject.file('release-bintray.gradle')

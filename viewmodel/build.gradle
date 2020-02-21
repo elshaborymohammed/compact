@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.androidcompact'
 
 android {
     compileSdkVersion androidX.sdk.compileSdkVersion
@@ -32,3 +30,5 @@ dependencies {
     implementation androidX.lifecycle.extension
     implementation di.dagger
 }
+
+apply from: rootProject.file('release-bintray.gradle')
