@@ -10,4 +10,6 @@
     <string name="invalid_email">Invalid email2</string>
     <string name="password_too_short">Password too short, Can\'t be less than 8 characters2</string>
     <string name="password_does_not_match">Password Doesn\'t match2</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
