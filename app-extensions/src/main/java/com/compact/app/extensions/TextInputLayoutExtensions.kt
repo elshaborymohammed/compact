@@ -37,7 +37,7 @@ fun TextInputLayout.error(@StringRes res: Int, boolean: Boolean = true) {
 }
 
 private fun <T> beforeMap(): ObservableTransformer<T, T> = ObservableTransformer {
-    it.debounce(800, TimeUnit.MILLISECONDS)
+    it.debounce(0, TimeUnit.MILLISECONDS)
             .subscribeOn(AndroidSchedulers.mainThread())
             .observeOn(AndroidSchedulers.mainThread())
 }

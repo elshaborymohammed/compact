@@ -21,7 +21,7 @@ fun EditText.error(boolean: Boolean, @StringRes res: Int) {
 
 private fun <T> beforeMap(): ObservableTransformer<T, T> {
     return ObservableTransformer {
-        it.debounce(800, TimeUnit.MILLISECONDS)
+        it.debounce(0, TimeUnit.MILLISECONDS)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .skip(1)

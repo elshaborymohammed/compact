@@ -48,6 +48,8 @@ public class OTPView extends AppCompatEditText {
     }
 
     private void init(Context context, AttributeSet attrs) {
+        setHeight(getMeasuredHeight() + (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 64, context.getResources().getDisplayMetrics()));
+        System.out.println(getMeasuredHeight());
         setMaxLines(1);
         if (null != attrs) {
             maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", 6);
@@ -77,9 +79,10 @@ public class OTPView extends AppCompatEditText {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        int availableWidth = getWidth(); //- ViewCompat.getPaddingEnd(this) - ViewCompat.getPaddingStart(this);
-        int rectWidth = getHeight(); //(int) (getHeight() - (getHeight() * 0.20));
-        int rectHeight = getHeight(); //(int) (getHeight() - (getHeight() * 0.20));
+        int availableWidth = getWidth();
+        int availableHeight = getHeight() - (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getContext().getResources().getDisplayMetrics());
+        int rectWidth = availableHeight;
+        int rectHeight = availableHeight;
         int space = 8;
         int allSpace = (maxLength + 1) * space;
         int top;
