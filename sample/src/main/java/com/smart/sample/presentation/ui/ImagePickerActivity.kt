@@ -48,7 +48,6 @@ class ImagePickerActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        println("requestCode = [${requestCode}], resultCode = [${resultCode}], data = [${data}]")
         if (requestCode == ImagePicker.REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             try {
                 data?.apply { ImagePicker.setImage(action_image, data) }

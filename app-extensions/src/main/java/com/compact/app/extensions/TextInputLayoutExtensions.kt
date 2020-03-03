@@ -1,5 +1,6 @@
 package com.compact.app.extensions
 
+import android.widget.AutoCompleteTextView
 import androidx.annotation.StringRes
 import com.google.android.material.textfield.TextInputLayout
 import com.jakewharton.rxbinding3.view.focusChanges
@@ -20,7 +21,13 @@ fun TextInputLayout.text(): String {
 }
 
 fun TextInputLayout.text(text: String) {
-    this.editText?.setText(text)
+    this.editText?.apply {
+        if (this is AutoCompleteTextView) {
+            setText(text, false)
+        } else {
+            setText(text)
+        }
+    }
 }
 
 fun TextInputLayout.text(@StringRes res: Int) {
@@ -87,20 +94,20 @@ private fun predictor() = BiFunction { text: CharSequence, focus: Boolean ->
     }
 }
 
-private fun TextInputLayout.combineLatest(skip: Long): Observable<CharSequence> {
+private fun TextInputLayout.combineLatest(textChangesSkip: Long, focusChangesSkip: Long): Observable<CharSequence> {
     editText!!.apply {
-        return Observable.combineLatest(textChanges().skip(skip), focusChanges().skip(skip), predictor())
+        return Observable.combineLatest(textChanges().skip(textChangesSkip), focusChanges().skip(focusChangesSkip), predictor())
     }
 }
 
 /***
  * login validation
  * */
-fun TextInputLayout.login(skip: Long = 1,
+fun TextInputLayout.login(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
                           @StringRes required: Int = R.string.field_required,
                           @StringRes invalid: Int = R.string.invalid_login): Observable<Boolean> {
     editText!!.apply {
-        return combineLatest(skip)
+        return combineLatest(textChangesSkip, focusChangesSkip)
                 .compose(beforeMap())
                 .map { checkText(this@login, it, it.isPhone() || it.isEmail(), required, invalid) }
                 .compose(afterMap())
@@ -111,11 +118,11 @@ fun TextInputLayout.login(skip: Long = 1,
 /***
  * user name validation
  * */
-fun TextInputLayout.username(skip: Long = 1,
+fun TextInputLayout.username(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
                              @StringRes required: Int = R.string.field_required,
                              @StringRes invalid: Int = R.string.invalid_username): Observable<Boolean> {
     editText!!.apply {
-        return combineLatest(skip)
+        return combineLatest(textChangesSkip, focusChangesSkip)
                 .compose(beforeMap())
                 .map { checkText(this@username, it, it.isUserName(), required, invalid) }
                 .compose(afterMap())
@@ -125,11 +132,11 @@ fun TextInputLayout.username(skip: Long = 1,
 /***
  * full name validation
  * */
-fun TextInputLayout.fullName(skip: Long = 1,
+fun TextInputLayout.fullName(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
                              @StringRes required: Int = R.string.field_required,
                              @StringRes invalid: Int = R.string.invalid_full_name): Observable<Boolean> {
     editText!!.apply {
-        return combineLatest(skip)
+        return combineLatest(textChangesSkip, focusChangesSkip)
                 .compose(beforeMap())
                 .map { checkText(this@fullName, it, it.isFullName(), required, invalid) }
                 .compose(afterMap())
@@ -139,11 +146,11 @@ fun TextInputLayout.fullName(skip: Long = 1,
 /***
  * phone validation
  * */
-fun TextInputLayout.phone(skip: Long = 1,
+fun TextInputLayout.phone(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
                           @StringRes required: Int = R.string.field_required,
                           @StringRes invalid: Int = R.string.invalid_phone): Observable<Boolean> {
     editText!!.apply {
-        return combineLatest(skip)
+        return combineLatest(textChangesSkip, focusChangesSkip)
                 .compose(beforeMap())
                 .map { checkText(this@phone, it, it.isPhone(), required, invalid) }
                 .compose(afterMap())
@@ -153,11 +160,11 @@ fun TextInputLayout.phone(skip: Long = 1,
 /***
  * email validation
  * */
-fun TextInputLayout.email(skip: Long = 1,
+fun TextInputLayout.email(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
                           @StringRes required: Int = R.string.field_required,
                           @StringRes invalid: Int = R.string.invalid_email): Observable<Boolean> {
     editText!!.apply {
-        return combineLatest(skip)
+        return combineLatest(textChangesSkip, focusChangesSkip)
                 .compose(beforeMap())
                 .map { checkText(this@email, it, it.isEmail(), required, invalid) }
                 .compose(afterMap())
@@ -167,11 +174,11 @@ fun TextInputLayout.email(skip: Long = 1,
 /***
  * not null or empty validation
  * */
-fun TextInputLayout.notNullOrEmpty(skip: Long = 1,
+fun TextInputLayout.notNullOrEmpty(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
                                    @StringRes required: Int = R.string.field_required,
                                    @StringRes invalid: Int = R.string.field_required): Observable<Boolean> {
     editText!!.apply {
-        return combineLatest(skip)
+        return combineLatest(textChangesSkip, focusChangesSkip)
                 .compose(beforeMap())
                 .map { checkText(this@notNullOrEmpty, it, it.isNotNullOrEmpty(), required, invalid) }
                 .compose(afterMap())
@@ -181,13 +188,39 @@ fun TextInputLayout.notNullOrEmpty(skip: Long = 1,
 /***
  * digits validation
  * */
-fun TextInputLayout.digits(skip: Long = 1,
+fun TextInputLayout.digits(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
                            @StringRes required: Int = R.string.field_required,
                            @StringRes invalid: Int = R.string.invalid_digits): Observable<Boolean> {
     editText!!.apply {
-        return combineLatest(skip)
+        return combineLatest(textChangesSkip, focusChangesSkip)
                 .compose(beforeMap())
                 .map { checkText(this@digits, it, it.isDigits(), required, invalid) }
+                .compose(afterMap())
+    }
+}
+
+/***
+ * password validation
+ * */
+fun TextInputLayout.password(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
+                             @StringRes required: Int = R.string.field_required,
+                             @StringRes invalid: Int = R.string.invalid_password): Observable<Boolean> {
+    editText!!.apply {
+        return combineLatest(textChangesSkip, focusChangesSkip)
+                .compose(beforeMap())
+                .map { checkText(this@password, it, it.isPassword(), required, invalid) }
+                .compose(afterMap())
+    }
+}
+
+fun TextInputLayout.matchesAndRequired(textChangesSkip: Long = 1, focusChangesSkip: Long = 1,
+                                       regex: Regex,
+                                       @StringRes invalid: Int,
+                                       @StringRes required: Int = R.string.field_required): Observable<Boolean> {
+    editText!!.apply {
+        return combineLatest(textChangesSkip, focusChangesSkip)
+                .compose(beforeMap())
+                .map { checkText(this@matchesAndRequired, it, it.matches(regex), required, invalid) }
                 .compose(afterMap())
     }
 }
@@ -200,32 +233,6 @@ fun TextInputLayout.matches(regex: Regex, @StringRes invalid: Int): Observable<B
         return textChanges().compose(beforeMap())
                 .map { it.matches(regex) }
                 .compose(afterMap(this@matches, invalid))
-    }
-}
-
-/***
- * password validation
- * */
-fun TextInputLayout.password(skip: Long = 1,
-                             @StringRes required: Int = R.string.field_required,
-                             @StringRes invalid: Int = R.string.invalid_password): Observable<Boolean> {
-    editText!!.apply {
-        return combineLatest(skip)
-                .compose(beforeMap())
-                .map { checkText(this@password, it, it.isPassword(), required, invalid) }
-                .compose(afterMap())
-    }
-}
-
-fun TextInputLayout.matchesAndRequired(skip: Long = 1,
-                                       regex: Regex,
-                                       @StringRes invalid: Int,
-                                       @StringRes required: Int = R.string.field_required): Observable<Boolean> {
-    editText!!.apply {
-        return combineLatest(skip)
-                .compose(beforeMap())
-                .map { checkText(this@matchesAndRequired, it, it.matches(regex), required, invalid) }
-                .compose(afterMap())
     }
 }
 

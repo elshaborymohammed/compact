@@ -64,7 +64,6 @@ class TestAppModule {
     fun providesAuthenticator(): Authenticator {
         return object : Authenticator {
             override fun authenticate(route: Route?, response: Response): Request? {
-                println("TestAppModule.authenticate")
                 return null
             }
         }

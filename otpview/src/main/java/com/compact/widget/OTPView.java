@@ -49,7 +49,6 @@ public class OTPView extends AppCompatEditText {
 
     private void init(Context context, AttributeSet attrs) {
         setHeight(getMeasuredHeight() + (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 64, context.getResources().getDisplayMetrics()));
-        System.out.println(getMeasuredHeight());
         setMaxLines(1);
         if (null != attrs) {
             maxLength = attrs.getAttributeIntValue(XML_NAMESPACE_ANDROID, "maxLength", 6);

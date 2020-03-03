@@ -61,9 +61,9 @@ public class NetworkModule {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .protocols(new ArrayList<>(protocols))
                 .cache(cache)
-                .connectTimeout(3, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(60, TimeUnit.SECONDS);
+                .connectTimeout(1, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS);
 
         builder.interceptors().addAll(interceptors);
         if (Authenticator.NONE != authenticator)

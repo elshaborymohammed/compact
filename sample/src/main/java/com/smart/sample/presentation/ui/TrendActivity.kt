@@ -11,6 +11,7 @@ import com.smart.sample.domain.model.User
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Function6
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class TrendActivity : CompactActivity() {
@@ -35,25 +36,23 @@ class TrendActivity : CompactActivity() {
             recyclerView.adapter = it
         }
 
-        val login = login_name.login(0)
-        val username = username.username(0)
-        val fullName = full_name.fullName(0)
-        val digits = digits.digits(0)
-        val phone = phone.phone(0)
-        val email = email.email(0)
+        val login = login_name.login(1, 0)
+        val username = username.username(1, 0)
+        val fullName = full_name.fullName(1, 0)
+        val digits = digits.digits(1, 0)
+        val phone = phone.phone(1, 0)
+        val email = email.email(1, 0)
 
         io.reactivex.Observable.combineLatest(login, username, fullName, digits, phone, email,
                 Function6 { b: Boolean, b1: Boolean, b2: Boolean, b3: Boolean, b4: Boolean, b5: Boolean ->
-                    println("b = [${b}], b1 = [${b1}], b2 = [${b2}], b3 = [${b3}], b4 = [${b4}], b5 = [${b5}]")
                     b && b1 && b2 && b3 && b4 && b5
-                }).subscribe(::println, Throwable::printStackTrace)
-
-        binding.user = User()
+                }).subscribe(submit::setEnabled, Throwable::printStackTrace)
     }
 
     override fun subscriptions(): Array<Disposable> {
         return arrayOf(
-                viewModel.loading().subscribe(::println)
+                viewModel.loading().subscribe(::println),
+                io.reactivex.Observable.just(true).delay(3000, TimeUnit.MILLISECONDS).subscribe { binding.user = User() }
 //                viewModel.trendsResource().subscribe({
 //                    adapter.swap(it.data())
 //                }, {
