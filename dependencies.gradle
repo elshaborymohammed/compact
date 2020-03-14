@@ -97,7 +97,7 @@ ext {
     ]
 
     /** ButterKnife */
-    butterknifeVersion = '10.2.0'
+    butterknifeVersion = '10.2.1'
     butterknife = [
             butterknife: "com.jakewharton:butterknife:$butterknifeVersion",
             compiler   : "com.jakewharton:butterknife-compiler:$butterknifeVersion",

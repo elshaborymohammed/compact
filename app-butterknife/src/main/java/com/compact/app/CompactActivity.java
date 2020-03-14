@@ -8,8 +8,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.compact.utils.ButterKnifeUtils;
+
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -28,6 +32,8 @@ public abstract class CompactActivity extends AppCompatActivity implements HasAn
     }
 
     private final CompositeDisposable disposable = new CompositeDisposable();
+    private Unbinder unbinder;
+
     @Inject
     DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
 
@@ -38,6 +44,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasAn
         super.onCreate(savedInstanceState);
         if (layoutRes() > -1)
             setContentView(layoutRes());
+        unbinder = ButterKnife.bind(this);
         onCreate();
         disposable.addAll(subscriptions());
     }
@@ -59,6 +66,7 @@ public abstract class CompactActivity extends AppCompatActivity implements HasAn
     protected void onDestroy() {
         disposable.dispose();
         disposable.clear();
+        ButterKnifeUtils.unbind(unbinder);
         super.onDestroy();
     }
 

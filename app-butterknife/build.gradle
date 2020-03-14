@@ -1,0 +1,52 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion androidX.sdk.compileSdkVersion
+    defaultConfig {
+        minSdkVersion androidX.sdk.minSdkVersion
+        targetSdkVersion androidX.sdk.targetSdkVersion
+        versionCode androidX.sdk.versionCode
+        versionName androidX.sdk.versionName
+//        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    compileOptions.incremental = false
+}
+
+dependencies {
+    implementation androidX.appCompat
+    implementation androidX.material
+    implementation androidX.recyclerView
+    implementation androidX.ktx
+
+    implementation butterknife.butterknife
+    annotationProcessor butterknife.compiler
+
+    implementation reactive.rxJava
+    implementation restful.gson
+
+    dagger.android.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+}
+apply from: rootProject.file('release-bintray.gradle')

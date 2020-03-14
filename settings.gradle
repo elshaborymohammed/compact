@@ -2,6 +2,7 @@ include ':sample'
 include ':otpview',
         ':compact',
         ':app',
+        ':app-butterknife',
         ':app-extensions',
         ':viewmodel',
         ':requester-annotation',
