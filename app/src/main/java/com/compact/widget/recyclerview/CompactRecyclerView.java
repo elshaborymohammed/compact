@@ -99,7 +99,7 @@ public class CompactRecyclerView {
 
         public void addAll(List<T> data) {
             this.data.addAll(data);
-            notifyItemRangeInserted(data.size() - 1, data.size());
+            notifyItemRangeInserted(this.data.size() - 1, data.size());
         }
 
         public void replace(int position, T data) {

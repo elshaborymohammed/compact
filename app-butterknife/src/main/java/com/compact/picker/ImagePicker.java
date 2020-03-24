@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,11 @@ public class ImagePicker {
     }
 
     public static void build(Fragment fragment) {
+        ImagePicker picker = new ImagePicker();
+        fragment.startActivityForResult(picker.actionChooser(), REQUEST_CODE);
+    }
+
+    public static void build(BottomSheetDialogFragment fragment) {
         ImagePicker picker = new ImagePicker();
         fragment.startActivityForResult(picker.actionChooser(), REQUEST_CODE);
     }
