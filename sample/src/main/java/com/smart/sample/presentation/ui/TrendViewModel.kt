@@ -7,6 +7,7 @@ import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.usecase.TrendsUseCase
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,8 +16,8 @@ import javax.inject.Singleton
 class TrendViewModel
 @Inject constructor(private val useCase: TrendsUseCase, private val scheduler: RxCompactSchedulers) : CompactDataViewModel<List<Trend>>() {
 
-    override fun call() {
-        subscribe(trends().subscribe(onSuccess(), onError()))
+    override fun subscription(): Disposable {
+        return trends().subscribe(onSuccess(), onError())
     }
 
     fun trends(): Single<List<Trend>> {
@@ -51,5 +52,4 @@ class TrendViewModel
         }
         throw IllegalArgumentException("not a valid Transformer type")
     }
-
 }

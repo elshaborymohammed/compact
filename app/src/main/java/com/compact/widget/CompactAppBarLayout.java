@@ -15,17 +15,25 @@ public class CompactAppBarLayout {
         IDLE
     }
 
-    public abstract class OnOffsetChangedListener implements AppBarLayout.OnOffsetChangedListener {
+    public static abstract class OnStateChangedListener implements AppBarLayout.OnOffsetChangedListener {
         private State mCurrentState = State.IDLE;
 
+        /**
+         * Notifies on state change
+         *
+         * @param appBarLayout Layout
+         * @param state        Collapse state
+         */
+        public abstract void onStateChanged(AppBarLayout appBarLayout, State state);
+
         @Override
-        public final void onOffsetChanged(AppBarLayout appBarLayout, int i) {
-            if (i == 0) {
+        public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+            if (verticalOffset == 0) {
                 if (mCurrentState != State.EXPANDED) {
                     onStateChanged(appBarLayout, State.EXPANDED);
                 }
                 mCurrentState = State.EXPANDED;
-            } else if (Math.abs(i) >= appBarLayout.getTotalScrollRange()) {
+            } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                 if (mCurrentState != State.COLLAPSED) {
                     onStateChanged(appBarLayout, State.COLLAPSED);
                 }
@@ -37,13 +45,5 @@ public class CompactAppBarLayout {
                 mCurrentState = State.IDLE;
             }
         }
-
-        /**
-         * Notifies on state change
-         *
-         * @param appBarLayout Layout
-         * @param state        Collapse state
-         */
-        public abstract void onStateChanged(AppBarLayout appBarLayout, State state);
     }
 }

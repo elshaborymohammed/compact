@@ -5,7 +5,7 @@ import android.util.TypedValue;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public abstract class SpacesItemDecorationBuilder {
+public abstract class SpaceDecorationBuilder {
 
     private final Context context;
     private int first;
@@ -14,44 +14,44 @@ public abstract class SpacesItemDecorationBuilder {
     private int right;
     private int bottom;
 
-    public SpacesItemDecorationBuilder(Context context) {
+    public SpaceDecorationBuilder(Context context) {
         this.context = context;
         first(1).space(8);
     }
 
-    public SpacesItemDecorationBuilder space(int space) {
+    public SpaceDecorationBuilder space(int space) {
         return top(space).left(space).right(space).bottom(0);
     }
 
-    public SpacesItemDecorationBuilder horizontal(int space) {
+    public SpaceDecorationBuilder horizontal(int space) {
         return left(space).right(space);
     }
 
-    public SpacesItemDecorationBuilder vertical(int space) {
+    public SpaceDecorationBuilder vertical(int space) {
         return top(space).bottom(space);
     }
 
-    public SpacesItemDecorationBuilder first(int factor) {
+    public SpaceDecorationBuilder first(int factor) {
         this.first = factor;
         return this;
     }
 
-    public SpacesItemDecorationBuilder top(int space) {
+    public SpaceDecorationBuilder top(int space) {
         this.top = toDIP(context, space);
         return this;
     }
 
-    public SpacesItemDecorationBuilder left(int space) {
+    public SpaceDecorationBuilder left(int space) {
         this.left = toDIP(context, space);
         return this;
     }
 
-    public SpacesItemDecorationBuilder right(int space) {
+    public SpaceDecorationBuilder right(int space) {
         this.right = toDIP(context, space);
         return this;
     }
 
-    public SpacesItemDecorationBuilder bottom(int space) {
+    public SpaceDecorationBuilder bottom(int space) {
         this.bottom = toDIP(context, space);
         return this;
     }
@@ -61,7 +61,7 @@ public abstract class SpacesItemDecorationBuilder {
     }
 
     public int getFirst() {
-        return (first < 1) ? 1 : first;
+        return Math.max(first, 1);
     }
 
     public int getTop() {

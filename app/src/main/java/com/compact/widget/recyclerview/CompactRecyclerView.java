@@ -1,7 +1,6 @@
 package com.compact.widget.recyclerview;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -57,7 +56,7 @@ public class CompactRecyclerView {
 
         protected RecyclerView.ItemDecoration[] itemDecorations() {
             return new RecyclerView.ItemDecoration[]{
-                    SpacesItemDecoration.Linear.builder(context).space(8).build()
+                    SpaceDecoration.builder(context).space(8).build()
             };
         }
 
@@ -125,75 +124,6 @@ public class CompactRecyclerView {
         }
 
         protected abstract void bind(int position, T object);
-    }
-
-    public static class SpacesItemDecoration {
-        public static class Linear extends RecyclerView.ItemDecoration {
-            private Builder builder;
-
-            private Linear(Builder builder) {
-                this.builder = builder;
-            }
-
-            public static Builder builder(Context context) {
-                return new Builder(context);
-            }
-
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                if (builder.getOrientation() == RecyclerView.VERTICAL) {
-                    outRect.top = builder.getTop() * ((parent.getChildLayoutPosition(view) == 0) ? builder.getFirst() : 1);
-                    outRect.left = builder.getLeft();
-                } else {
-                    outRect.top = builder.getTop();
-                    outRect.left = builder.getLeft() * ((parent.getChildLayoutPosition(view) == 0) ? builder.getFirst() : 1);
-                }
-                outRect.right = builder.getRight();
-                outRect.bottom = builder.getBottom();
-            }
-
-            public static class Builder extends LinearSpacesItemDecorationBuilder {
-                public Builder(Context context) {
-                    super(context);
-                }
-
-                @Override
-                public RecyclerView.ItemDecoration build() {
-                    return new Linear(this);
-                }
-            }
-        }
-
-        public static class Grid extends RecyclerView.ItemDecoration {
-            private Builder builder;
-
-            private Grid(Builder builder) {
-                this.builder = builder;
-            }
-
-            public static Builder builder(Context context) {
-                return new Builder(context);
-            }
-
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.top = builder.getTop();
-                outRect.left = builder.getLeft();
-                outRect.right = builder.getRight();
-                outRect.bottom = builder.getBottom();
-            }
-
-            public static class Builder extends SpacesItemDecorationBuilder {
-                public Builder(Context context) {
-                    super(context);
-                }
-
-                @Override
-                public RecyclerView.ItemDecoration build() {
-                    return new Grid(this);
-                }
-            }
-        }
     }
 
     public static abstract class PaginationScrollListener extends RecyclerView.OnScrollListener {
