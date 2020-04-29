@@ -76,23 +76,23 @@ public class RequesterProcessor extends AbstractProcessor {
                 }
 
                 ExecutableElement method = (ExecutableElement) methodElement;
-                String parameters = "";
+                StringBuilder parameters = new StringBuilder();
                 List<ParameterSpec> parameterSpecs = new ArrayList<>();
                 for (VariableElement next : method.getParameters()) {
                     parameterSpecs.add(ParameterSpec.get(next));
-                    parameters += String.format("%s,", next.getSimpleName());
+                    parameters.append(String.format("%s,", next.getSimpleName()));
                 }
-                parameters = parameters.replaceAll(".$", "");
+                parameters = new StringBuilder(parameters.toString().replaceAll(".$", ""));
 
                 MethodSpec intentMethod = MethodSpec
                         .methodBuilder(methodElement.getSimpleName().toString())
                         .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                         .returns(TypeName.get(method.getReturnType()))
                         .addParameters(parameterSpecs)
-                        .addStatement("return request.create($L.class).$L($L)"
+                        .addStatement("return this.request.create($L.class).$L($L)"
                                 , className
                                 , method.getSimpleName().toString()
-                                , parameters
+                                , parameters.toString()
                         )
                         .build();
                 classBuilder.addMethod(intentMethod);
