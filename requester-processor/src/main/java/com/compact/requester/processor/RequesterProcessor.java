@@ -10,7 +10,7 @@ import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -51,7 +51,7 @@ public class RequesterProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
         for (Element element : roundEnvironment.getElementsAnnotatedWith(Requester.class)) {
             if (element.getKind() != ElementKind.INTERFACE) {
-                messager.printMessage(Diagnostic.Kind.ERROR, "Can be applied to classes only.");
+                messager.printMessage(Diagnostic.Kind.ERROR, "Can be applied to interfaces only.", element);
                 return false;
             }
 
@@ -61,12 +61,12 @@ public class RequesterProcessor extends AbstractProcessor {
             TypeSpec.Builder classBuilder = TypeSpec
                     .classBuilder("Requester" + className)
                     .addAnnotation(Singleton.class)
-                    .addField(FieldSpec.builder(Retrofit.class, "request", Modifier.PRIVATE, Modifier.FINAL).build())
+                    .addField(FieldSpec.builder(Retrofit.class, "retrofit", Modifier.PRIVATE, Modifier.FINAL).build())
                     .addMethod(MethodSpec
                             .constructorBuilder()
                             .addAnnotation(Inject.class)
-                            .addParameter(Retrofit.class, "request")
-                            .addStatement("this.request = request")
+                            .addParameter(Retrofit.class, "retrofit")
+                            .addStatement("this.retrofit = retrofit")
                             .build())
                     .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
 
@@ -89,7 +89,7 @@ public class RequesterProcessor extends AbstractProcessor {
                         .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                         .returns(TypeName.get(method.getReturnType()))
                         .addParameters(parameterSpecs)
-                        .addStatement("return this.request.create($L.class).$L($L)"
+                        .addStatement("return this.retrofit.create($L.class).$L($L)"
                                 , className
                                 , method.getSimpleName().toString()
                                 , parameters.toString()
@@ -110,9 +110,7 @@ public class RequesterProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        HashSet hashSet = new HashSet();
-        hashSet.add(Requester.class.getCanonicalName());
-        return hashSet;
+        return Collections.singleton(Requester.class.getCanonicalName());
     }
 
     @Override

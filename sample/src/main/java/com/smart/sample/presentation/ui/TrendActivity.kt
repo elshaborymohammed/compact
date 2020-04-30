@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.compact.app.CompactActivity
 import com.compact.app.extensions.*
+import com.compact.binding.annotation.AndroidBinding
 import com.smart.sample.R
 import com.smart.sample.databinding.ActivityMainBinding
 import com.smart.sample.domain.model.User
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
+@AndroidBinding
 class TrendActivity : CompactActivity() {
 
     @Inject

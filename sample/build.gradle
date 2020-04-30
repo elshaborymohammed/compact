@@ -56,6 +56,8 @@ dependencies {
     implementation project(":call-adapter")
     implementation project(":requester-annotation")
     kapt project(":requester-processor")
+    implementation project(":binding-annotation")
+    kapt project(":binding-processor")
 
     implementation androidX.ktx
     implementation androidX.appCompat
@@ -66,8 +68,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     implementation di.dagger
-    implementation di.androidSupport
     implementation di.android
+    implementation di.androidSupport
     kapt di.compiler
     kapt di.processor
 

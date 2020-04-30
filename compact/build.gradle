@@ -24,9 +24,9 @@ dependencies {
     implementation androidX.appCompat
     implementation androidX.material
 
-    implementation di.dagger
-    implementation di.androidSupport
-    implementation di.android
+    compileOnly di.dagger
+    compileOnly di.androidSupport
+    compileOnly di.android
     annotationProcessor di.compiler
     annotationProcessor di.processor
 

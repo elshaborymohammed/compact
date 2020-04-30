@@ -1,10 +1,7 @@
 apply plugin: 'java-library'
 
 dependencies {
-    compileOnly androidX.annotation
-    compileOnly restful.gson
-    compileOnly restful.retrofit
-    compileOnly reactive.rxJava
+//    compileOnly androidX.annotation
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

@@ -1,10 +1,14 @@
 apply plugin: 'java-library'
 
 dependencies {
-    implementation project(":requester-annotation")
-    implementation javaX.inject
-    implementation restful.retrofit
+    implementation project(":binding-annotation")
+    compileOnly di.dagger
+//    compileOnly di.android
+    compileOnly di.androidSupport
+    compileOnly di.processor
     implementation 'com.squareup:javapoet:1.12.1'
+
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
 }
 
