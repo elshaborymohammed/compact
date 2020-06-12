@@ -5,10 +5,10 @@ import com.compact.executor.RxCompactSchedulers
 import com.compact.response.Resource
 import com.smart.sample.domain.model.Trend
 import com.smart.sample.domain.usecase.TrendsUseCase
-import io.reactivex.*
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.*
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -3,8 +3,6 @@ apply plugin: 'java-library'
 dependencies {
     implementation project(":binding-annotation")
     compileOnly di.dagger
-//    compileOnly di.android
-    compileOnly di.androidSupport
     compileOnly di.processor
     implementation 'com.squareup:javapoet:1.12.1'
 

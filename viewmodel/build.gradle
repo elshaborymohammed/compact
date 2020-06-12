@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion androidX.sdk.compileSdkVersion
+    compileSdkVersion androidx.sdk.compileSdkVersion
     defaultConfig {
-        minSdkVersion androidX.sdk.minSdkVersion
-        targetSdkVersion androidX.sdk.targetSdkVersion
-        versionCode androidX.sdk.versionCode
-        versionName androidX.sdk.versionName
+        minSdkVersion androidx.sdk.minSdkVersion
+        targetSdkVersion androidx.sdk.targetSdkVersion
+        versionCode androidx.sdk.versionCode
+        versionName androidx.sdk.versionName
     }
     buildTypes {
         release {
@@ -21,13 +21,13 @@ android {
 }
 
 dependencies {
-    implementation androidX.appCompat
+    implementation androidx.appCompat
     implementation reactive.rxJava
     implementation reactive.rxAndroid
     implementation reactive.rxRelay
 
-    implementation androidX.lifecycle.viewModel
-    implementation androidX.lifecycle.extension
+    implementation androidx.lifecycle.viewModel
+    implementation androidx.lifecycle.extension
     implementation di.dagger
 }
 

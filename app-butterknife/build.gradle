@@ -12,12 +12,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion androidX.sdk.compileSdkVersion
+    compileSdkVersion androidx.sdk.compileSdkVersion
     defaultConfig {
-        minSdkVersion androidX.sdk.minSdkVersion
-        targetSdkVersion androidX.sdk.targetSdkVersion
-        versionCode androidX.sdk.versionCode
-        versionName androidX.sdk.versionName
+        minSdkVersion androidx.sdk.minSdkVersion
+        targetSdkVersion androidx.sdk.targetSdkVersion
+        versionCode androidx.sdk.versionCode
+        versionName androidx.sdk.versionName
 //        consumerProguardFiles "consumer-rules.pro"
     }
     buildTypes {
@@ -34,10 +34,9 @@ android {
 }
 
 dependencies {
-    implementation androidX.appCompat
-    implementation androidX.material
-    implementation androidX.recyclerView
-    implementation androidX.ktx
+    implementation androidx.appCompat
+    implementation androidx.material
+    implementation androidx.recyclerView
 
     implementation butterknife.butterknife
     annotationProcessor butterknife.compiler

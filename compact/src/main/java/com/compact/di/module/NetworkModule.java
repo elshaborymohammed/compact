@@ -1,9 +1,5 @@
 package com.compact.di.module;
 
-import android.content.Context;
-
-import com.compact.di.qualifier.ApplicationContext;
-
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -24,16 +20,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * Created by lshabory on 3/8/18.
  */
 
-@Module(includes = ContextModule.class)
+@Module
 public class NetworkModule {
-
-    @Provides
-    @Singleton
-    Cache provideOkHttpCache(@ApplicationContext Context context) {
-        int cacheSize = 10 * 1024 * 1024; // 10 MiB
-        Cache cache = new Cache(context.getCacheDir(), cacheSize);
-        return cache;
-    }
 
     @Provides
     @IntoSet

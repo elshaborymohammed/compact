@@ -5,8 +5,8 @@ import com.compact.response.ApiException;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
-import io.reactivex.Completable;
-import io.reactivex.CompletableObserver;
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.CompletableObserver;
 import retrofit2.Call;
 import retrofit2.CallAdapter;
 import retrofit2.Callback;

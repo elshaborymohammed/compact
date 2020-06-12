@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion androidX.sdk.compileSdkVersion
+    compileSdkVersion androidx.sdk.compileSdkVersion
     defaultConfig {
-        minSdkVersion androidX.sdk.minSdkVersion
-        targetSdkVersion androidX.sdk.targetSdkVersion
-        versionCode androidX.sdk.versionCode
-        versionName androidX.sdk.versionName
+        minSdkVersion androidx.sdk.minSdkVersion
+        targetSdkVersion androidx.sdk.targetSdkVersion
+        versionCode androidx.sdk.versionCode
+        versionName androidx.sdk.versionName
     }
     buildTypes {
         release {
@@ -25,15 +25,15 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation androidX.appCompat
-    implementation androidX.material
-    implementation androidX.recyclerView
-    implementation androidX.ktx
+    implementation androidx.appCompat
+    implementation androidx.material
+    implementation androidx.recyclerView
+    implementation androidx.coreKtx
 
     implementation reactive.rxJava
     implementation reactive.rxAndroid
 
-    api 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
-    api 'com.jakewharton.rxbinding3:rxbinding-material:3.1.0'
+    api 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+    api 'com.jakewharton.rxbinding4:rxbinding-material:4.0.0'
 }
 apply from: rootProject.file('release-bintray.gradle')

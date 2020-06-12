@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
 import retrofit2.Call;
 import retrofit2.CallAdapter;
 import retrofit2.Callback;

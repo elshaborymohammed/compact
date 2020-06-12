@@ -4,10 +4,9 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.jetbrains.annotations.NotNull;
 
 public class SpaceDecoration extends RecyclerView.ItemDecoration {
 
@@ -22,7 +21,8 @@ public class SpaceDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(@NotNull Rect outRect, @NotNull View view, @NotNull RecyclerView parent, @NotNull RecyclerView.State state) {
+    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+        super.getItemOffsets(outRect, view, parent, state);
         if (parent.getLayoutManager() instanceof LinearLayoutManager) {
             int orientation = ((LinearLayoutManager) parent.getLayoutManager()).getOrientation();
             if (orientation == RecyclerView.VERTICAL) {

@@ -1,17 +1,22 @@
 package com.compact.app.viewmodel;
 
-import com.jakewharton.rxrelay2.BehaviorRelay;
-import com.jakewharton.rxrelay2.PublishRelay;
+import com.jakewharton.rxrelay3.BehaviorRelay;
+import com.jakewharton.rxrelay3.PublishRelay;
 
-import io.reactivex.Observable;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.CompletableTransformer;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableTransformer;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.core.SingleTransformer;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Consumer;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public abstract class CompactDataViewModel<T> extends CompactViewModel {
 
+    protected final CompositeDisposable disposable = new CompositeDisposable();
     protected BehaviorRelay<T> data = BehaviorRelay.create();
     protected PublishRelay<Throwable> error = PublishRelay.create();
 
@@ -42,6 +47,35 @@ public abstract class CompactDataViewModel<T> extends CompactViewModel {
 
     protected Consumer<Throwable> onError() {
         return it -> error.accept(it);
+    }
+
+    @Override
+    public <T> ObservableTransformer<T, T> composeLoadingObservable() {
+        return upstream -> upstream.doOnSubscribe(this::subscribe).compose(super.composeLoadingObservable());
+    }
+
+    @Override
+    public <T> SingleTransformer<T, T> composeLoadingSingle() {
+        return upstream -> upstream.doOnSubscribe(this::subscribe).compose(super.composeLoadingSingle());
+    }
+
+    @Override
+    public CompletableTransformer composeLoadingCompletable() {
+        return upstream -> upstream.doOnSubscribe(this::subscribe).compose(super.composeLoadingCompletable());
+    }
+
+    protected void subscribe(Disposable d) {
+        disposable.add(d);
+    }
+
+    protected boolean removeDisposable(Disposable d) {
+        return disposable.remove(d);
+    }
+
+    protected void dispose() {
+        if (!disposable.isDisposed()) {
+            disposable.clear();
+        }
     }
 
     @Override
