@@ -1,6 +1,7 @@
 package com.smart.sample.app.di
 
 import android.app.Application
+import com.compact.app.di.binding.AndroidBindingModule
 import com.compact.di.module.AuthenticatorModule
 import com.compact.di.module.NetworkModule
 import com.smart.sample.app.App
@@ -12,7 +13,8 @@ import javax.inject.Singleton
 @Component(modules = [
     NetworkModule::class,
     AppModule::class,
-    ActivityModule::class,
+    //ActivityModule::class,
+    AndroidBindingModule::class,
     ViewModelModule::class,
     AuthenticatorModule::class
 ])

@@ -129,9 +129,9 @@ public class CompactRecyclerView {
     public static abstract class PaginationScrollListener extends RecyclerView.OnScrollListener {
 
         @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
-            LinearLayoutManager layoutManager = LinearLayoutManager.class.cast(recyclerView.getLayoutManager());
+            LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
             int totalItemCount = layoutManager.getItemCount();
             int lastVisible = layoutManager.findLastCompletelyVisibleItemPosition();
             boolean endHasBeenReached = lastVisible >= totalItemCount && totalItemCount > 0;

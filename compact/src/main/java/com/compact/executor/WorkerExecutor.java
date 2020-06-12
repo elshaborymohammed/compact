@@ -19,7 +19,7 @@ public class WorkerExecutor implements Executor {
      * Gets the number of available cores
      * (not always the same as the maximum number of cores)
      */
-    private static int NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors();
+    private static int NUMBER_OF_CORES = 2; //Runtime.getRuntime().availableProcessors();
     // Instantiates the queue of #Runnable as a LinkedBlockingQueue
     private final BlockingQueue<Runnable> blockingQueue = new LinkedBlockingQueue<>();
     // Creates a thread pool manager

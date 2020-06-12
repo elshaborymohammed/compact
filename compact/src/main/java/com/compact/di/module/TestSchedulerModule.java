@@ -10,9 +10,9 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.reactivex.Scheduler;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.internal.schedulers.ExecutorScheduler;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.internal.schedulers.ExecutorScheduler;
 
 /**
  * Created by lshabory on 3/16/18.
@@ -23,13 +23,13 @@ public class TestSchedulerModule {
     @Provides
     @Singleton
     MainThread providesMainThread() {
-        return () -> testScheduler();
+        return this::testScheduler;
     }
 
     @Provides
     @Singleton
     WorkerThread providesNetworkScheduler() {
-        return () -> testScheduler();
+        return this::testScheduler;
     }
 
     @Provides
@@ -44,7 +44,7 @@ public class TestSchedulerModule {
 
             @Override
             public Worker createWorker() {
-                return new ExecutorScheduler.ExecutorWorker(runnable -> runnable.run(), false);
+                return new ExecutorScheduler.ExecutorWorker(Runnable::run, false, false);
             }
 
             @Override

@@ -16,8 +16,8 @@ import com.compact.utils.ButterKnifeUtils;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 /**
  * Created by lshabory on 3/8/18.
@@ -44,13 +44,8 @@ public abstract class CompactFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
-        postponeEnterTransition();
         onViewBound(view);
         disposables.addAll(subscriptions());
-        view.getViewTreeObserver().addOnPreDrawListener(() -> {
-            startPostponedEnterTransition();
-            return true;
-        });
     }
 
     @Override

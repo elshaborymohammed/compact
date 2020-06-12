@@ -2,7 +2,7 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation project(":response")
-    compileOnly androidX.annotation
+    compileOnly androidx.annotation
     implementation restful.gson
     implementation restful.retrofit
     implementation reactive.rxJava

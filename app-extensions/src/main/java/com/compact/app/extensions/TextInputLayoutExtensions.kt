@@ -3,12 +3,12 @@ package com.compact.app.extensions
 import android.widget.AutoCompleteTextView
 import androidx.annotation.StringRes
 import com.google.android.material.textfield.TextInputLayout
-import com.jakewharton.rxbinding3.view.focusChanges
-import com.jakewharton.rxbinding3.widget.textChanges
-import io.reactivex.Observable
-import io.reactivex.ObservableTransformer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.BiFunction
+import com.jakewharton.rxbinding4.view.focusChanges
+import com.jakewharton.rxbinding4.widget.textChanges
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.ObservableTransformer
+import io.reactivex.rxjava3.functions.BiFunction
 import java.util.concurrent.TimeUnit
 
 /**

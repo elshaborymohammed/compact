@@ -2,7 +2,7 @@ package com.compact.requester.adapter;
 
 import com.compact.response.Resource;
 
-import io.reactivex.SingleObserver;
+import io.reactivex.rxjava3.core.SingleObserver;
 
 public abstract class SingleResourceObserver<T> implements SingleObserver<Resource<T>> {
 

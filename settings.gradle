@@ -7,5 +7,7 @@ include ':otpview',
         ':viewmodel',
         ':requester-annotation',
         ':requester-processor',
+        ':binding-annotation',
+        ':binding-processor',
         ':call-adapter',
         ':response'

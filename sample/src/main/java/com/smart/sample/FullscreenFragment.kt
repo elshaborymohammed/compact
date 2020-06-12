@@ -9,13 +9,17 @@ import android.view.WindowManager
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.compact.binding.annotation.AndroidBinding
 
 /**
  * An example full-screen fragment that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
+
+@AndroidBinding
 class FullscreenFragment : Fragment() {
     private val hideHandler = Handler()
+
     @Suppress("InlinedApi")
     private val hidePart2Runnable = Runnable {
         // Delayed removal of status and navigation bar
@@ -39,6 +43,7 @@ class FullscreenFragment : Fragment() {
     }
     private var visible: Boolean = false
     private val hideRunnable = Runnable { hide() }
+
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away

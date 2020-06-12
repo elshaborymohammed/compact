@@ -1,9 +1,9 @@
 package com.compact.executor;
 
-import io.reactivex.CompletableTransformer;
-import io.reactivex.ObservableTransformer;
-import io.reactivex.Scheduler;
-import io.reactivex.SingleTransformer;
+import io.reactivex.rxjava3.core.CompletableTransformer;
+import io.reactivex.rxjava3.core.ObservableTransformer;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.core.SingleTransformer;
 
 public class RxCompactSchedulers {
 
