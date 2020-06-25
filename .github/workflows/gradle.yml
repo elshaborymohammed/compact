@@ -23,4 +23,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Publishes artifacts to bintray
-      run: ./gradlew bintrayUpload
+      run: ./gradlew --scan bintrayUpload
