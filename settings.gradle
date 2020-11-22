@@ -1,3 +1,4 @@
+rootProject.name='Compact'
 //gradleEnterprise {
 //    buildScan {
 //        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
