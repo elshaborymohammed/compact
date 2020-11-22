@@ -9,7 +9,6 @@ import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class TrendsRepository @Inject constructor(private val api: RequesterTrendsApi) : ITrendsProtocol {
     override fun completable(): Completable {
         return api.completable()

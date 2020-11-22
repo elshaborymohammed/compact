@@ -6,6 +6,7 @@ class App : CompactApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
         com.smart.sample.app.di.DaggerAppComponent.builder().application(this).build().inject(this)
     }
 }

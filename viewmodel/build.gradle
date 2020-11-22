@@ -1,24 +1,4 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion androidx.sdk.compileSdkVersion
-    defaultConfig {
-        minSdkVersion androidx.sdk.minSdkVersion
-        targetSdkVersion androidx.sdk.targetSdkVersion
-        versionCode androidx.sdk.versionCode
-        versionName androidx.sdk.versionName
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-}
+apply from: rootProject.file('android-library.gradle')
 
 dependencies {
     implementation androidx.appCompat
@@ -30,5 +10,3 @@ dependencies {
     implementation androidx.lifecycle.extension
     implementation di.dagger
 }
-
-apply from: rootProject.file('release-bintray.gradle')

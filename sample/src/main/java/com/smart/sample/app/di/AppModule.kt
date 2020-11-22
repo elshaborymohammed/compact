@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.smart.sample.data.module.ProtocolModule
 import dagger.Module
 import dagger.Provides
+import dagger.android.AndroidInjectionModule
 import dagger.multibindings.IntoSet
 import retrofit2.CallAdapter
 import retrofit2.Converter
@@ -15,11 +16,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module(includes = [
+    NetworkModule::class,
     GsonModule::class,
     RequestBuilderModule::class,
     RequestModule::class,
     SchedulerModule::class,
-    ProtocolModule::class,
     NetworkCacheModule::class
 ])
 class AppModule {

@@ -6,8 +6,8 @@ import com.smart.sample.base.di.TestAppComponent
 import com.smart.sample.base.helper.MockDataHelper
 import com.smart.sample.data.api.RequesterTrendsApi
 import com.smart.sample.domain.model.Trend
-import io.reactivex.observers.TestObserver
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.observers.TestObserver
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,7 +22,7 @@ class TrendsRepositoryTest : CompactTest() {
     lateinit var api: RequesterTrendsApi
 
     private lateinit var repository: TrendsRepository
-    private var subscriber = TestObserver<List<Trend>>()
+    private var subscriber = TestObserver.create<List<Trend>>()
     private lateinit var mocks: List<Trend>
 
     override fun inject(testAppComponent: TestAppComponent) {

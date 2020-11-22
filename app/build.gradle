@@ -1,24 +1,7 @@
-apply plugin: 'com.android.library'
+apply from: rootProject.file('android-library.gradle')
 
 android {
-    compileSdkVersion androidx.sdk.compileSdkVersion
-    defaultConfig {
-        minSdkVersion androidx.sdk.minSdkVersion
-        targetSdkVersion androidx.sdk.targetSdkVersion
-        versionCode androidx.sdk.versionCode
-        versionName androidx.sdk.versionName
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    compileOptions.incremental = false
+    compileOptions.incremental = true
 }
 
 dependencies {
@@ -29,12 +12,7 @@ dependencies {
     implementation reactive.rxJava
     implementation restful.gson
 
-//    dagger.android.each {
-//        add(it.configuration, it.dependency, it.options)
-//    }
-
     implementation di.dagger
     implementation di.android
     implementation di.androidSupport
 }
-apply from: rootProject.file('release-bintray.gradle')
